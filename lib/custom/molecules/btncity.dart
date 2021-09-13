@@ -23,7 +23,7 @@ class Whitebutton extends StatelessWidget {
           child: Row(
             children: [
               const Spacer(),
-              const ImgMarker(),
+              const ImgMarker(color: 0xFF002EA8),
               // SvgPicture.asset(
               //   'assets/icons/location_outline.svg',
               //   height: 18,
