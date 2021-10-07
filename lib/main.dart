@@ -69,8 +69,8 @@ class AtributosEnvio extends StatelessWidget {
             children: [
               Container(
                 alignment: Alignment.center,
-                height: 56,
-                width: 56,
+                height: 43,
+                width: 43,
                 decoration: BoxDecoration(
                   color: const Color(0xFFED6C1D),
                   border: Border.all(width: 3.0),
