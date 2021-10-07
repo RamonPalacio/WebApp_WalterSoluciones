@@ -5,16 +5,21 @@ import 'package:walte_soluciones/custom/atoms/img_market.dart';
 class Whitebutton extends StatelessWidget {
   const Whitebutton({
     Key? key,
+    this.text = "",
+    this.events,
   }) : super(key: key);
+
+  final String text;
+  final VoidCallback? events;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: events,
       child: Container(
         height: 57,
-        width: 210,
-        alignment: Alignment.center,
+        width: 300,
+        alignment: Alignment.centerLeft,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             border: Border.all(color: const Color(0xFFE6E7EB))),
@@ -22,7 +27,7 @@ class Whitebutton extends StatelessWidget {
           height: 20,
           child: Row(
             children: [
-              const Spacer(),
+              const SizedBox(width: 20),
               const ImgMarker(color: 0xFF002EA8),
               // SvgPicture.asset(
               //   'assets/icons/location_outline.svg',
@@ -31,13 +36,13 @@ class Whitebutton extends StatelessWidget {
               //   fit: BoxFit.fill,
               //   excludeFromSemantics: true,
               // ),
-              const Spacer(),
+              const SizedBox(width: 20),
               FittedBox(
                 child: Text(
-                  'Medellin',
+                  text,
                   textAlign: TextAlign.center,
                   style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w500,
                     color: const Color(0xFF002EA8),
                     fontSize: 18,
                   ),
