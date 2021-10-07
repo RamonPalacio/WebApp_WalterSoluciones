@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g id="acf2aff1-b67d-4917-a964-94221b0fc5e6" data-name="Capa 2">
+    <g id="f80a100a-4802-4058-a5ba-0b91549a90c1" data-name="check">
+      <path d="M10.1,2A8,8,0,0,0,2,9.84V10a8,8,0,1,0,8.1-8Z" fill="#fff"/>
+      <path d="M10,0A10,10,0,1,0,20,10,10,10,0,0,0,10,0Zm0,18a8,8,0,0,1-8-8V9.84A8,8,0,1,1,10,18Z" fill="#002ea8"/>
+      <polygon points="8.4 11.74 6.33 9.67 5.2 10.8 8.4 14 14.8 7.6 13.67 6.46 8.4 11.74" fill="#002ea8"/>
+    </g>
+  </g>
+</svg>
