@@ -44,7 +44,7 @@ class OptionA extends StatelessWidget {
                   String ciudad =
                       context.read<MainState>().getState(ConstState.btnciudad);
                   context.read<MainState>().setState(
-                        id: ConstState.dirListPrediction,
+                        id: ConstState.dirListPredictionA,
                         texto:
                             await EndPointApi().getUbicacion("$texto, $ciudad"),
                         updateGeneralState: true,
@@ -52,7 +52,7 @@ class OptionA extends StatelessWidget {
                 },
                 formateado: [
                   FilteringTextInputFormatter.allow(
-                    RegExp('[a-z A-Z,0-9]'),
+                    RegExp('[a-z A-Z,-_0-9]'),
                   ),
                 ],
                 textFieldAltura: 30,

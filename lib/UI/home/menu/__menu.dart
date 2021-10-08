@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:walte_soluciones/UI/home/menu/inicio_servicio/box_initial_location.dart';
-import 'package:walte_soluciones/UI/home/menu/_2_ubica_second.dart';
+import 'package:walte_soluciones/UI/home/menu/segundo_servicio/_2_ubica_second.dart';
 import 'package:walte_soluciones/UI/home/menu/_3_add_destiny.dart';
 import 'package:walte_soluciones/UI/home/menu/_4.0_SelectService.dart';
 import 'package:walte_soluciones/UI/home/menu/_5_shipping_properties.dart';

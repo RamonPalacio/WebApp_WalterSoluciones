@@ -1,5 +1,6 @@
 class ConstState {
-  static const String dirListPrediction = "lista_direcciones";
+  static const String dirListPredictionA = "lista_direccionesA";
+  static const String dirListPredictionB = "lista_direccionesB";
 
   static const String btnciudad = 'btnciudad_home';
   static const String btnSignIn = 'btnsingin_home';
@@ -17,5 +18,6 @@ class ConstState {
   static const String centerMap = 'center_map_latlng_mapwidget';
 
   static const String mapController = 'controller_map';
-  static const String markers = 'markers_laglng_map';
+  static const String markerA = 'markers_laglng_map';
+  static const String markerB = 'markerB_laglng_map';
 }

@@ -2,6 +2,8 @@ class TxtStateName {
   ///Texboxs menu
   static const String txtDirprincipal =
       'txtdirprincipal_menu_textbox'; // controller
+  static const String txtDirsecundario =
+      'txtdirsecundario_menu_textbox'; // controller
 
   ///Texboxs register_personas.dart
   static const String phoneSignin = 'phone_loginhome_textbox';

@@ -212,7 +212,7 @@ class MapaOpenSourse extends StatelessWidget {
                     width: 56.0,
                     height: 107.0,
                     point:
-                        context.read<MainState>().getState(ConstState.markers),
+                        context.read<MainState>().getState(ConstState.markerA),
                     builder: (ctx) => Column(
                       children: [
                         Container(
@@ -247,7 +247,8 @@ class MapaOpenSourse extends StatelessWidget {
                   Marker(
                     width: 56.0,
                     height: 107.0,
-                    point: LatLng(10.98, -74.8),
+                    point:
+                        context.read<MainState>().getState(ConstState.markerB),
                     builder: (ctx) => Column(
                       children: [
                         Container(

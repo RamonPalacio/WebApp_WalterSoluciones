@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/src/provider.dart';
 import 'package:walte_soluciones/UI/home/menu/inicio_servicio/opcion_a.dart';
-import 'package:walte_soluciones/UI/home/menu/inicio_servicio/resultado_consulta.dart';
+import 'package:walte_soluciones/UI/home/menu/resultado_consulta_a_y_b.dart';
+import 'package:walte_soluciones/constant/const_state.dart';
 import 'package:walte_soluciones/constant/txt_state_name.dart';
 import 'package:walte_soluciones/custom/atoms/img_check.dart';
 import 'package:walte_soluciones/custom/atoms/img_info.dart';
@@ -37,7 +38,11 @@ class InitialLocation extends StatelessWidget {
             width: double.infinity,
             child: OptionA(),
           ),
-          const ResultadoDirecciones(),
+          const ResultadoDirecciones(
+            txtStateName: TxtStateName.txtDirprincipal,
+            dirListPrediction: ConstState.dirListPredictionA,
+            marker: ConstState.markerA,
+          ),
           const SizedBox(height: 10),
           TextBoxSubtitle(
             // texto: null,

@@ -121,6 +121,7 @@ class TextBoxSubtitle extends StatelessWidget {
                   child: Transform.translate(
                     offset: const Offset(0, 3),
                     child: TextFormField(
+                      maxLines: 1,
                       autofocus: autofocus,
                       initialValue: texto,
                       controller:
@@ -136,7 +137,7 @@ class TextBoxSubtitle extends StatelessWidget {
                       //! Texto CentralStyle
                       style: TextStyle(
                         letterSpacing: letterSpacing,
-                        fontSize: 20,
+                        fontSize: 16,
                         height: 1.0,
                         fontWeight: FontWeight.bold,
                       ),

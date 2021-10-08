@@ -7,7 +7,9 @@ export 'package:latlong2/latlong.dart';
 
 class MainState extends ChangeNotifier {
   final Map<dynamic, dynamic> _inputTextState = {
-    ConstState.dirListPrediction: [],
+    //Buscadores de Direcciones
+    ConstState.dirListPredictionA: [],
+    ConstState.dirListPredictionB: [],
     // "DateBoxfinzi_RegistroPage": "2021-08-01"
     PagesShowState.cityshow: true,
     PagesShowState.tamanoshow: false,
@@ -29,7 +31,8 @@ class MainState extends ChangeNotifier {
     ConstState.btntamano: "Pequeños",
 
     ConstState.centerMap: LatLng(6.246727, -75.566189), //Medellin
-    ConstState.markers: LatLng(0, 0)
+    ConstState.markerA: LatLng(0, 0),
+    ConstState.markerB: LatLng(0, 0)
   };
 
   void removeState(
