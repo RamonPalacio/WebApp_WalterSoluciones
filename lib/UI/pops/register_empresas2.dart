@@ -149,186 +149,201 @@ class RegisterEmpresas2 extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 10),
-                  TextBoxSubtitle(
-                    containerHeight: 40,
-                    texto: context
-                            .read<MainState>()
-                            .getState(TxtStateName.rezonsocialRegE) ??
-                        "",
-                    textoBase: "Empresa",
-                    containerWidth: 400,
-                    maxlength: 50,
-                    formateado: const [],
-                    iconPre: SvgPicture.asset(
-                      "assets/icons/icon_user.svg",
-                      height: 16,
-                      fit: BoxFit.fitHeight,
-                    ),
-                    iconPos: SvgPicture.asset(
-                      "assets/icons/next.svg",
-                      height: 16,
-                      fit: BoxFit.fitHeight,
-                    ),
-                    onChanged: (text) {
-                      context.read<MainState>().setState(
-                            id: TxtStateName.rezonsocialRegE,
-                            texto: text,
-                          );
-                    },
-                  ),
-                  const SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: TextBoxSubtitle(
-                          maxlength: 10,
-                          formateado: [
-                            FilteringTextInputFormatter.allow(
-                              RegExp('[a-zA-Z]'),
-                            ),
-                          ],
-                          enable: true,
-                          iconPre: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 18, right: 10, top: 18, bottom: 18),
-                            child: SvgPicture.asset(
-                              "assets/icons/note.svg",
-                              height: 20,
+                  FocusTraversalGroup(
+                    child: Form(
+                      autovalidateMode: AutovalidateMode.always,
+                      onChanged: () {
+                        Form.of(primaryFocus!.context!)!.save();
+                      },
+                      child: Column(
+                        children: [
+                          TextBoxSubtitle(
+                            containerHeight: 40,
+                            texto: context
+                                    .read<MainState>()
+                                    .getState(TxtStateName.rezonsocialRegE) ??
+                                "",
+                            textoBase: "Empresa",
+                            containerWidth: 400,
+                            maxlength: 50,
+                            formateado: const [],
+                            iconPre: SvgPicture.asset(
+                              "assets/icons/icon_user.svg",
+                              height: 16,
                               fit: BoxFit.fitHeight,
                             ),
-                          ),
-                          texto: "",
-                          textoBase: "Nit",
-                          iconPos: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 10, right: 18, top: 18, bottom: 18),
-                            child: SvgPicture.asset(
-                              "assets/icons/chevron_big_down.svg",
-                              height: 10,
+                            iconPos: SvgPicture.asset(
+                              "assets/icons/next.svg",
+                              height: 16,
                               fit: BoxFit.fitHeight,
                             ),
+                            onChanged: (text) {
+                              context.read<MainState>().setState(
+                                    id: TxtStateName.rezonsocialRegE,
+                                    texto: text,
+                                  );
+                            },
                           ),
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        flex: 2,
-                        child: TextBoxSubtitle(
-                          containerHeight: 40,
-                          texto: context
-                                  .read<MainState>()
-                                  .getState(TxtStateName.nitRegE) ??
-                              "",
-                          textoBase: "Nit",
-                          containerWidth: 400,
-                          maxlength: 15,
-                          formateado: [
-                            FilteringTextInputFormatter.allow(
-                              RegExp('[0-9]'),
+                          const SizedBox(height: 10),
+                          Row(
+                            children: [
+                              Expanded(
+                                flex: 1,
+                                child: TextBoxSubtitle(
+                                  maxlength: 10,
+                                  formateado: [
+                                    FilteringTextInputFormatter.allow(
+                                      RegExp('[a-zA-Z]'),
+                                    ),
+                                  ],
+                                  enable: true,
+                                  iconPre: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 18,
+                                        right: 10,
+                                        top: 18,
+                                        bottom: 18),
+                                    child: SvgPicture.asset(
+                                      "assets/icons/note.svg",
+                                      height: 20,
+                                      fit: BoxFit.fitHeight,
+                                    ),
+                                  ),
+                                  texto: "",
+                                  textoBase: "Nit",
+                                  iconPos: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 10,
+                                        right: 18,
+                                        top: 18,
+                                        bottom: 18),
+                                    child: SvgPicture.asset(
+                                      "assets/icons/chevron_big_down.svg",
+                                      height: 10,
+                                      fit: BoxFit.fitHeight,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              Expanded(
+                                flex: 2,
+                                child: TextBoxSubtitle(
+                                  containerHeight: 40,
+                                  texto: context
+                                          .read<MainState>()
+                                          .getState(TxtStateName.nitRegE) ??
+                                      "",
+                                  textoBase: "Nit",
+                                  containerWidth: 400,
+                                  maxlength: 15,
+                                  formateado: [
+                                    FilteringTextInputFormatter.allow(
+                                      RegExp('[0-9]'),
+                                    ),
+                                  ],
+                                  iconPos: SvgPicture.asset(
+                                    "assets/icons/next.svg",
+                                    height: 16,
+                                    fit: BoxFit.fitHeight,
+                                  ),
+                                  onChanged: (text) {
+                                    context.read<MainState>().setState(
+                                        id: TxtStateName.nitRegE, texto: text);
+                                  },
+                                ),
+                              )
+                            ],
+                          ),
+                          const SizedBox(height: 10),
+                          TextBoxSubtitle(
+                            containerHeight: 40,
+                            texto: context
+                                    .read<MainState>()
+                                    .getState(TxtStateName.dirRegE) ??
+                                "",
+                            textoBase: "Direccion",
+                            containerWidth: 400,
+                            maxlength: 50,
+                            formateado: const [],
+                            iconPre: SvgPicture.asset(
+                              "assets/icons/location_gris.svg",
+                              fit: BoxFit.scaleDown,
                             ),
-                          ],
-                          iconPos: SvgPicture.asset(
-                            "assets/icons/next.svg",
-                            height: 16,
-                            fit: BoxFit.fitHeight,
+                            iconPos: SvgPicture.asset(
+                              "assets/icons/next.svg",
+                              height: 16,
+                              fit: BoxFit.scaleDown,
+                            ),
+                            onChanged: (text) {
+                              context.read<MainState>().setState(
+                                  id: TxtStateName.dirRegE, texto: text);
+                            },
                           ),
-                          onChanged: (text) {
-                            context.read<MainState>().setState(
-                                id: TxtStateName.nitRegE, texto: text);
-                          },
-                        ),
-                      )
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  TextBoxSubtitle(
-                    containerHeight: 40,
-                    texto: context
-                            .read<MainState>()
-                            .getState(TxtStateName.dirRegE) ??
-                        "",
-                    textoBase: "Direccion",
-                    containerWidth: 400,
-                    maxlength: 50,
-                    formateado: const [],
-                    iconPre: SvgPicture.asset(
-                      "assets/icons/location_gris.svg",
-                      fit: BoxFit.scaleDown,
-                    ),
-                    iconPos: SvgPicture.asset(
-                      "assets/icons/next.svg",
-                      height: 16,
-                      fit: BoxFit.scaleDown,
-                    ),
-                    onChanged: (text) {
-                      context
-                          .read<MainState>()
-                          .setState(id: TxtStateName.dirRegE, texto: text);
-                    },
-                  ),
-                  const SizedBox(height: 10),
-                  TextBoxSubtitle(
-                    containerHeight: 40,
-                    texto: context
-                            .read<MainState>()
-                            .getState(TxtStateName.phonelocalRegE) ??
-                        "",
-                    textoBase: "Telefono Fijo",
-                    containerWidth: 400,
-                    maxlength: 10,
-                    formateado: [
-                      FilteringTextInputFormatter.allow(
-                        RegExp('[0-9]'),
+                          const SizedBox(height: 10),
+                          TextBoxSubtitle(
+                            containerHeight: 40,
+                            texto: context
+                                    .read<MainState>()
+                                    .getState(TxtStateName.phonelocalRegE) ??
+                                "",
+                            textoBase: "Telefono Fijo",
+                            containerWidth: 400,
+                            maxlength: 10,
+                            formateado: [
+                              FilteringTextInputFormatter.allow(
+                                RegExp('[0-9]'),
+                              ),
+                            ],
+                            iconPre: SvgPicture.asset(
+                              "assets/icons/phone.svg",
+                              height: 16,
+                              fit: BoxFit.fitHeight,
+                            ),
+                            iconPos: SvgPicture.asset(
+                              "assets/icons/next.svg",
+                              height: 16,
+                              fit: BoxFit.fitHeight,
+                            ),
+                            onChanged: (text) {
+                              context.read<MainState>().setState(
+                                  id: TxtStateName.phonelocalRegE, texto: text);
+                            },
+                          ),
+                          const SizedBox(height: 10),
+                          TextBoxSubtitle(
+                            containerHeight: 40,
+                            texto: context.read<MainState>().getState(
+                                    "fijoindustria_registroE2_textbox") ??
+                                "",
+                            textoBase: "Telefono de Industria",
+                            containerWidth: 400,
+                            maxlength: 10,
+                            formateado: [
+                              FilteringTextInputFormatter.allow(
+                                RegExp('[0-9]'),
+                              ),
+                            ],
+                            iconPre: SvgPicture.asset(
+                              "assets/icons/phone.svg",
+                              height: 16,
+                              fit: BoxFit.fitHeight,
+                            ),
+                            iconPos: SvgPicture.asset(
+                              "assets/icons/next.svg",
+                              height: 16,
+                              fit: BoxFit.fitHeight,
+                            ),
+                            onChanged: (text) {
+                              context.read<MainState>().setState(
+                                  id: TxtStateName.phoneIndRegE, texto: text);
+                            },
+                          ),
+                          const SizedBox(height: 10),
+                        ],
                       ),
-                    ],
-                    iconPre: SvgPicture.asset(
-                      "assets/icons/phone.svg",
-                      height: 16,
-                      fit: BoxFit.fitHeight,
                     ),
-                    iconPos: SvgPicture.asset(
-                      "assets/icons/next.svg",
-                      height: 16,
-                      fit: BoxFit.fitHeight,
-                    ),
-                    onChanged: (text) {
-                      context.read<MainState>().setState(
-                          id: TxtStateName.phonelocalRegE, texto: text);
-                    },
                   ),
-                  const SizedBox(height: 10),
-                  TextBoxSubtitle(
-                    containerHeight: 40,
-                    texto: context
-                            .read<MainState>()
-                            .getState("fijoindustria_registroE2_textbox") ??
-                        "",
-                    textoBase: "Telefono de Industria",
-                    containerWidth: 400,
-                    maxlength: 10,
-                    formateado: [
-                      FilteringTextInputFormatter.allow(
-                        RegExp('[0-9]'),
-                      ),
-                    ],
-                    iconPre: SvgPicture.asset(
-                      "assets/icons/phone.svg",
-                      height: 16,
-                      fit: BoxFit.fitHeight,
-                    ),
-                    iconPos: SvgPicture.asset(
-                      "assets/icons/next.svg",
-                      height: 16,
-                      fit: BoxFit.fitHeight,
-                    ),
-                    onChanged: (text) {
-                      context
-                          .read<MainState>()
-                          .setState(id: TxtStateName.phoneIndRegE, texto: text);
-                    },
-                  ),
-                  const SizedBox(height: 10),
                   Row(
                     children: [
                       BotonGradiane(

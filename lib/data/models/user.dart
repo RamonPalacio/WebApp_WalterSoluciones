@@ -67,7 +67,7 @@ class User {
         isCompany: json["isCompany"],
       );
 
-  Map<String?, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "birthDay": birthDay,
         "deviceToken": deviceToken,
         "email": email,

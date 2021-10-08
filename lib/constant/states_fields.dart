@@ -13,4 +13,6 @@ class ConstState {
   static const String userName = 'name_login';
   static const String userEmail = 'email_login';
   static const String userPhone = 'phone_login';
+
+  static const String centerMap = 'center_map_latlng_mapwidget';
 }

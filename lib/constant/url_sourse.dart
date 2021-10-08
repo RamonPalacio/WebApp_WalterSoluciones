@@ -7,7 +7,7 @@ class UrlSource {
       "https://servicios.ine.es/wstempus/js/ES/ESCALAS?page={2}";
   String get factor => _factor;
 
-  static const String _googlewebKey = "AIzaSyCEnMjJv9adozTmNK5EL02suuyX25dLTsc";
+  // static const String _googlewebKey = "AIzaSyCEnMjJv9adozTmNK5EL02suuyX25dLTsc";
   static const String _googleappKey = "AIzaSyDI7nWwKvTCheygAE5dQrh8Lh5jSdL0Ajc";
 
   static const String _googlecoordenadas =

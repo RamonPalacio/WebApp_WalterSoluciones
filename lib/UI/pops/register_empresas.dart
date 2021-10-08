@@ -147,134 +147,139 @@ class RegirterEmpresas extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 16),
-                  TextBoxSubtitle(
-                    containerHeight: 40,
-                    texto: context
-                            .read<MainState>()
-                            .getState(TxtStateName.nombresRegE) ??
-                        "",
-                    textoBase: "Nombres",
-                    containerWidth: 400,
-                    maxlength: 50,
-                    formateado: [
-                      FilteringTextInputFormatter.allow(
-                        RegExp('[a-z A-Z]'),
+                  FocusTraversalGroup(
+                    child: Form(
+                      autovalidateMode: AutovalidateMode.always,
+                      onChanged: () {
+                        Form.of(primaryFocus!.context!)!.save();
+                      },
+                      child: Column(
+                        children: [
+                          TextBoxSubtitle(
+                            containerHeight: 40,
+                            texto: context
+                                    .read<MainState>()
+                                    .getState(TxtStateName.nombresRegE) ??
+                                "",
+                            textoBase: "Nombres",
+                            containerWidth: 400,
+                            maxlength: 50,
+                            formateado: [
+                              FilteringTextInputFormatter.allow(
+                                RegExp('[a-z A-Z]'),
+                              ),
+                            ],
+                            iconPre: SvgPicture.asset(
+                              "assets/icons/icon_user.svg",
+                              height: 16,
+                              fit: BoxFit.fitHeight,
+                            ),
+                            iconPos: SvgPicture.asset(
+                              "assets/icons/next.svg",
+                              height: 16,
+                              fit: BoxFit.fitHeight,
+                            ),
+                            onChanged: (text) {
+                              context.read<MainState>().setState(
+                                  id: TxtStateName.nombresRegE, texto: text);
+                            },
+                          ),
+                          const SizedBox(height: 16),
+                          TextBoxSubtitle(
+                            containerHeight: 40,
+                            texto: context
+                                    .read<MainState>()
+                                    .getState(TxtStateName.apellidoRegE) ??
+                                "",
+                            textoBase: "Apellidos",
+                            containerWidth: 400,
+                            maxlength: 50,
+                            formateado: [
+                              FilteringTextInputFormatter.allow(
+                                RegExp('[a-z A-Z]'),
+                              ),
+                            ],
+                            iconPre: SvgPicture.asset(
+                              "assets/icons/icon_user.svg",
+                              height: 16,
+                              fit: BoxFit.fitHeight,
+                            ),
+                            iconPos: SvgPicture.asset(
+                              "assets/icons/next.svg",
+                              height: 16,
+                              fit: BoxFit.fitHeight,
+                            ),
+                            onChanged: (text) {
+                              context.read<MainState>().setState(
+                                  id: TxtStateName.apellidoRegE, texto: text);
+                            },
+                          ),
+                          const SizedBox(height: 16),
+                          TextBoxSubtitle(
+                            containerHeight: 40,
+                            texto: context
+                                    .read<MainState>()
+                                    .getState(TxtStateName.emailRegE) ??
+                                "",
+                            textoBase: "Correo Electrónico",
+                            containerWidth: 400,
+                            maxlength: 50,
+                            formateado: const [],
+                            iconPre: SvgPicture.asset(
+                              "assets/icons/icon_email.svg",
+                              fit: BoxFit.scaleDown,
+                            ),
+                            iconPos: SvgPicture.asset(
+                              "assets/icons/next.svg",
+                              height: 16,
+                              fit: BoxFit.scaleDown,
+                            ),
+                            onChanged: (text) {
+                              context.read<MainState>().setState(
+                                  id: TxtStateName.emailRegE, texto: text);
+                            },
+                          ),
+                          const SizedBox(height: 16),
+                          TextBoxSubtitle(
+                            containerHeight: 40,
+                            texto: context
+                                    .read<MainState>()
+                                    .getState(TxtStateName.phoneRegE) ??
+                                "",
+                            textoBase: "Celular",
+                            containerWidth: 400,
+                            maxlength: 10,
+                            formateado: [
+                              FilteringTextInputFormatter.allow(
+                                RegExp('[0-9]'),
+                              ),
+                            ],
+                            iconPre: SvgPicture.asset(
+                              "assets/icons/phone.svg",
+                              height: 16,
+                              fit: BoxFit.fitHeight,
+                            ),
+                            iconPos: SvgPicture.asset(
+                              "assets/icons/next.svg",
+                              height: 16,
+                              fit: BoxFit.fitHeight,
+                            ),
+                            onChanged: (text) {
+                              context.read<MainState>().setState(
+                                  id: TxtStateName.phoneRegE, texto: text);
+                            },
+                          ),
+                          const SizedBox(height: 16),
+                        ],
                       ),
-                    ],
-                    iconPre: SvgPicture.asset(
-                      "assets/icons/icon_user.svg",
-                      height: 16,
-                      fit: BoxFit.fitHeight,
                     ),
-                    iconPos: SvgPicture.asset(
-                      "assets/icons/next.svg",
-                      height: 16,
-                      fit: BoxFit.fitHeight,
-                    ),
-                    onChanged: (text) {
-                      context
-                          .read<MainState>()
-                          .setState(id: TxtStateName.nombresRegE, texto: text);
-                    },
                   ),
-                  const SizedBox(height: 16),
-                  TextBoxSubtitle(
-                    containerHeight: 40,
-                    texto: context
-                            .read<MainState>()
-                            .getState(TxtStateName.apellidoRegE) ??
-                        "",
-                    textoBase: "Apellidos",
-                    containerWidth: 400,
-                    maxlength: 50,
-                    formateado: [
-                      FilteringTextInputFormatter.allow(
-                        RegExp('[a-z A-Z]'),
-                      ),
-                    ],
-                    iconPre: SvgPicture.asset(
-                      "assets/icons/icon_user.svg",
-                      height: 16,
-                      fit: BoxFit.fitHeight,
-                    ),
-                    iconPos: SvgPicture.asset(
-                      "assets/icons/next.svg",
-                      height: 16,
-                      fit: BoxFit.fitHeight,
-                    ),
-                    onChanged: (text) {
-                      context
-                          .read<MainState>()
-                          .setState(id: TxtStateName.apellidoRegE, texto: text);
-                    },
-                  ),
-                  const SizedBox(height: 16),
-                  TextBoxSubtitle(
-                    containerHeight: 40,
-                    texto: context
-                            .read<MainState>()
-                            .getState(TxtStateName.emailRegE) ??
-                        "",
-                    textoBase: "Correo Electrónico",
-                    containerWidth: 400,
-                    maxlength: 50,
-                    formateado: const [],
-                    iconPre: SvgPicture.asset(
-                      "assets/icons/icon_email.svg",
-                      fit: BoxFit.scaleDown,
-                    ),
-                    iconPos: SvgPicture.asset(
-                      "assets/icons/next.svg",
-                      height: 16,
-                      fit: BoxFit.scaleDown,
-                    ),
-                    onChanged: (text) {
-                      context
-                          .read<MainState>()
-                          .setState(id: TxtStateName.emailRegE, texto: text);
-                    },
-                  ),
-                  const SizedBox(height: 16),
-                  TextBoxSubtitle(
-                    containerHeight: 40,
-                    texto: context
-                            .read<MainState>()
-                            .getState(TxtStateName.phoneRegE) ??
-                        "",
-                    textoBase: "Celular",
-                    containerWidth: 400,
-                    maxlength: 10,
-                    formateado: [
-                      FilteringTextInputFormatter.allow(
-                        RegExp('[0-9]'),
-                      ),
-                    ],
-                    iconPre: SvgPicture.asset(
-                      "assets/icons/phone.svg",
-                      height: 16,
-                      fit: BoxFit.fitHeight,
-                    ),
-                    iconPos: SvgPicture.asset(
-                      "assets/icons/next.svg",
-                      height: 16,
-                      fit: BoxFit.fitHeight,
-                    ),
-                    onChanged: (text) {
-                      context
-                          .read<MainState>()
-                          .setState(id: TxtStateName.phoneRegE, texto: text);
-                    },
-                  ),
-                  const SizedBox(height: 16),
                   Row(
                     children: [
                       BotonGradiane(
                         text: "Cancelar",
                         fontsize: 5,
                         border: 10,
-                        // padingLeft: 0,
-                        // padingRight: 0,
                         onPressed: () {
                           context.read<MainBLoC>().resetPop(context);
                         },
@@ -290,8 +295,6 @@ class RegirterEmpresas extends StatelessWidget {
                       BotonGradiane(
                         fontsize: 5,
                         text: "Registrarme",
-                        // padingLeft: 100,
-                        // padingRight: 100,
                         onPressed: () {
                           context
                               .read<MainBLoC>()

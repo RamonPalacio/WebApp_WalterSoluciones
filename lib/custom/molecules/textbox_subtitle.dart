@@ -117,7 +117,7 @@ class TextBoxSubtitle extends StatelessWidget {
                 Expanded(
                   //! Texto Central
                   child: Transform.translate(
-                    offset: Offset(0, 3),
+                    offset: const Offset(0, 3),
                     child: TextFormField(
                       autofocus: autofocus,
                       initialValue: texto,

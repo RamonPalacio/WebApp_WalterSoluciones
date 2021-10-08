@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:blur/blur.dart';
+import 'package:logger/logger.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
 import 'package:walte_soluciones/provider/BLoC/main_provider_bloc.dart';

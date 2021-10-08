@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:walte_soluciones/constant/app_poppages.dart';
+import 'package:walte_soluciones/constant/pages_show_state.dart';
 
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
 import 'package:walte_soluciones/constant/states_fields.dart';
 import 'package:walte_soluciones/provider/state/main_state.dart';
+import 'package:latlong2/latlong.dart';
 
 abstract class Utility {
   void resetPop(BuildContext context) {
@@ -20,7 +21,11 @@ abstract class Utility {
       ..setState(id: PagesShowState.legal2show, texto: false)
       ..setState(id: PagesShowState.exitososhow, texto: false)
       ..setState(id: PagesShowState.otpshow, texto: false)
-      ..setState(id: PagesShowState.reotpshow, texto: false);
+      ..setState(
+        id: PagesShowState.reotpshow,
+        texto: false,
+        updateGeneralState: true,
+      );
   }
 
   void clickgetDir(BuildContext ctx, {String city = ""}) {
@@ -32,21 +37,52 @@ abstract class Utility {
   }
 
   void clickCity(BuildContext context, {String city = ""}) {
-    if (city != "") {
-      context.read<MainState>()
-        ..setState(id: ConstState.btnciudad, texto: city)
-        ..setState(
+    MainState mainstate = context.read<MainState>();
+    print(city);
+    switch (city) {
+      case 'Medellín':
+        mainstate.setState(
+            id: ConstState.centerMap, texto: LatLng(4.689466, -74.068881));
+        break;
+      case 'Bogotá':
+        mainstate.setState(
+            id: ConstState.centerMap, texto: LatLng(4.689466, -74.068881));
+        break;
+      case 'Ciudad de Mexico':
+        mainstate.setState(
+            id: ConstState.centerMap, texto: LatLng(4.689466, -74.068881));
+        break;
+      default:
+        mainstate.setState(
           id: PagesShowState.cityshow,
-          texto: false,
+          texto: true,
           updateGeneralState: true,
         );
-    } else {
-      context.read<MainState>().setState(
-            id: PagesShowState.cityshow,
-            texto: true,
-            updateGeneralState: true,
-          );
+        return;
     }
+    context.read<MainState>()
+      ..setState(
+          id: ConstState.btnciudad, texto: city, updateGeneralState: true)
+      ..setState(
+        id: PagesShowState.cityshow,
+        texto: false,
+        updateGeneralState: true,
+      );
+    // if (city != "") {
+    //   context.read<MainState>()
+    //     ..setState(id: ConstState.btnciudad, texto: city)
+    //     ..setState(
+    //       id: PagesShowState.cityshow,
+    //       texto: false,
+    //       updateGeneralState: true,
+    //     );
+    // } else {
+    //   context.read<MainState>().setState(
+    //         id: PagesShowState.cityshow,
+    //         texto: true,
+    //         updateGeneralState: true,
+    //       );
+    // }
   }
 
   void clickTamano(BuildContext context, {String tamano = ""}) {
@@ -71,9 +107,11 @@ abstract class Utility {
   }
 
   void clickbtnSignIn(BuildContext context, {String tamano = ""}) {
-    MainState mainState = context.read<MainState>();
-    bool isvisible = mainState.getState(PagesShowState.singinshow);
-    mainState.setState(id: PagesShowState.singinshow, texto: !isvisible);
+    context.read<MainState>().setState(
+          id: PagesShowState.singinshow,
+          texto: true,
+          updateGeneralState: true,
+        );
   }
 
   void showMensaje(String mensaje, [bool error = true]) {

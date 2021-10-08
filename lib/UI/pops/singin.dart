@@ -106,8 +106,6 @@ class SingIn extends StatelessWidget {
               text: "¿No estás registrado?",
               fontsize: 5,
               border: 10,
-              // padingLeft: 0,
-              // padingRight: 0,
               onPressed: () {
                 context.read<MainBLoC>().clickPersonas(context);
               },

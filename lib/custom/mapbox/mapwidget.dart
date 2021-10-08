@@ -1,9 +1,10 @@
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:geocoding/geocoding.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:provider/src/provider.dart';
+import 'package:walte_soluciones/constant/states_fields.dart';
+import 'package:walte_soluciones/provider/state/main_state.dart';
 
 /*
 
@@ -55,8 +56,9 @@ class MapaOpenSourse extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    MapController mapController = MapController();
     List<LatLng> points2 = [];
-    [
+    for (var i in [
       [-73.995237, 9.99123],
       [-73.998537, 9.977711],
       [-73.954449, 9.970013],
@@ -77,11 +79,11 @@ class MapaOpenSourse extends StatelessWidget {
       [-74.066131, 10.910105],
       [-74.038325, 10.898604],
       [-74.029666, 10.921425]
-    ].forEach((i) {
+    ]) {
       points2.add(LatLng(i[1], i[0]));
       // print("${i[0]},${i[1]}");
-    });
-    print(points2);
+    }
+    // print(points2);
 
     // for (var i in lista) {
     //   print("${i[0]},${i[1]}");
@@ -162,10 +164,13 @@ class MapaOpenSourse extends StatelessWidget {
           ),
           */
           child: FlutterMap(
+            mapController: mapController,
             options: MapOptions(
                 minZoom: 5,
                 maxZoom: 18,
-                center: LatLng(10.99, -74.8),
+                center: context
+                    .watch<MainState>()
+                    .getState(ConstState.centerMap), // InicialValue Medellin
                 zoom: 15.0,
                 rotation: 1),
             layers: [
@@ -193,9 +198,9 @@ class MapaOpenSourse extends StatelessWidget {
                     points: pointsGradient,
                     strokeWidth: 4.0,
                     gradientColors: [
-                      Color(0xffE40203),
-                      Color(0xffFEED00),
-                      Color(0xff007E2D),
+                      const Color(0xffE40203),
+                      const Color(0xffFEED00),
+                      const Color(0xff007E2D),
                     ],
                   ),
                 ],
@@ -350,10 +355,4 @@ class MapaOpenSourse extends StatelessWidget {
       ],
     );
   }
-}
-
-Future<String> getLocation() async {
-  List<Location> locations =
-      await locationFromAddress("Gronausestraat 710, Enschede");
-  return "locations";
 }

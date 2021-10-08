@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:walte_soluciones/constant/app_poppages.dart';
+import 'package:walte_soluciones/constant/pages_show_state.dart';
 import 'package:walte_soluciones/constant/states_fields.dart';
 import 'package:walte_soluciones/constant/txt_state_name.dart';
 
@@ -25,9 +25,8 @@ abstract class SignInBloc {
       updateGeneralState: true,
     );
 
-    if (!Verifications().verificarCelular(celularText)) {
-      // showMensaje("Ingrese un número celular válido");
-
+    if (!Verifications().isValidMobil(celularText)) {
+      c.read<MainBLoC>().showMensaje("Ingrese un número celular válido");
       mainState.setState(
         id: ConstState.isLoading,
         texto: false,
@@ -37,8 +36,8 @@ abstract class SignInBloc {
       return;
     }
 
-    if (await Verifications().celularExisteFirebase(celularText)) {
-      // showMensaje("Ingrese Un Número Celular Válido");
+    if (!await Verifications().mobilExistsInDatabase(celularText)) {
+      c.read<MainBLoC>().showMensaje("Ingrese Un Número Celular Válido");
 
       mainState.setState(
         id: ConstState.isLoading,

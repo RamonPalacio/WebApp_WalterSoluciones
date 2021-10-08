@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:walte_soluciones/constant/app_poppages.dart';
+import 'package:walte_soluciones/constant/pages_show_state.dart';
 import 'package:walte_soluciones/constant/states_fields.dart';
+import 'package:latlong2/latlong.dart';
 
 class MainState extends ChangeNotifier {
   final Map<dynamic, dynamic> _inputTextState = {
     ConstState.dirListPrediction: [],
     // "DateBoxfinzi_RegistroPage": "2021-08-01"
-    PagesShowState.cityshow: false,
+    PagesShowState.cityshow: true,
     PagesShowState.tamanoshow: false,
     PagesShowState.singinshow: false,
     PagesShowState.asegurashow: false,
@@ -22,8 +23,12 @@ class MainState extends ChangeNotifier {
     ConstState.btnidayvuelta: false,
     ConstState.isLoading: false,
     ConstState.autoidFirebase: "",
-    ConstState.btnciudad: "Medellin",
+    ConstState.btnciudad: "Medellín",
     ConstState.btntamano: "Pequeños",
+
+    ConstState.centerMap: LatLng(6.246727, -75.566189), //Medellin
+    // ConstState.centerMap: LatLng(4.689466, -74.068881), // Bogota
+    // ConstState.centerMap: LatLng(19.466878, -99.103316), // Ciudad de México, CDMX, México
   };
 
   void removeState(

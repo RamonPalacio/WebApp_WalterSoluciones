@@ -47,12 +47,12 @@ class SelectCity extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               BotonGradiane(
-                text: "Medellin",
+                text: "Medellín",
                 colortext: const Color(0xFD353B4D),
                 padingLeft: 20,
                 padingRight: 280,
                 onPressed: () {
-                  context.read<MainBLoC>().clickCity(context, city: "Medellin");
+                  context.read<MainBLoC>().clickCity(context, city: "Medellín");
                 },
                 height: 56,
                 width: 450,

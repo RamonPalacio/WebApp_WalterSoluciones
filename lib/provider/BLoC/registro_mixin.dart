@@ -1,95 +1,99 @@
 import 'package:flutter/material.dart';
-import 'package:walte_soluciones/constant/app_poppages.dart';
+import 'package:logger/logger.dart';
+import 'package:walte_soluciones/constant/pages_show_state.dart';
 import 'package:walte_soluciones/constant/txt_state_name.dart';
 import 'package:walte_soluciones/data/database/endpoint_api.dart';
+import 'package:walte_soluciones/data/models/user.dart';
+import 'package:walte_soluciones/provider/BLoC/utility_bloc_mixin.dart';
+import 'package:walte_soluciones/provider/BLoC/verifications.dart';
 import 'package:walte_soluciones/provider/state/main_state.dart';
 import 'main_provider_bloc.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
 
 abstract class RegisrtoBloc {
-  clickPersonas(BuildContext context) {
+  ///Funcion que Muestra el PopUp [Registro de Personas].
+  void clickPersonas(BuildContext context) {
     context.read<MainBLoC>().resetPop(context);
     context.read<MainState>().setState(
           id: PagesShowState.naturalshow,
           texto: true,
+          updateGeneralState: true,
         );
   }
 
-  clickRegistroPersonas(BuildContext c) async {
-    String nombresText = c.read<MainState>().getState(TxtStateName.nombresReg);
-    String apellidosText =
-        c.read<MainState>().getState(TxtStateName.apellidoReg);
-    String emailText = c.read<MainState>().getState(TxtStateName.emailReg);
-    String phoneText = c.read<MainState>().getState(TxtStateName.phoneReg);
+  ///Funcion que registra una persona a la Base de Datos.
+  void clickRegistroPersonas(BuildContext c) async {
+    MainState mainstate = c.read<MainState>();
+    MainBLoC mainbloc = c.read<MainBLoC>();
 
-    final bool isMovilColombia = phoneText.contains(
-        RegExp(r'(\+57|0057|57)?[ -]*(3)[ -]*(10|[0-9][ -]*){9}'), 0);
+    String nombresText = mainstate.getState(TxtStateName.nombresReg);
+    String apellidosText = mainstate.getState(TxtStateName.apellidoReg);
+    String emailText = mainstate.getState(TxtStateName.emailReg);
+    String phoneText = mainstate.getState(TxtStateName.phoneReg);
 
-    RegExp emailRegEx = RegExp(
-        r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$");
-
-    bool isValidEmail = emailRegEx.hasMatch(emailText);
-
+    //=Validaciones pre-registro-personas=
     if (nombresText.length < 3) {
-      // showMensaje("Ingresa un nombre válido");
+      mainbloc.showMensaje("Ingresa un nombre válido");
       return;
     }
 
     if (apellidosText.length < 3) {
-      // showMensaje("Ingresa un apellido válido");
+      mainbloc.showMensaje("Ingresa un apellido válido");
       return;
     }
 
-    if (!isValidEmail) {
-      // showMensaje("Ingresa un Email válido");
+    if (!Verifications().isValidEmail(emailText)) {
+      mainbloc.showMensaje("Ingresa un Email válido");
       return;
     }
 
-    if (!isMovilColombia) {
-      // showMensaje("Ingrese un número celular válido");
+    if (!Verifications().isValidMobil(phoneText)) {
+      mainbloc.showMensaje("Ingrese un número celular válido");
       return;
     }
 
-//TODO_ implementar clases user mas adelante cuando el proyecto cresca
+    if (await Verifications().mobilExistsInDatabase(phoneText)) {
+      c.read<MainBLoC>().showMensaje("Ingrese Un Número Celular Válido");
+      return;
+    }
+    //=Fin de Validaciones=
+
     Map<String, dynamic> user = {
-      'id': "automatico",
-      'idUser': "automatico",
-      'name': nombresText,
-      'lastname': apellidosText,
-      'email': emailText,
-      'phone': phoneText,
-      'identityNumber': null,
-      'sex': null,
-      'birthDay': null,
-      'points': 0,
-      'subscriptionProfile': 0,
-      'isCompany': false,
-      'deviceToken': null,
+      "id": null,
+      "idUser": null,
+      "autoId": null,
+      "name": nombresText,
+      "lastname": apellidosText,
+      "email": emailText,
+      "phone": phoneText,
+      "isCompany": false,
+      "sex": null,
+      "time": null,
+      "points": null,
+      "birthDay": null,
+      "deviceToken": null,
+      "paymentMethod": null,
+      "identityNumber": null,
+      "typeOfDocument": null,
+      "subscriptionProfile": null,
     };
 
-    Map<String, dynamic> responseFirebase =
-        await EndPointApi().getUsers(phoneText);
-
-    if (responseFirebase['phone'].runtimeType != String) {
-      // showMensaje("Ingrese Un Número Celular Válido");
-      return;
-    }
     Map<String, dynamic>? result = await EndPointApi().addUsers(user: user);
     switch (result['statusCode']) {
       case 200:
-        // showMensaje(
-        //     "Usuario Registrado\n$nombresText\n$apellidosText\n$emailText\n$phoneText",
-        //     false);
-        c.read<MainBLoC>().resetPop(c);
-        c.read<MainState>().setState(
-              id: PagesShowState.exitososhow,
-              texto: true,
-              updateGeneralState: true,
-            );
+        mainbloc.showMensaje(
+            "Usuario Registrado\n$nombresText\n$apellidosText\n$emailText\n$phoneText",
+            false);
+        mainbloc.resetPop(c);
+        mainstate.setState(
+          id: PagesShowState.exitososhow,
+          texto: true,
+          updateGeneralState: true,
+        );
         break;
       case 400:
-        // showMensaje("Error de Conetion", false);
+        mainbloc.showMensaje("Error Red", false);
         break;
       default:
     }
@@ -108,75 +112,80 @@ abstract class RegisrtoBloc {
   }
 
   clickRegistroEmpresas(BuildContext c) async {
-    String nombresText = c.read<MainState>().getState(TxtStateName.nombresRegE);
-    String apellidosText =
-        c.read<MainState>().getState(TxtStateName.apellidoRegE);
-    String emailText = c.read<MainState>().getState(TxtStateName.emailRegE);
-    String phoneText = c.read<MainState>().getState(TxtStateName.phoneIndRegE);
+    MainBLoC mainbloc = c.read<MainBLoC>();
+    MainState mainstate = c.read<MainState>();
 
-    final bool isMovilColombia = phoneText.contains(
-        RegExp(r'(\+57|0057|57)?[ -]*(3)[ -]*(10|[0-9][ -]*){9}'), 0);
+    String nombresText = mainstate.getState(TxtStateName.nombresRegE);
+    String apellidosText = mainstate.getState(TxtStateName.apellidoRegE);
+    String emailText = mainstate.getState(TxtStateName.emailRegE);
+    String phoneText = mainstate.getState(TxtStateName.phoneIndRegE);
 
-    RegExp emailRegEx = RegExp(
-        r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$");
-
-    bool isValidEmail = emailRegEx.hasMatch(emailText);
-
+    //=Validaciones pre-registro-personas=
     if (nombresText.length < 3) {
-      // showMensaje("Ingresa un nombre válido");
+      mainbloc.showMensaje("Ingresa un nombre válido");
       return;
     }
 
     if (apellidosText.length < 3) {
-      // showMensaje("Ingresa un apellido válido");
+      mainbloc.showMensaje("Ingresa un apellido válido");
       return;
     }
 
-    if (!isValidEmail) {
-      // showMensaje("Ingresa un Email válido");
+    if (!Verifications().isValidEmail(emailText)) {
+      mainbloc.showMensaje("Ingresa un Email válido");
       return;
     }
 
-    if (!isMovilColombia) {
-      // showMensaje("Ingrese un número celular válido");
+    if (!Verifications().isValidMobil(phoneText)) {
+      mainbloc.showMensaje("Ingrese un número celular válido");
       return;
     }
 
-    //TODO_Realizar Un unico metodo con Personas
-    Map<String, dynamic> empresa = {
-      'id': "automatico",
-      'idUser': "automatico",
-      'name': nombresText,
-      'lastname': apellidosText,
-      'email': emailText,
-      'phone': phoneText,
-      'identityNumber': null,
-      'sex': null,
-      'birthDay': null,
-      'points': 0,
-      'subscriptionProfile': 0,
-      'isCompany': true,
-      'deviceToken': null,
+    if (await Verifications().mobilExistsInDatabase(phoneText)) {
+      c.read<MainBLoC>().showMensaje("Ingrese Un Número Celular Válido");
+      return;
+    }
+    //=Fin de Validaciones=
+
+    Map<String, dynamic> representante = {
+      "id": null,
+      "idUser": null,
+      "autoId": null,
+      "name": nombresText,
+      "lastname": apellidosText,
+      "email": emailText,
+      "phone": phoneText,
+      "isCompany": true, // true
+      "sex": null,
+      "time": null,
+      "points": null,
+      "birthDay": null,
+      "deviceToken": null,
+      "paymentMethod": null,
+      "identityNumber": null,
+      "typeOfDocument": null,
+      "subscriptionProfile": null,
     };
 
-    Map<String, dynamic>? result = await EndPointApi().addUsers(user: empresa);
+    Map<String, dynamic>? result =
+        await EndPointApi().addUsers(user: representante);
     switch (result['statusCode']) {
       case 200:
-        // showMensaje(
-        //     "Representante L. Registrado\n$nombresText\n$apellidosText\n$emailText\n$phoneText",
-        //     false);
+        mainbloc.showMensaje(
+            "Representante L. Registrado\n$nombresText\n$apellidosText\n$emailText\n$phoneText",
+            false);
         break;
       case 400:
-        // showMensaje("Error de Conetion", false);
+        mainbloc.showMensaje("Error Red", false);
         break;
       default:
     }
 
-    c.read<MainState>().setState(
-          id: PagesShowState.legal2show,
-          texto: true,
-          updateGeneralState: true,
-        );
+    mainstate.setState(
+      id: PagesShowState.legal2show,
+      texto: true,
+      updateGeneralState: true,
+    );
   }
 
   clickRegistroEmpresas2(BuildContext context) {
