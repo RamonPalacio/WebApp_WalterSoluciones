@@ -5,14 +5,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
-import 'package:walte_soluciones/app/app_state.dart';
-import 'package:walte_soluciones/app/app_textboxs.dart';
+import 'package:walte_soluciones/constant/states_fields.dart';
+import 'package:walte_soluciones/constant/txt_state_name.dart';
 import 'package:walte_soluciones/custom/molecules/botomgradiane.dart';
 
 import 'package:walte_soluciones/UI/home/menu/_1_ubica_inicial.dart';
 import 'package:walte_soluciones/custom/molecules/textbox_subtitle.dart';
-import 'package:walte_soluciones/provider/BLoC/mainbloc.dart';
-import 'package:walte_soluciones/provider/States/mainstate.dart';
+import 'package:walte_soluciones/provider/BLoC/main_provider_bloc.dart';
+import 'package:walte_soluciones/provider/state/main_state.dart';
 
 class SingIn extends StatelessWidget {
   const SingIn({Key? key}) : super(key: key);
@@ -72,13 +72,15 @@ class SingIn extends StatelessWidget {
               ),
               onChanged: (text) {
                 context.read<MainState>().setState(
-                    id: TxtState.phoneSignin, texto: text, showState: true);
+                    id: TxtStateName.phoneSignin,
+                    texto: text,
+                    updateGeneralState: true);
               },
             ),
             const SizedBox(height: 16),
             Selector<MainState, bool>(
               selector: (c, find) {
-                return find.getState(AppState.isLoading);
+                return find.getState(ConstState.isLoading);
               },
               builder: (BuildContext c, bool isLoading, _) {
                 if (!isLoading) {

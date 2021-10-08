@@ -1,4 +1,4 @@
-class TxtState {
+class TxtStateName {
   ///Texboxs register_personas.dart
   static const String phoneSignin = 'phone_loginhome_textbox';
 

@@ -4,14 +4,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:walte_soluciones/app/app_textboxs.dart';
+import 'package:walte_soluciones/constant/txt_state_name.dart';
 import 'package:walte_soluciones/custom/molecules/botomgradiane.dart';
 
 import 'package:walte_soluciones/UI/home/menu/_1_ubica_inicial.dart';
 import 'package:walte_soluciones/custom/molecules/text_by_height.dart';
 import 'package:walte_soluciones/custom/molecules/textbox_subtitle.dart';
-import 'package:walte_soluciones/provider/BLoC/mainbloc.dart';
-import 'package:walte_soluciones/provider/States/mainstate.dart';
+import 'package:walte_soluciones/provider/BLoC/main_provider_bloc.dart';
+import 'package:walte_soluciones/provider/state/main_state.dart';
 
 class RegisterPersonas extends StatelessWidget {
   const RegisterPersonas({Key? key}) : super(key: key);
@@ -151,7 +151,7 @@ class RegisterPersonas extends StatelessWidget {
                     containerHeight: 40,
                     texto: context
                             .read<MainState>()
-                            .getState(TxtState.nombresReg) ??
+                            .getState(TxtStateName.nombresReg) ??
                         "",
                     textoBase: "Nombres",
                     containerWidth: 400,
@@ -174,7 +174,7 @@ class RegisterPersonas extends StatelessWidget {
                     onChanged: (text) {
                       context
                           .read<MainState>()
-                          .setState(id: TxtState.nombresReg, texto: text);
+                          .setState(id: TxtStateName.nombresReg, texto: text);
                     },
                   ),
                   const SizedBox(height: 16),
@@ -182,7 +182,7 @@ class RegisterPersonas extends StatelessWidget {
                     containerHeight: 40,
                     texto: context
                             .read<MainState>()
-                            .getState(TxtState.apellidoReg) ??
+                            .getState(TxtStateName.apellidoReg) ??
                         "",
                     textoBase: "Apellidos",
                     containerWidth: 400,
@@ -205,15 +205,16 @@ class RegisterPersonas extends StatelessWidget {
                     onChanged: (text) {
                       context
                           .read<MainState>()
-                          .setState(id: TxtState.apellidoReg, texto: text);
+                          .setState(id: TxtStateName.apellidoReg, texto: text);
                     },
                   ),
                   const SizedBox(height: 16),
                   TextBoxSubtitle(
                     containerHeight: 40,
-                    texto:
-                        context.read<MainState>().getState(TxtState.emailReg) ??
-                            "",
+                    texto: context
+                            .read<MainState>()
+                            .getState(TxtStateName.emailReg) ??
+                        "",
                     textoBase: "Correo Electrónico",
                     containerWidth: 400,
                     maxlength: 50,
@@ -230,15 +231,16 @@ class RegisterPersonas extends StatelessWidget {
                     onChanged: (text) {
                       context
                           .read<MainState>()
-                          .setState(id: TxtState.emailReg, texto: text);
+                          .setState(id: TxtStateName.emailReg, texto: text);
                     },
                   ),
                   const SizedBox(height: 16),
                   TextBoxSubtitle(
                     containerHeight: 40,
-                    texto:
-                        context.read<MainState>().getState(TxtState.phoneReg) ??
-                            "",
+                    texto: context
+                            .read<MainState>()
+                            .getState(TxtStateName.phoneReg) ??
+                        "",
                     textoBase: "Celular",
                     containerWidth: 400,
                     maxlength: 10,
@@ -260,7 +262,7 @@ class RegisterPersonas extends StatelessWidget {
                     onChanged: (text) {
                       context
                           .read<MainState>()
-                          .setState(id: TxtState.phoneReg, texto: text);
+                          .setState(id: TxtStateName.phoneReg, texto: text);
                     },
                   ),
                   const SizedBox(height: 16),

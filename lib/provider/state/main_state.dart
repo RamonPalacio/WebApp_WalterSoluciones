@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:walte_soluciones/app/app_poppages.dart';
-import 'package:walte_soluciones/app/app_state.dart';
+import 'package:walte_soluciones/constant/app_poppages.dart';
+import 'package:walte_soluciones/constant/states_fields.dart';
 
 class MainState extends ChangeNotifier {
   final Map<dynamic, dynamic> _inputTextState = {
+    ConstState.dirListPrediction: [],
     // "DateBoxfinzi_RegistroPage": "2021-08-01"
     PagesShowState.cityshow: false,
     PagesShowState.tamanoshow: false,
@@ -18,11 +19,11 @@ class MainState extends ChangeNotifier {
     PagesShowState.isloadinglogin: false,
     PagesShowState.idayvueltamenu: false,
 
-    AppState.btnidayvuelta: false,
-    AppState.isLoading: false,
-    AppState.autoidFirebase: "",
-    AppState.btnciudad: "Medellin",
-    AppState.btntamano: "Pequeños",
+    ConstState.btnidayvuelta: false,
+    ConstState.isLoading: false,
+    ConstState.autoidFirebase: "",
+    ConstState.btnciudad: "Medellin",
+    ConstState.btntamano: "Pequeños",
   };
 
   void removeState(
@@ -42,9 +43,9 @@ class MainState extends ChangeNotifier {
   }
 
   setState({
-    required id,
+    required String id,
     required texto,
-    showState = false,
+    bool updateGeneralState = false,
   }) {
     // ignore: avoid_print
     print(
@@ -54,6 +55,6 @@ class MainState extends ChangeNotifier {
     if (texto != null) {
       _inputTextState[id] = texto;
     }
-    if (showState = true) notifyListeners();
+    if (updateGeneralState) notifyListeners();
   }
 }

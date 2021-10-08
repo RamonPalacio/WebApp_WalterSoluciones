@@ -1,49 +1,38 @@
-import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:walte_soluciones/constant/url_sourse.dart';
-import 'package:walte_soluciones/data/models/model_etiquetas.dart';
-import 'package:walte_soluciones/data/models/model_get_address_data.dart';
+import 'package:walte_soluciones/data/database/user_mixin.dart';
+import 'package:walte_soluciones/data/database/sms_mixin.dart';
+import 'package:walte_soluciones/data/models/model_coordenadas.dart';
 import 'package:walte_soluciones/data/models/model_trakermap.dart';
+import 'getcoordenada_mixin.dart';
+import 'getetiquetas_mixin.dart';
 
-class EndPointApi {
+class EndPointApi with GetCoordenadas, GetEtiquetas, Users, SendSMS {
   EndPointApi();
 
-  Future<List<String>> getMockEtiquetas() async {
-    return await Future.delayed(const Duration(milliseconds: 5000), () {
-      return ["hola", "como estas"];
-    });
-  }
+  Future<List<String>> getUbicacion(String address) async {
+    Coordenadas response = await getCoordenadas(address);
+    // ignore: avoid_print
+    print(response.status); // OK
+    double? lat, lng;
+    String? direccion;
+    List<String> direcciones = [];
 
-  Future<List<String>> getEtiquetas() async {
-    Uri url = UrlSource().loremList;
-    Map<String, String> headers = {
-      'Content-Type': 'application/json',
-      // 'authorization': 'Bearer $accessToken'
-    };
+    for (var e in response.results) {
+      //Garantiza no tener datos null
 
-    // Map data = {
-    //   "notification": {"body": message, "title": title},
-    //   "priority": "high",
-    //   "data": {
-    //     "click_action": "FLUTTER_NOTIFICATION_CLICK",
-    //     "id": "1",
-    //     "userId": userId
-    //   },
-    //   "to": "/topics/allWalters"
-    // };
-    // var body = jsonEncode(data);
-    try {
-      var response = await http.get(
-        url,
-        headers: headers,
-        // body: body,
-      );
-      return etiquetasFromJson(response.body);
-    } catch (e) {
-      return etiquetasFromJson("[]");
+      direcciones.add(
+          ("${e.formattedAddress}\nlat:${e.geometry.location.lat} lng:${e.geometry.location.lng}"));
+
+      lat ??= e.geometry.location.lat;
+      lng ??= e.geometry.location.lng;
+      direccion ??= e.formattedAddress;
     }
+    // ignore: avoid_print
+    // print("Latitud:$lat , Logintud: $lng \nDireccion: $direccion");
+    // return "Latitud:$lat , Logintud: $lng \nDireccion: $direccion";
+    return direcciones;
   }
 
   Future<Map<String, dynamic>> addUsers(

@@ -4,12 +4,12 @@
 
 import 'dart:convert';
 
-SmsSend smsSendFromJson(String str) => SmsSend.fromJson(json.decode(str));
+SMS smsFromJson(String str) => SMS.fromJson(json.decode(str));
 
-String smsSendToJson(SmsSend data) => json.encode(data.toJson());
+String smsToJson(SMS data) => json.encode(data.toJson());
 
-class SmsSend {
-  SmsSend({
+class SMS {
+  SMS({
     required this.successful,
     required this.data,
   });
@@ -17,7 +17,7 @@ class SmsSend {
   bool successful;
   Data data;
 
-  factory SmsSend.fromJson(Map<String, dynamic> json) => SmsSend(
+  factory SMS.fromJson(Map<String, dynamic> json) => SMS(
         successful: json["successful"],
         data: Data.fromJson(json["data"]),
       );

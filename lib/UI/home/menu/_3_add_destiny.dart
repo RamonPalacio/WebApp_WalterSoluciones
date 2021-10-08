@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+// ignore: implementation_imports
 import 'package:provider/src/provider.dart';
-import 'package:walte_soluciones/app/app_state.dart';
-import 'package:walte_soluciones/provider/States/mainstate.dart';
+
+import 'package:walte_soluciones/constant/states_fields.dart';
+import 'package:walte_soluciones/provider/state/main_state.dart';
 
 class AddDirection extends StatelessWidget {
   const AddDirection({
@@ -17,13 +19,14 @@ class AddDirection extends StatelessWidget {
         InkWell(
           onTap: () async {
             bState.setState(
-                id: AppState.btnidayvuelta,
-                texto: !bState.getState(AppState.btnidayvuelta),
-                showState: true);
+                id: ConstState.btnidayvuelta,
+                texto: !bState.getState(ConstState.btnidayvuelta),
+                updateGeneralState: true);
           },
           child: Row(children: [
             Selector<MainState, bool>(
-              selector: (_, cState) => cState.getState(AppState.btnidayvuelta),
+              selector: (_, cState) =>
+                  cState.getState(ConstState.btnidayvuelta),
               builder: (_, valueState, __) {
                 return Container(
                   height: 16,

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-import 'package:walte_soluciones/app/app_state.dart';
-import 'package:walte_soluciones/custom/atoms/img_market.dart';
+
 import 'package:walte_soluciones/custom/molecules/botomgradiane.dart';
-import 'package:walte_soluciones/data/models/user.dart';
-import 'package:walte_soluciones/data/networking/get_autoid_firebase.dart';
-import 'package:walte_soluciones/provider/BLoC/mainbloc.dart';
-import 'package:walte_soluciones/provider/States/mainstate.dart';
+import 'package:walte_soluciones/custom/atoms/img_market.dart';
+
+import 'package:walte_soluciones/constant/states_fields.dart';
+import 'package:walte_soluciones/provider/BLoC/main_provider_bloc.dart';
+import 'package:walte_soluciones/provider/state/main_state.dart';
 
 class AppBarHome extends StatelessWidget {
   const AppBarHome({
@@ -41,7 +41,7 @@ class AppBarHome extends StatelessWidget {
                       return BotonGradiane(
                         text: context
                             .read<MainState>()
-                            .getState(AppState.btnciudad),
+                            .getState(ConstState.btnciudad),
                         fontsize: 12,
                         border: 15,
                         padingLeft: 0,
@@ -65,32 +65,9 @@ class AppBarHome extends StatelessWidget {
                     }),
                   ),
                   const SizedBox(width: 16),
-                  // Selector<InputState>(
-                  //   selector: (_, myType) => ,
-                  //   builder: (context, , child) {
-                  //     return BotonGradiane(
-                  //   text: "Inicia Sesión",
-                  //   fontsize: 9,
-                  //   border: 15,
-                  //   padingLeft: 0,
-                  //   padingRight: 0,
-                  //   onPressed: () {
-                  //     context.read<MainBLoC>().clicksingIn(context);
-                  //   },
-                  //   height: 46,
-                  //   width: 250,
-                  //   colorUp: 0xFF002EA8,
-                  //   colorDown: 0xFF002EA8,
-                  //   enable: true,
-                  //   colortext: const Color(0xFFFFFFFF),
-                  //   alingText: Alignment.center,
-                  //   borderColor: 0xFF002EA8,
-                  // );
-                  //   },
-                  // )
                   Selector<MainState, String>(
                     selector: (c, find) {
-                      return find.getState(AppState.userAutoId);
+                      return find.getState(ConstState.userAutoId);
                     },
                     builder: (BuildContext c, String getTextoValue, _) {
                       if (getTextoValue == "") {
@@ -101,7 +78,7 @@ class AppBarHome extends StatelessWidget {
                           padingLeft: 0,
                           padingRight: 0,
                           onPressed: () async {
-                            context.read<MainBLoC>().clickOpenPopLogIn(c);
+                            context.read<MainBLoC>().clickbtnSignIn(c);
                           },
                           height: 46,
                           width: 250,
@@ -139,7 +116,9 @@ class AppBarHome extends StatelessWidget {
                           child: Row(
                             children: [
                               Text(
-                                c.read<MainState>().getState(AppState.userName),
+                                c
+                                    .read<MainState>()
+                                    .getState(ConstState.userName),
                                 style:
                                     const TextStyle(color: Color(0xFFFFFFFF)),
                               ),

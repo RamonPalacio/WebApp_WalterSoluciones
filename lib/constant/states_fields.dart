@@ -1,5 +1,8 @@
-class AppState {
+class ConstState {
+  static const String dirListPrediction = "lista_direcciones";
+
   static const String btnciudad = 'btnciudad_home';
+  static const String btnSignIn = 'btnsingin_home';
   static const String btntamano = 'btntamano_menu';
   static const String autoidFirebase = 'autoidFirebase';
   static const String btnidayvuelta = 'btnidayvuelta_menu';

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+// ignore: implementation_imports
 import 'package:provider/src/provider.dart';
 import 'package:walte_soluciones/UI/home/menu/_1_ubica_inicial.dart';
-import 'package:walte_soluciones/provider/BLoC/mainbloc.dart';
-import 'package:walte_soluciones/provider/States/mainstate.dart';
+import 'package:walte_soluciones/provider/BLoC/main_provider_bloc.dart';
+import 'package:walte_soluciones/provider/state/main_state.dart';
 
 class RegisterExitoso extends StatelessWidget {
   const RegisterExitoso({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class RegisterExitoso extends StatelessWidget {
       context.read<MainState>().setState(
             id: "popup_login_show",
             texto: true,
-            showState: true,
+            updateGeneralState: true,
           );
     });
     return Container(

@@ -7,10 +7,8 @@ import 'package:walte_soluciones/UI/home/menu/_3_add_destiny.dart';
 import 'package:walte_soluciones/UI/home/menu/_4.0_SelectService.dart';
 import 'package:walte_soluciones/UI/home/menu/_5_shipping_properties.dart';
 import 'package:walte_soluciones/UI/home/menu/_6_resume.dart';
-import 'package:walte_soluciones/app/app_state.dart';
-import 'package:walte_soluciones/data/database/endpoint_api.dart';
-import 'package:walte_soluciones/provider/BLoC/mainbloc.dart';
-import 'package:walte_soluciones/provider/States/mainstate.dart';
+import 'package:walte_soluciones/constant/states_fields.dart';
+import 'package:walte_soluciones/provider/state/main_state.dart';
 
 class Menu extends StatelessWidget {
   const Menu({
@@ -28,9 +26,8 @@ class Menu extends StatelessWidget {
               onPressed: () async {
                 // var result = await EndPointApi().getpoints(
                 //     "-74.79317", "10.94668", "-74.80148", "10.94366");
-           
+
                 // ignore: avoid_print
-                
               },
               child: const Text("hola")),
           const SizedBox(height: 20),
@@ -43,7 +40,7 @@ class Menu extends StatelessWidget {
           SelectTipoServicio(sc: ScrollController()),
           const SizedBox(height: 16),
           ShippingProperties(
-              texto: context.watch<MainState>().getState(AppState.btntamano)),
+              texto: context.watch<MainState>().getState(ConstState.btntamano)),
           const SizedBox(height: 16),
           const ResumenPedido(),
         ],

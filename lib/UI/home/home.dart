@@ -10,10 +10,10 @@ import 'package:walte_soluciones/UI/pops/registro_exitoso.dart';
 import 'package:walte_soluciones/UI/pops/select_city.dart';
 import 'package:walte_soluciones/UI/pops/select_tamano.dart';
 import 'package:walte_soluciones/UI/pops/singin.dart';
-import 'package:walte_soluciones/app/app_poppages.dart';
+import 'package:walte_soluciones/constant/app_poppages.dart';
 import 'package:walte_soluciones/custom/mapbox/const_maps.dart';
 import 'package:walte_soluciones/custom/mapbox/mapwidget.dart';
-import 'package:walte_soluciones/provider/States/mainstate.dart';
+import 'package:walte_soluciones/provider/state/main_state.dart';
 
 import 'appbar/appbar.dart';
 import 'menu/__menu.dart';
@@ -88,6 +88,7 @@ class Home extends StatelessWidget {
             ),
             Consumer<MainState>(builder: (c, modelState, _) {
               ///Muestra el PopSingin [Login]
+
               if (modelState.getState(PagesShowState.singinshow)) {
                 return const BlurBackground(child: SingIn());
               }
@@ -96,7 +97,6 @@ class Home extends StatelessWidget {
                 return const BlurBackground(child: RegirterEmpresas());
               }
 
-              ///Muestra el PopTamano [SelectTamaño]
               if (modelState.getState(PagesShowState.tamanoshow)) {
                 return const BlurBackground(child: SelectTamano());
               }

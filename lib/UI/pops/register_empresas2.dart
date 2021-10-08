@@ -4,14 +4,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:walte_soluciones/app/app_textboxs.dart';
+import 'package:walte_soluciones/constant/txt_state_name.dart';
 import 'package:walte_soluciones/custom/molecules/botomgradiane.dart';
 
 import 'package:walte_soluciones/UI/home/menu/_1_ubica_inicial.dart';
 import 'package:walte_soluciones/custom/molecules/text_by_height.dart';
 import 'package:walte_soluciones/custom/molecules/textbox_subtitle.dart';
-import 'package:walte_soluciones/provider/BLoC/mainbloc.dart';
-import 'package:walte_soluciones/provider/States/mainstate.dart';
+import 'package:walte_soluciones/provider/BLoC/main_provider_bloc.dart';
+import 'package:walte_soluciones/provider/state/main_state.dart';
 
 class RegisterEmpresas2 extends StatelessWidget {
   const RegisterEmpresas2({Key? key}) : super(key: key);
@@ -153,7 +153,7 @@ class RegisterEmpresas2 extends StatelessWidget {
                     containerHeight: 40,
                     texto: context
                             .read<MainState>()
-                            .getState(TxtState.rezonsocialRegE) ??
+                            .getState(TxtStateName.rezonsocialRegE) ??
                         "",
                     textoBase: "Empresa",
                     containerWidth: 400,
@@ -171,7 +171,7 @@ class RegisterEmpresas2 extends StatelessWidget {
                     ),
                     onChanged: (text) {
                       context.read<MainState>().setState(
-                            id: TxtState.rezonsocialRegE,
+                            id: TxtStateName.rezonsocialRegE,
                             texto: text,
                           );
                     },
@@ -218,7 +218,7 @@ class RegisterEmpresas2 extends StatelessWidget {
                           containerHeight: 40,
                           texto: context
                                   .read<MainState>()
-                                  .getState(TxtState.nitRegE) ??
+                                  .getState(TxtStateName.nitRegE) ??
                               "",
                           textoBase: "Nit",
                           containerWidth: 400,
@@ -234,9 +234,8 @@ class RegisterEmpresas2 extends StatelessWidget {
                             fit: BoxFit.fitHeight,
                           ),
                           onChanged: (text) {
-                            context
-                                .read<MainState>()
-                                .setState(id: TxtState.nitRegE, texto: text);
+                            context.read<MainState>().setState(
+                                id: TxtStateName.nitRegE, texto: text);
                           },
                         ),
                       )
@@ -245,9 +244,10 @@ class RegisterEmpresas2 extends StatelessWidget {
                   const SizedBox(height: 10),
                   TextBoxSubtitle(
                     containerHeight: 40,
-                    texto:
-                        context.read<MainState>().getState(TxtState.dirRegE) ??
-                            "",
+                    texto: context
+                            .read<MainState>()
+                            .getState(TxtStateName.dirRegE) ??
+                        "",
                     textoBase: "Direccion",
                     containerWidth: 400,
                     maxlength: 50,
@@ -264,7 +264,7 @@ class RegisterEmpresas2 extends StatelessWidget {
                     onChanged: (text) {
                       context
                           .read<MainState>()
-                          .setState(id: TxtState.dirRegE, texto: text);
+                          .setState(id: TxtStateName.dirRegE, texto: text);
                     },
                   ),
                   const SizedBox(height: 10),
@@ -272,7 +272,7 @@ class RegisterEmpresas2 extends StatelessWidget {
                     containerHeight: 40,
                     texto: context
                             .read<MainState>()
-                            .getState(TxtState.phonelocalRegE) ??
+                            .getState(TxtStateName.phonelocalRegE) ??
                         "",
                     textoBase: "Telefono Fijo",
                     containerWidth: 400,
@@ -293,9 +293,8 @@ class RegisterEmpresas2 extends StatelessWidget {
                       fit: BoxFit.fitHeight,
                     ),
                     onChanged: (text) {
-                      context
-                          .read<MainState>()
-                          .setState(id: TxtState.phonelocalRegE, texto: text);
+                      context.read<MainState>().setState(
+                          id: TxtStateName.phonelocalRegE, texto: text);
                     },
                   ),
                   const SizedBox(height: 10),
@@ -326,7 +325,7 @@ class RegisterEmpresas2 extends StatelessWidget {
                     onChanged: (text) {
                       context
                           .read<MainState>()
-                          .setState(id: TxtState.phoneIndRegE, texto: text);
+                          .setState(id: TxtStateName.phoneIndRegE, texto: text);
                     },
                   ),
                   const SizedBox(height: 10),

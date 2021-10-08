@@ -3,13 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
 
-import 'package:walte_soluciones/custom/atoms/img_check.dart';
-import 'package:walte_soluciones/custom/atoms/img_money.dart';
-import 'package:walte_soluciones/custom/atoms/img_packet.dart';
-import 'package:walte_soluciones/custom/molecules/TextboxW.dart';
 import 'package:walte_soluciones/UI/home/menu/_1_ubica_inicial.dart';
 import 'package:walte_soluciones/custom/molecules/textbox_subtitle.dart';
-import 'package:walte_soluciones/provider/BLoC/mainbloc.dart';
+import 'package:walte_soluciones/provider/BLoC/main_provider_bloc.dart';
 
 class ShippingProperties extends StatelessWidget {
   const ShippingProperties({Key? key, this.texto = ""}) : super(key: key);

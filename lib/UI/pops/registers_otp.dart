@@ -4,14 +4,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pin_code_text_field/pin_code_text_field.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
-import 'package:walte_soluciones/app/app_textboxs.dart';
+import 'package:walte_soluciones/constant/txt_state_name.dart';
 
 import 'package:walte_soluciones/custom/molecules/botomgradiane.dart';
 
 import 'package:walte_soluciones/UI/home/menu/_1_ubica_inicial.dart';
-
-import 'package:walte_soluciones/provider/BLoC/mainbloc.dart';
-import 'package:walte_soluciones/provider/States/mainstate.dart';
+import 'package:walte_soluciones/provider/BLoC/main_provider_bloc.dart';
+import 'package:walte_soluciones/provider/state/main_state.dart';
 
 class RegisterOtp extends StatelessWidget {
   const RegisterOtp({Key? key}) : super(key: key);
@@ -40,7 +39,7 @@ class RegisterOtp extends StatelessWidget {
             ),
             Text(
               'Lo enviamos al +57 ' +
-                  context.read<MainState>().getState(TxtState.phoneSignin),
+                  context.read<MainState>().getState(TxtStateName.phoneSignin),
               textAlign: TextAlign.center,
               style: GoogleFonts.manrope(
                 fontSize: 18,

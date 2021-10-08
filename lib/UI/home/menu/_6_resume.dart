@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
 import 'package:walte_soluciones/custom/molecules/botomgradiane.dart';
-import 'package:walte_soluciones/provider/BLoC/mainbloc.dart';
+import 'package:walte_soluciones/provider/BLoC/main_provider_bloc.dart';
 
 class ResumenPedido extends StatelessWidget {
   const ResumenPedido({

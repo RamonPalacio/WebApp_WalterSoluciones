@@ -1,13 +1,12 @@
-// ignore_for_file: file_names
-
 import 'dart:ui';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:walte_soluciones/app/app_settings.dart';
-import 'package:walte_soluciones/provider/BLoC/mainbloc.dart';
-import 'package:walte_soluciones/provider/States/mainstate.dart';
-import 'package:walte_soluciones/router/routers.dart';
+
+import 'router/routers.dart';
+import 'constant/app_settings.dart';
+import 'provider/state/main_state.dart';
+import 'provider/BLoC/main_provider_bloc.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
