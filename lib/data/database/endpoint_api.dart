@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:logger/logger.dart';
 import 'package:walte_soluciones/data/database/user_mixin.dart';
 import 'package:walte_soluciones/data/database/sms_mixin.dart';
 import 'package:walte_soluciones/data/models/model_coordenadas.dart';
@@ -11,27 +12,28 @@ import 'getetiquetas_mixin.dart';
 class EndPointApi with GetCoordenadas, GetEtiquetas, Users, SendSMS {
   EndPointApi();
 
-  Future<List<String>> getUbicacion(String address) async {
+  Future<List> getUbicacion(String address) async {
     Coordenadas response = await getCoordenadas(address);
     // ignore: avoid_print
     print(response.status); // OK
     double? lat, lng;
     String? direccion;
-    List<String> direcciones = [];
+    List<dynamic> direcciones = [];
 
     for (var e in response.results) {
       //Garantiza no tener datos null
-
-      direcciones.add(
-          ("${e.formattedAddress}\nlat:${e.geometry.location.lat} lng:${e.geometry.location.lng}"));
-
+      direcciones.add([
+        e.formattedAddress,
+        e.geometry.location.lat,
+        e.geometry.location.lng
+      ]);
+      //Direccion Principal
+      direccion ??= e.formattedAddress;
       lat ??= e.geometry.location.lat;
       lng ??= e.geometry.location.lng;
-      direccion ??= e.formattedAddress;
     }
-    // ignore: avoid_print
-    // print("Latitud:$lat , Logintud: $lng \nDireccion: $direccion");
-    // return "Latitud:$lat , Logintud: $lng \nDireccion: $direccion";
+    // Logger().w(ubicaciones.dirprincipal.direccion);
+    Logger().w('$direccion $lat,$lng');
     return direcciones;
   }
 

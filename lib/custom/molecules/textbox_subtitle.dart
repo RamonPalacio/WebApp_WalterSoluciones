@@ -38,35 +38,37 @@ TextBoxSubtitle(
 
 */
 class TextBoxSubtitle extends StatelessWidget {
-  const TextBoxSubtitle({
-    Key? key,
-    this.containerColor = const Color(0xFFE1E1E1),
-    this.containerHeight = 35,
-    this.containerWidth = 400,
-    this.containerBorderRadius = 8,
-    this.textFieldAltura = 30,
-    this.preIconWidth = 30,
-    this.posIconWidth = 30,
-    this.maxlength = 50,
-    this.validate = false,
-    this.iconPre,
-    this.texto = " ",
-    this.textoBase = "",
-    this.iconPos,
-    this.keyboardType,
-    this.formateado,
-    this.enable = true,
-    this.isPass = false,
-    this.isOfuscado = false,
-    this.onChanged,
-    this.onPressedOfuscate,
-    this.autofocus = false,
-    this.letterSpacing,
-    this.textAlign = TextAlign.left,
-  }) : super(key: key);
+  const TextBoxSubtitle(
+      {Key? key,
+      this.containerColor = const Color(0xFFE1E1E1),
+      this.containerHeight = 35,
+      this.containerWidth = 400,
+      this.containerBorderRadius = 8,
+      this.textFieldAltura = 30,
+      this.preIconWidth = 30,
+      this.posIconWidth = 30,
+      this.maxlength = 50,
+      this.validate = false,
+      this.iconPre,
+      this.texto,
+      this.textoBase = "",
+      this.iconPos,
+      this.keyboardType,
+      this.formateado,
+      this.enable = true,
+      this.isPass = false,
+      this.isOfuscado = false,
+      this.onChanged,
+      this.onPressedOfuscate,
+      this.autofocus = false,
+      this.letterSpacing,
+      this.textAlign = TextAlign.left,
+      this.controller})
+      : super(key: key);
 
+  final TextEditingController? controller;
   final Widget? iconPre;
-  final String texto;
+  final String? texto;
   final double? letterSpacing;
   final String textoBase;
   final Widget? iconPos;
@@ -121,7 +123,8 @@ class TextBoxSubtitle extends StatelessWidget {
                     child: TextFormField(
                       autofocus: autofocus,
                       initialValue: texto,
-                      // controller: TextEditingController(text: texto),
+                      controller:
+                          controller, // TextEditingController(text: texto),
                       obscureText: isPass ? isOfuscado : false,
                       textInputAction: TextInputAction.next,
                       maxLength: maxlength,

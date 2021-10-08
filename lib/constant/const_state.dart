@@ -15,4 +15,7 @@ class ConstState {
   static const String userPhone = 'phone_login';
 
   static const String centerMap = 'center_map_latlng_mapwidget';
+
+  static const String mapController = 'controller_map';
+  static const String markers = 'markers_laglng_map';
 }

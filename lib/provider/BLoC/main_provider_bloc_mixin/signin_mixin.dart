@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:walte_soluciones/constant/pages_show_state.dart';
-import 'package:walte_soluciones/constant/states_fields.dart';
+import 'package:walte_soluciones/constant/const_state.dart';
 import 'package:walte_soluciones/constant/txt_state_name.dart';
 
 import 'package:walte_soluciones/data/database/endpoint_api.dart';

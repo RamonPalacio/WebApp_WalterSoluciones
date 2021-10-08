@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:walte_soluciones/custom/molecules/botomgradiane.dart';
 import 'package:walte_soluciones/custom/atoms/img_market.dart';
 
-import 'package:walte_soluciones/constant/states_fields.dart';
+import 'package:walte_soluciones/constant/const_state.dart';
 import 'package:walte_soluciones/provider/BLoC/main_provider_bloc.dart';
 import 'package:walte_soluciones/provider/state/main_state.dart';
 

@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
 
-import 'package:walte_soluciones/UI/home/menu/_1_ubica_inicial.dart';
+import 'package:walte_soluciones/UI/home/menu/inicio_servicio/box_initial_location.dart';
 import 'package:walte_soluciones/custom/molecules/textbox_subtitle.dart';
 import 'package:walte_soluciones/provider/BLoC/main_provider_bloc.dart';
 

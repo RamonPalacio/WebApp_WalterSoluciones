@@ -11,11 +11,10 @@ import 'package:walte_soluciones/UI/pops/select_city.dart';
 import 'package:walte_soluciones/UI/pops/select_tamano.dart';
 import 'package:walte_soluciones/UI/pops/singin.dart';
 import 'package:walte_soluciones/constant/pages_show_state.dart';
-import 'package:walte_soluciones/custom/mapbox/const_maps.dart';
-import 'package:walte_soluciones/custom/mapbox/mapwidget.dart';
 import 'package:walte_soluciones/provider/state/main_state.dart';
 
 import 'appbar/appbar.dart';
+import 'mapa/mapbox.dart';
 import 'menu/__menu.dart';
 
 class Home extends StatelessWidget {
@@ -61,24 +60,7 @@ class Home extends StatelessWidget {
                                       : 3
                                   : 6,
                               // child: SizedBox(),
-                              child: Consumer<MainState>(
-                                  builder: (c, modelState, _) {
-                                return Container(
-                                  padding: const EdgeInsets.only(
-                                      left: 20.0, bottom: 60.0, right: 60),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(30),
-                                    child: MapaOpenSourse(
-                                      urlTemplate: ConstsMap().urlMap,
-                                      stylemap: ConstsMap().styleMap,
-                                      apiKey: ConstsMap().apiKey,
-                                      copyright: ConstsMap().copyright,
-                                      height: double.infinity,
-                                      width: double.infinity,
-                                    ),
-                                  ),
-                                );
-                              }),
+                              child: const MapBox(),
                             ),
                           ),
                         ],

@@ -4,10 +4,10 @@ import 'package:walte_soluciones/constant/pages_show_state.dart';
 import 'package:walte_soluciones/constant/txt_state_name.dart';
 import 'package:walte_soluciones/data/database/endpoint_api.dart';
 import 'package:walte_soluciones/data/models/user.dart';
-import 'package:walte_soluciones/provider/BLoC/utility_bloc_mixin.dart';
+import 'package:walte_soluciones/provider/BLoC/main_provider_bloc_mixin/utility_bloc_mixin.dart';
 import 'package:walte_soluciones/provider/BLoC/verifications.dart';
 import 'package:walte_soluciones/provider/state/main_state.dart';
-import 'main_provider_bloc.dart';
+import '../main_provider_bloc.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
 

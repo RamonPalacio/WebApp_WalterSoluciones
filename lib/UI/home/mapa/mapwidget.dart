@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:provider/src/provider.dart';
-import 'package:walte_soluciones/constant/states_fields.dart';
+import 'package:walte_soluciones/constant/const_state.dart';
 import 'package:walte_soluciones/provider/state/main_state.dart';
 
 /*
@@ -56,7 +56,8 @@ class MapaOpenSourse extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    MapController mapController = MapController();
+    MapController mapController =
+        context.read<MainState>().getControlador(ConstState.mapController);
     List<LatLng> points2 = [];
     for (var i in [
       [-73.995237, 9.99123],
@@ -210,7 +211,8 @@ class MapaOpenSourse extends StatelessWidget {
                   Marker(
                     width: 56.0,
                     height: 107.0,
-                    point: LatLng(11, -74.8),
+                    point:
+                        context.read<MainState>().getState(ConstState.markers),
                     builder: (ctx) => Column(
                       children: [
                         Container(

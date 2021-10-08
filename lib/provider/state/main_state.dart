@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:walte_soluciones/constant/pages_show_state.dart';
-import 'package:walte_soluciones/constant/states_fields.dart';
+import 'package:walte_soluciones/constant/const_state.dart';
 import 'package:latlong2/latlong.dart';
+export 'package:latlong2/latlong.dart';
 
 class MainState extends ChangeNotifier {
   final Map<dynamic, dynamic> _inputTextState = {
@@ -27,8 +29,7 @@ class MainState extends ChangeNotifier {
     ConstState.btntamano: "Pequeños",
 
     ConstState.centerMap: LatLng(6.246727, -75.566189), //Medellin
-    // ConstState.centerMap: LatLng(4.689466, -74.068881), // Bogota
-    // ConstState.centerMap: LatLng(19.466878, -99.103316), // Ciudad de México, CDMX, México
+    ConstState.markers: LatLng(0, 0)
   };
 
   void removeState(
@@ -61,5 +62,20 @@ class MainState extends ChangeNotifier {
       _inputTextState[id] = texto;
     }
     if (updateGeneralState) notifyListeners();
+  }
+
+  final MapController _mapControler = MapController();
+
+  @override
+  void dispose() {
+    // _mapControler.dispose(); // No posee dispose
+    super.dispose();
+  }
+
+  getControlador(nameControler) {
+    switch (nameControler) {
+      case ConstState.mapController:
+        return _mapControler;
+    }
   }
 }

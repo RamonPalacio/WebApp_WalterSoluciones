@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/src/provider.dart';
+import 'package:walte_soluciones/UI/home/menu/inicio_servicio/opcion_a.dart';
+import 'package:walte_soluciones/UI/home/menu/inicio_servicio/resultado_consulta.dart';
+import 'package:walte_soluciones/constant/txt_state_name.dart';
 import 'package:walte_soluciones/custom/atoms/img_check.dart';
 import 'package:walte_soluciones/custom/atoms/img_info.dart';
 import 'package:walte_soluciones/custom/molecules/textbox_subtitle.dart';
+import 'package:walte_soluciones/provider/state/main_state.dart';
+import 'package:walte_soluciones/provider/state/txt_controllers_state.dart';
 
 var boxDecoration = BoxDecoration(
   color: const Color(0xFDFFFFFF),
@@ -20,6 +26,8 @@ class InitialLocation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TextEditingController txtControllersState =
+    //     TextEditingController(text: 'hola');
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: boxDecoration,
@@ -29,17 +37,19 @@ class InitialLocation extends StatelessWidget {
             width: double.infinity,
             child: OptionA(),
           ),
+          const ResultadoDirecciones(),
           const SizedBox(height: 10),
-          const TextBoxSubtitle(
+          TextBoxSubtitle(
+            // texto: null,
+            controller: TextEditingController(),
             containerWidth: double.infinity,
             textFieldAltura: 30,
-            iconPre: Padding(
+            iconPre: const Padding(
               padding: EdgeInsets.only(left: 0, right: 6),
               child: Img(color: 0xFF353B4D, size: 1),
             ),
             textoBase: "¿Qué debe hacer tu asistente en esta dirección?",
-            texto: "",
-            iconPos: Padding(
+            iconPos: const Padding(
               padding: EdgeInsets.only(left: 6, right: 0),
               child: ImgCheck(color: 0xFF353B4D, size: 1),
             ),
@@ -56,55 +66,6 @@ class InitialLocation extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class OptionA extends StatelessWidget {
-  const OptionA({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          alignment: Alignment.center,
-          height: 40,
-          width: 40,
-          decoration: const BoxDecoration(
-            color: Color(0xFF002EA8),
-            borderRadius: BorderRadius.all(
-              Radius.circular(8.0),
-            ),
-          ),
-          child: const Text("A",
-              style: TextStyle(fontSize: 30, color: Color(0xFFFFFFFF))),
-        ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 12.0),
-            child: InkWell(
-              onTap: () {},
-              child: const TextBoxSubtitle(
-                textFieldAltura: 30,
-                enable: true,
-                iconPre: Padding(
-                  padding: EdgeInsets.only(left: 0, right: 6),
-                  child: Img(color: 0xFF353B4D, size: 1),
-                ),
-                textoBase: "Ingresar dirección o sitio",
-                texto: "Calle 49 # 30 - 15",
-                iconPos: Padding(
-                  padding: EdgeInsets.only(left: 6, right: 0),
-                  child: ImgCheck(color: 0xFF353B4D, size: 1),
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

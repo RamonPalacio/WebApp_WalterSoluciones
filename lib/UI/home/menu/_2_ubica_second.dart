@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:walte_soluciones/custom/atoms/img_check.dart';
 import 'package:walte_soluciones/custom/atoms/img_info.dart';
-import 'package:walte_soluciones/UI/home/menu/_1_ubica_inicial.dart';
+import 'package:walte_soluciones/UI/home/menu/inicio_servicio/box_initial_location.dart';
 import 'package:walte_soluciones/custom/molecules/textbox_subtitle.dart';
 
 class SecondLocation extends StatelessWidget {
@@ -64,17 +65,22 @@ class OptionB extends StatelessWidget {
               style: TextStyle(fontSize: 30, color: Color(0xFFFFFFFF))),
         ),
         const SizedBox(width: 10),
-        const Expanded(
+        Expanded(
           child: TextBoxSubtitle(
+            formateado: [
+              FilteringTextInputFormatter.allow(
+                RegExp('[a-zA-Z0-9]'),
+              ),
+            ],
             containerWidth: double.infinity,
             textFieldAltura: 30,
-            iconPre: Padding(
+            iconPre: const Padding(
               padding: EdgeInsets.only(left: 0, right: 6),
               child: Img(color: 0xFF353B4D, size: 1),
             ),
             textoBase: "Ingresar dirección o sitio",
-            texto: "Carrera 66 # 48 - 63",
-            iconPos: Padding(
+            texto: "",
+            iconPos: const Padding(
               padding: EdgeInsets.only(left: 6, right: 0),
               child: ImgCheck(color: 0xFF353B4D, size: 1),
             ),

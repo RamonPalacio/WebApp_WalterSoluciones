@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:walte_soluciones/provider/state/txt_controllers_state.dart';
 
 import 'router/routers.dart';
 import 'constant/app_settings.dart';
@@ -15,9 +16,9 @@ void main() {
     providers: [
       //States
       ChangeNotifierProvider(create: (_) => MainState()),
-      //BLoC
+      ChangeNotifierProvider(create: (_) => TxtControllersState()),
+      //Eventos BLoC
       ChangeNotifierProvider(create: (_) => MainBLoC()),
-      //Models
     ],
     child: const MainApp(),
     // Matis()

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:walte_soluciones/constant/const_maps.dart';
 import 'package:walte_soluciones/constant/pages_show_state.dart';
 
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
-import 'package:walte_soluciones/constant/states_fields.dart';
+import 'package:walte_soluciones/constant/const_state.dart';
 import 'package:walte_soluciones/provider/state/main_state.dart';
 import 'package:latlong2/latlong.dart';
 
@@ -38,19 +40,16 @@ abstract class Utility {
 
   void clickCity(BuildContext context, {String city = ""}) {
     MainState mainstate = context.read<MainState>();
-    print(city);
+    LatLng ciudadActual = LatLng(0, 0);
     switch (city) {
       case 'Medellín':
-        mainstate.setState(
-            id: ConstState.centerMap, texto: LatLng(4.689466, -74.068881));
+        ciudadActual = ConstsMap.medellinLatLng;
         break;
       case 'Bogotá':
-        mainstate.setState(
-            id: ConstState.centerMap, texto: LatLng(4.689466, -74.068881));
+        ciudadActual = ConstsMap.bogotaLatLng;
         break;
       case 'Ciudad de Mexico':
-        mainstate.setState(
-            id: ConstState.centerMap, texto: LatLng(4.689466, -74.068881));
+        ciudadActual = ConstsMap.ciudadDeMexicoLatLng;
         break;
       default:
         mainstate.setState(
@@ -60,29 +59,23 @@ abstract class Utility {
         );
         return;
     }
+
+    ///Mueve El Mapa
+    (context.read<MainState>().getControlador(ConstState.mapController)
+            as MapController)
+        .move(ciudadActual, 15);
+    //
+
+    ///Almacena Nombre de Ciudad
     context.read<MainState>()
-      ..setState(
-          id: ConstState.btnciudad, texto: city, updateGeneralState: true)
+      ..setState(id: ConstState.btnciudad, texto: city)
+
+      ///Oculta PopUp [Ciudades]
       ..setState(
         id: PagesShowState.cityshow,
         texto: false,
         updateGeneralState: true,
       );
-    // if (city != "") {
-    //   context.read<MainState>()
-    //     ..setState(id: ConstState.btnciudad, texto: city)
-    //     ..setState(
-    //       id: PagesShowState.cityshow,
-    //       texto: false,
-    //       updateGeneralState: true,
-    //     );
-    // } else {
-    //   context.read<MainState>().setState(
-    //         id: PagesShowState.cityshow,
-    //         texto: true,
-    //         updateGeneralState: true,
-    //       );
-    // }
   }
 
   void clickTamano(BuildContext context, {String tamano = ""}) {
