@@ -18,6 +18,17 @@ class RegisterEmpresas2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MainBLoC mB = context.read<MainBLoC>();
+    MainState mS = context.read<MainState>();
+
+    Function clickRegistrarme = mB.showPopUpRegExitoso;
+    Function clickPersonaNatural = mB.showPopUpRegPersonas;
+
+    //TextBox Empresa
+    String textoEmpresaTextBoxSubtitle =
+        mS.getState(TxtStateName.rezonsocialRegE) ?? "";
+    Function onChangedEmpresaTextBoxSubtitle = mS.setState;
+
     return Container(
       height: 560,
       width: 850,
@@ -93,10 +104,6 @@ class RegisterEmpresas2 extends StatelessWidget {
                       BotonGradiane(
                         padingLeft: 10,
                         padingRight: 30,
-                        onPressed: () {
-                          context.read<MainBLoC>().resetPop(context);
-                          context.read<MainBLoC>().clickPersonas(context);
-                        },
                         height: 37,
                         width: 192,
                         colorUp: 0xFFEEEEEE,
@@ -111,6 +118,9 @@ class RegisterEmpresas2 extends StatelessWidget {
                             shape: BoxShape.circle,
                           ),
                         ),
+                        onPressed: () {
+                          clickPersonaNatural(context);
+                        },
                         child: TextByHeight(
                           'Persona Natural',
                           height: 25,
@@ -159,10 +169,7 @@ class RegisterEmpresas2 extends StatelessWidget {
                         children: [
                           TextBoxSubtitle(
                             containerHeight: 40,
-                            texto: context
-                                    .read<MainState>()
-                                    .getState(TxtStateName.rezonsocialRegE) ??
-                                "",
+                            texto: textoEmpresaTextBoxSubtitle,
                             textoBase: "Empresa",
                             containerWidth: 400,
                             maxlength: 50,
@@ -178,10 +185,10 @@ class RegisterEmpresas2 extends StatelessWidget {
                               fit: BoxFit.fitHeight,
                             ),
                             onChanged: (text) {
-                              context.read<MainState>().setState(
-                                    id: TxtStateName.rezonsocialRegE,
-                                    texto: text,
-                                  );
+                              onChangedEmpresaTextBoxSubtitle(
+                                id: TxtStateName.rezonsocialRegE,
+                                texto: text,
+                              );
                             },
                           ),
                           const SizedBox(height: 10),
@@ -366,9 +373,7 @@ class RegisterEmpresas2 extends StatelessWidget {
                         fontsize: 5,
                         text: "Registrarme",
                         onPressed: () {
-                          context
-                              .read<MainBLoC>()
-                              .clickRegistroEmpresas2(context);
+                          clickRegistrarme(context);
                         },
                         height: 35,
                         width: 180,

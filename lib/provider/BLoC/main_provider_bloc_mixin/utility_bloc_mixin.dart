@@ -4,8 +4,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:walte_soluciones/constant/const_maps.dart';
 import 'package:walte_soluciones/constant/pages_show_state.dart';
 
-// ignore: implementation_imports
-import 'package:provider/src/provider.dart';
 import 'package:walte_soluciones/constant/const_state.dart';
 import 'package:walte_soluciones/provider/state/main_state.dart';
 import 'package:latlong2/latlong.dart';
@@ -61,14 +59,16 @@ abstract class Utility {
     }
 
     ///Mueve El Mapa
-    (context.read<MainState>().getControlador(ConstState.mapController)
-            as MapController)
+    (mainstate.getControlador(ConstState.mapController) as MapController)
         .move(ciudadActual, 15);
     //
 
     ///Almacena Nombre de Ciudad
-    context.read<MainState>()
+    mainstate
       ..setState(id: ConstState.btnciudad, texto: city)
+
+      ///Guarda en el centerMap_State la ultima ubicacion.
+      ..setState(id: ConstState.centerMap, texto: ciudadActual)
 
       ///Oculta PopUp [Ciudades]
       ..setState(

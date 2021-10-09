@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:walte_soluciones/UI/home/menu/resultado_consulta_a_y_b.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:walte_soluciones/UI/home/menu/resultados_direcciones/resultado_consulta_a_y_b.dart';
 import 'package:walte_soluciones/UI/home/menu/segundo_servicio/opcion_b.dart';
 import 'package:walte_soluciones/constant/const_state.dart';
 import 'package:walte_soluciones/constant/txt_state_name.dart';
-import 'package:walte_soluciones/custom/atoms/img_check.dart';
-import 'package:walte_soluciones/custom/atoms/img_info.dart';
 import 'package:walte_soluciones/UI/home/menu/inicio_servicio/box_initial_location.dart';
 import 'package:walte_soluciones/custom/molecules/textbox_subtitle.dart';
 
@@ -22,25 +21,39 @@ class SecondLocation extends StatelessWidget {
       // color: const Color(0xFFFFFFFF),
       decoration: boxDecoration,
       child: Column(
-        children: const [
-          OptionB(),
-          ResultadoDirecciones(
+        children: [
+          const OptionB(),
+          const ResultadoDirecciones(
             txtStateName: TxtStateName.txtDirsecundario,
             dirListPrediction: ConstState.dirListPredictionB,
             marker: ConstState.markerB,
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           TextBoxSubtitle(
+            maxlength: 100,
             containerWidth: double.infinity,
-            textFieldAltura: 30,
             iconPre: Padding(
-              padding: EdgeInsets.only(left: 0, right: 6),
-              child: Img(color: 0xFF353B4D, size: 1),
+              padding: const EdgeInsets.only(left: 0, right: 6),
+              child: SvgPicture.asset(
+                "assets/icons/infoicon.svg",
+                color: const Color(0xFF353B4D),
+                height: 16,
+                fit: BoxFit.fitHeight,
+              ),
+
+              // Img(color: 0xFF353B4D, size: 1),
             ),
             textoBase: "¿Qué debe hacer tu asistente en esta dirección?",
             iconPos: Padding(
-              padding: EdgeInsets.only(left: 6, right: 0),
-              child: ImgCheck(color: 0xFF353B4D, size: 1),
+              padding: const EdgeInsets.only(left: 6, right: 0),
+              child: SvgPicture.asset(
+                "assets/icons/check.svg",
+                color: const Color(0xFF353B4D),
+                height: 16,
+                fit: BoxFit.fitHeight,
+              ),
+
+              //  ImgCheck(color: 0xFF353B4D, size: 1),
             ),
           ),
         ],

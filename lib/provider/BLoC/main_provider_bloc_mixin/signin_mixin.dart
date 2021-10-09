@@ -9,17 +9,15 @@ import 'package:walte_soluciones/data/models/sms_send.dart';
 import 'package:walte_soluciones/data/models/user.dart';
 import 'package:walte_soluciones/provider/BLoC/main_provider_bloc.dart';
 
-// ignore: implementation_imports
-import 'package:provider/src/provider.dart';
 import 'package:walte_soluciones/provider/BLoC/verifications.dart';
 import 'package:walte_soluciones/provider/state/main_state.dart';
 
 abstract class SignInBloc {
   void clickLogIn(BuildContext c) async {
-    MainState mainState = c.read<MainState>();
-    String celularText = mainState.getState(TxtStateName.phoneSignin);
+    MainState mS = c.read<MainState>();
+    String celularText = mS.getState(TxtStateName.phoneSignin);
 
-    mainState.setState(
+    mS.setState(
       id: ConstState.isLoading,
       texto: true,
       updateGeneralState: true,
@@ -27,7 +25,7 @@ abstract class SignInBloc {
 
     if (!Verifications().isValidMobil(celularText)) {
       c.read<MainBLoC>().showMensaje("Ingrese un número celular válido");
-      mainState.setState(
+      mS.setState(
         id: ConstState.isLoading,
         texto: false,
         updateGeneralState: true,
@@ -39,7 +37,7 @@ abstract class SignInBloc {
     if (!await Verifications().mobilExistsInDatabase(celularText)) {
       c.read<MainBLoC>().showMensaje("Ingrese Un Número Celular Válido");
 
-      mainState.setState(
+      mS.setState(
         id: ConstState.isLoading,
         texto: false,
         updateGeneralState: true,
@@ -52,14 +50,14 @@ abstract class SignInBloc {
     if (usuario.successful) {
       c.read<MainBLoC>().resetPop(c);
 
-      mainState.setState(
+      mS.setState(
         id: PagesShowState.otpshow,
         texto: true,
         updateGeneralState: true,
       );
     }
 
-    mainState.setState(
+    mS.setState(
       id: ConstState.isLoading,
       texto: false,
       updateGeneralState: true,

@@ -107,7 +107,7 @@ class SingIn extends StatelessWidget {
               fontsize: 5,
               border: 10,
               onPressed: () {
-                context.read<MainBLoC>().clickPersonas(context);
+                context.read<MainBLoC>().showPopUpRegPersonas(context);
               },
               height: 35,
               width: 200,

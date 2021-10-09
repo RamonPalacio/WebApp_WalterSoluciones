@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import 'package:walte_soluciones/constant/const_maps.dart';
 import 'package:walte_soluciones/UI/home/mapa/mapwidget.dart';
@@ -13,7 +12,6 @@ class MapBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<MainState>(builder: (c, modelState, _) {
-      Logger().w("Pintado mapa");
       return Container(
         padding: const EdgeInsets.only(left: 20.0, bottom: 60.0, right: 60),
         child: ClipRRect(

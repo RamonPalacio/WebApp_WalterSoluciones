@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
+import 'package:walte_soluciones/constant/const_state.dart';
 import 'package:walte_soluciones/constant/pages_show_state.dart';
 import 'package:walte_soluciones/constant/txt_state_name.dart';
 import 'package:walte_soluciones/data/database/endpoint_api.dart';
-import 'package:walte_soluciones/data/models/user.dart';
-import 'package:walte_soluciones/provider/BLoC/main_provider_bloc_mixin/utility_bloc_mixin.dart';
+import 'package:walte_soluciones/provider/BLoC/main_provider_bloc.dart';
 import 'package:walte_soluciones/provider/BLoC/verifications.dart';
 import 'package:walte_soluciones/provider/state/main_state.dart';
-import '../main_provider_bloc.dart';
-// ignore: implementation_imports
-import 'package:provider/src/provider.dart';
 
 abstract class RegisrtoBloc {
-  ///Funcion que Muestra el PopUp [Registro de Personas].
-  void clickPersonas(BuildContext context) {
+  void showPopUpRegPersonas(BuildContext context) {
     context.read<MainBLoC>().resetPop(context);
     context.read<MainState>().setState(
           id: PagesShowState.naturalshow,
@@ -22,84 +17,8 @@ abstract class RegisrtoBloc {
         );
   }
 
-  ///Funcion que registra una persona a la Base de Datos.
-  void clickRegistroPersonas(BuildContext c) async {
-    MainState mainstate = c.read<MainState>();
-    MainBLoC mainbloc = c.read<MainBLoC>();
-
-    String nombresText = mainstate.getState(TxtStateName.nombresReg);
-    String apellidosText = mainstate.getState(TxtStateName.apellidoReg);
-    String emailText = mainstate.getState(TxtStateName.emailReg);
-    String phoneText = mainstate.getState(TxtStateName.phoneReg);
-
-    //=Validaciones pre-registro-personas=
-    if (nombresText.length < 3) {
-      mainbloc.showMensaje("Ingresa un nombre válido");
-      return;
-    }
-
-    if (apellidosText.length < 3) {
-      mainbloc.showMensaje("Ingresa un apellido válido");
-      return;
-    }
-
-    if (!Verifications().isValidEmail(emailText)) {
-      mainbloc.showMensaje("Ingresa un Email válido");
-      return;
-    }
-
-    if (!Verifications().isValidMobil(phoneText)) {
-      mainbloc.showMensaje("Ingrese un número celular válido");
-      return;
-    }
-
-    if (await Verifications().mobilExistsInDatabase(phoneText)) {
-      c.read<MainBLoC>().showMensaje("Ingrese Un Número Celular Válido");
-      return;
-    }
-    //=Fin de Validaciones=
-
-    Map<String, dynamic> user = {
-      "id": null,
-      "idUser": null,
-      "autoId": null,
-      "name": nombresText,
-      "lastname": apellidosText,
-      "email": emailText,
-      "phone": phoneText,
-      "isCompany": false,
-      "sex": null,
-      "time": null,
-      "points": null,
-      "birthDay": null,
-      "deviceToken": null,
-      "paymentMethod": null,
-      "identityNumber": null,
-      "typeOfDocument": null,
-      "subscriptionProfile": null,
-    };
-
-    Map<String, dynamic>? result = await EndPointApi().addUsers(user: user);
-    switch (result['statusCode']) {
-      case 200:
-        mainbloc.showMensaje(
-            "Usuario Registrado\n$nombresText\n$apellidosText\n$emailText\n$phoneText",
-            false);
-        mainbloc.resetPop(c);
-        mainstate.setState(
-          id: PagesShowState.exitososhow,
-          texto: true,
-          updateGeneralState: true,
-        );
-        break;
-      case 400:
-        mainbloc.showMensaje("Error Red", false);
-        break;
-      default:
-    }
-  }
-
-  clickSomosEmpresas(BuildContext context) {
+  ///Funcion que muestra el PopUp [SomosEmpresa]
+  void showPopUpRegEmpresa(BuildContext context) {
     context.read<MainState>().setState(
           id: PagesShowState.naturalshow,
           texto: false,
@@ -111,38 +30,59 @@ abstract class RegisrtoBloc {
         );
   }
 
-  clickRegistroEmpresas(BuildContext c) async {
-    MainBLoC mainbloc = c.read<MainBLoC>();
-    MainState mainstate = c.read<MainState>();
+  void addUsuario(BuildContext context, [bool personas = true]) async {
+    MainBLoC mB = context.read<MainBLoC>();
+    MainState mS = context.read<MainState>();
+    String nombresText;
+    String apellidosText;
+    String emailText;
+    String phoneText;
 
-    String nombresText = mainstate.getState(TxtStateName.nombresRegE);
-    String apellidosText = mainstate.getState(TxtStateName.apellidoRegE);
-    String emailText = mainstate.getState(TxtStateName.emailRegE);
-    String phoneText = mainstate.getState(TxtStateName.phoneIndRegE);
+    mS.setState(
+        id: ConstState.isLoadingReg, texto: true, updateGeneralState: true);
+
+    nombresText = mS.getState(
+      personas ? TxtStateName.nombresReg : TxtStateName.nombresRegE,
+    );
+
+    apellidosText = mS.getState(
+      personas ? TxtStateName.apellidoReg : TxtStateName.apellidoRegE,
+    );
+
+    emailText = mS.getState(
+      personas ? TxtStateName.emailReg : TxtStateName.emailRegE,
+    );
+
+    phoneText = mS.getState(
+      personas ? TxtStateName.phoneReg : TxtStateName.phoneIndRegE,
+    );
 
     //=Validaciones pre-registro-personas=
+    String error = '';
     if (nombresText.length < 3) {
-      mainbloc.showMensaje("Ingresa un nombre válido");
-      return;
+      error = "Ingresa un nombre válido";
     }
 
     if (apellidosText.length < 3) {
-      mainbloc.showMensaje("Ingresa un apellido válido");
-      return;
+      error = "Ingresa un apellido válido";
     }
 
     if (!Verifications().isValidEmail(emailText)) {
-      mainbloc.showMensaje("Ingresa un Email válido");
-      return;
+      error = "Ingresa un Email válido";
     }
 
     if (!Verifications().isValidMobil(phoneText)) {
-      mainbloc.showMensaje("Ingrese un número celular válido");
-      return;
+      error = "Ingrese un número celular válido";
     }
 
     if (await Verifications().mobilExistsInDatabase(phoneText)) {
-      c.read<MainBLoC>().showMensaje("Ingrese Un Número Celular Válido");
+      error = "Ingrese Un Número Celular Válido";
+    }
+
+    if (error.isNotEmpty) {
+      mB.showMensaje(error);
+      mS.setState(
+          id: ConstState.isLoadingReg, texto: false, updateGeneralState: true);
       return;
     }
     //=Fin de Validaciones=
@@ -155,7 +95,7 @@ abstract class RegisrtoBloc {
       "lastname": apellidosText,
       "email": emailText,
       "phone": phoneText,
-      "isCompany": true, // true
+      "isCompany": !personas,
       "sex": null,
       "time": null,
       "points": null,
@@ -171,24 +111,31 @@ abstract class RegisrtoBloc {
         await EndPointApi().addUsers(user: representante);
     switch (result['statusCode']) {
       case 200:
-        mainbloc.showMensaje(
-            "Representante L. Registrado\n$nombresText\n$apellidosText\n$emailText\n$phoneText",
-            false);
+        // mB.showMensaje(
+        //     "Registrado\n$nombresText\n$apellidosText\n$emailText\n$phoneText",
+        //     false);
         break;
       case 400:
-        mainbloc.showMensaje("Error Red", false);
+        mB.showMensaje("Error Red", false);
         break;
       default:
+        mB.showMensaje("Error addUsers", false);
     }
 
-    mainstate.setState(
-      id: PagesShowState.legal2show,
-      texto: true,
-      updateGeneralState: true,
-    );
+    mS.setState(
+        id: ConstState.isLoadingReg, texto: false, updateGeneralState: true);
+    if (personas) {
+      showPopUpRegExitoso(context);
+    } else {
+      mS.setState(
+        id: PagesShowState.legal2show,
+        texto: true,
+        updateGeneralState: true,
+      );
+    }
   }
 
-  clickRegistroEmpresas2(BuildContext context) {
+  void showPopUpRegExitoso(BuildContext context) {
     context.read<MainBLoC>().resetPop(context);
     context.read<MainState>().setState(
           id: PagesShowState.exitososhow,

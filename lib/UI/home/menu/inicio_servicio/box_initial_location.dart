@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/src/provider.dart';
 import 'package:walte_soluciones/UI/home/menu/inicio_servicio/opcion_a.dart';
-import 'package:walte_soluciones/UI/home/menu/resultado_consulta_a_y_b.dart';
+import 'package:walte_soluciones/UI/home/menu/resultados_direcciones/resultado_consulta_a_y_b.dart';
 import 'package:walte_soluciones/constant/const_state.dart';
 import 'package:walte_soluciones/constant/txt_state_name.dart';
-import 'package:walte_soluciones/custom/atoms/img_check.dart';
-import 'package:walte_soluciones/custom/atoms/img_info.dart';
 import 'package:walte_soluciones/custom/molecules/textbox_subtitle.dart';
-import 'package:walte_soluciones/provider/state/main_state.dart';
-import 'package:walte_soluciones/provider/state/txt_controllers_state.dart';
 
 var boxDecoration = BoxDecoration(
   color: const Color(0xFDFFFFFF),
@@ -45,25 +40,30 @@ class InitialLocation extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           TextBoxSubtitle(
-            // texto: null,
-            controller: TextEditingController(),
             containerWidth: double.infinity,
-            textFieldAltura: 30,
-            iconPre: const Padding(
-              padding: EdgeInsets.only(left: 0, right: 6),
-              child: Img(color: 0xFF353B4D, size: 1),
+            iconPre: Padding(
+              padding: const EdgeInsets.fromLTRB(0, 0, 6, 0),
+              child: SvgPicture.asset(
+                "assets/icons/infoicon.svg",
+                color: const Color(0xFF353B4D),
+                height: 16,
+                fit: BoxFit.fitHeight,
+              ),
             ),
             textoBase: "¿Qué debe hacer tu asistente en esta dirección?",
-            iconPos: const Padding(
-              padding: EdgeInsets.only(left: 6, right: 0),
-              child: ImgCheck(color: 0xFF353B4D, size: 1),
+            iconPos: Padding(
+              padding: const EdgeInsets.fromLTRB(6, 0, 0, 0),
+              child: SvgPicture.asset(
+                "assets/icons/check.svg",
+                color: const Color(0xFF353B4D),
+                height: 16,
+                fit: BoxFit.fitHeight,
+              ),
             ),
           ),
           const SizedBox(height: 10),
           TextBoxSubtitle(
             containerWidth: double.infinity,
-            textFieldAltura: 30,
-            enable: true,
             iconPre: SvgPicture.asset("assets/icons/phone.svg",
                 color: const Color(0xFF353B4D)),
             textoBase: "Celular de Contacto",

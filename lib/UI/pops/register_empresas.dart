@@ -18,6 +18,33 @@ class RegirterEmpresas extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MainBLoC mB = context.read<MainBLoC>();
+    MainState mS = context.read<MainState>();
+    void Function(BuildContext context) clickPersonas = mB.showPopUpRegPersonas;
+    void Function(BuildContext context, [bool personas]) clickRegistroEmpresa =
+        mB.addUsuario;
+    void Function(BuildContext context) clickCancelar = mB.resetPop;
+
+    String textoNamesTextBoxSubtitle =
+        mS.getState(TxtStateName.nombresRegE) ?? "";
+    Function onChangedNombresTextBoxSubtitle = mS.setState;
+
+    String textoApellidoTextBoxSubtitle =
+        mS.getState(TxtStateName.apellidoRegE) ?? "";
+    Function onChangedApellidosTextBoxSubtitle = mS.setState;
+
+    String textoEmailTextBoxSubtitle =
+        mS.getState(TxtStateName.emailRegE) ?? "";
+    void Function({
+      required String id,
+      required dynamic texto,
+      bool updateGeneralState,
+    }) onChangedEmailTextBoxSubtitle = mS.setState;
+
+    String textoPhoneTextBoxSubtitle =
+        mS.getState(TxtStateName.phoneRegE) ?? "";
+    Function onChangedPhoneTextBoxSubtitle = mS.setState;
+
     return Container(
       height: 560,
       width: 850,
@@ -94,7 +121,7 @@ class RegirterEmpresas extends StatelessWidget {
                         padingLeft: 10,
                         padingRight: 30,
                         onPressed: () {
-                          context.read<MainBLoC>().clickPersonas(context);
+                          clickPersonas(context);
                         },
                         height: 37,
                         width: 192,
@@ -157,10 +184,7 @@ class RegirterEmpresas extends StatelessWidget {
                         children: [
                           TextBoxSubtitle(
                             containerHeight: 40,
-                            texto: context
-                                    .read<MainState>()
-                                    .getState(TxtStateName.nombresRegE) ??
-                                "",
+                            texto: textoNamesTextBoxSubtitle,
                             textoBase: "Nombres",
                             containerWidth: 400,
                             maxlength: 50,
@@ -180,17 +204,14 @@ class RegirterEmpresas extends StatelessWidget {
                               fit: BoxFit.fitHeight,
                             ),
                             onChanged: (text) {
-                              context.read<MainState>().setState(
+                              onChangedNombresTextBoxSubtitle(
                                   id: TxtStateName.nombresRegE, texto: text);
                             },
                           ),
                           const SizedBox(height: 16),
                           TextBoxSubtitle(
                             containerHeight: 40,
-                            texto: context
-                                    .read<MainState>()
-                                    .getState(TxtStateName.apellidoRegE) ??
-                                "",
+                            texto: textoApellidoTextBoxSubtitle,
                             textoBase: "Apellidos",
                             containerWidth: 400,
                             maxlength: 50,
@@ -210,17 +231,14 @@ class RegirterEmpresas extends StatelessWidget {
                               fit: BoxFit.fitHeight,
                             ),
                             onChanged: (text) {
-                              context.read<MainState>().setState(
+                              onChangedApellidosTextBoxSubtitle(
                                   id: TxtStateName.apellidoRegE, texto: text);
                             },
                           ),
                           const SizedBox(height: 16),
                           TextBoxSubtitle(
                             containerHeight: 40,
-                            texto: context
-                                    .read<MainState>()
-                                    .getState(TxtStateName.emailRegE) ??
-                                "",
+                            texto: textoEmailTextBoxSubtitle,
                             textoBase: "Correo Electrónico",
                             containerWidth: 400,
                             maxlength: 50,
@@ -235,17 +253,14 @@ class RegirterEmpresas extends StatelessWidget {
                               fit: BoxFit.scaleDown,
                             ),
                             onChanged: (text) {
-                              context.read<MainState>().setState(
+                              onChangedEmailTextBoxSubtitle(
                                   id: TxtStateName.emailRegE, texto: text);
                             },
                           ),
                           const SizedBox(height: 16),
                           TextBoxSubtitle(
                             containerHeight: 40,
-                            texto: context
-                                    .read<MainState>()
-                                    .getState(TxtStateName.phoneRegE) ??
-                                "",
+                            texto: textoPhoneTextBoxSubtitle,
                             textoBase: "Celular",
                             containerWidth: 400,
                             maxlength: 10,
@@ -265,7 +280,7 @@ class RegirterEmpresas extends StatelessWidget {
                               fit: BoxFit.fitHeight,
                             ),
                             onChanged: (text) {
-                              context.read<MainState>().setState(
+                              onChangedPhoneTextBoxSubtitle(
                                   id: TxtStateName.phoneRegE, texto: text);
                             },
                           ),
@@ -281,7 +296,7 @@ class RegirterEmpresas extends StatelessWidget {
                         fontsize: 5,
                         border: 10,
                         onPressed: () {
-                          context.read<MainBLoC>().resetPop(context);
+                          clickCancelar(context);
                         },
                         height: 35,
                         width: 180,
@@ -296,9 +311,7 @@ class RegirterEmpresas extends StatelessWidget {
                         fontsize: 5,
                         text: "Registrarme",
                         onPressed: () {
-                          context
-                              .read<MainBLoC>()
-                              .clickRegistroEmpresas(context);
+                          clickRegistroEmpresa(context, false);
                         },
                         height: 35,
                         width: 180,

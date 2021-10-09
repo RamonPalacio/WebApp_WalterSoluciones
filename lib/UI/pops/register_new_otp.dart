@@ -15,6 +15,8 @@ class RegisterNewOtp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Function clickReenviarSMS = context.read<MainBLoC>().clickLogIn;
+
     return Container(
       height: 450,
       width: 650,
@@ -42,9 +44,7 @@ class RegisterNewOtp extends StatelessWidget {
               colortext: const Color(0xFF002EA8),
               padingLeft: 0,
               padingRight: 5,
-              onPressed: () {
-                context.read<MainBLoC>().clickLogIn(context);
-              },
+              onPressed: clickReenviarSMS(context),
               height: 50,
               width: 300,
               colorUp: 0xFF002EA8,

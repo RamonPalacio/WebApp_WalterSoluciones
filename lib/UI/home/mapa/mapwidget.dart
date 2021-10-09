@@ -2,7 +2,6 @@ import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:provider/src/provider.dart';
 import 'package:walte_soluciones/constant/const_state.dart';
 import 'package:walte_soluciones/provider/state/main_state.dart';
 
@@ -56,74 +55,84 @@ class MapaOpenSourse extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    MapController mapController =
-        context.read<MainState>().getControlador(ConstState.mapController);
-    List<LatLng> points2 = [];
-    for (var i in [
-      [-73.995237, 9.99123],
-      [-73.998537, 9.977711],
-      [-73.954449, 9.970013],
-      [-73.936738, 9.945233],
-      [-73.973011, 9.926226],
-      [-73.886375, 9.973155],
-      [-73.979497, 10.207564],
-      [-74.162788, 10.483546],
-      [-74.169924, 10.590446],
-      [-74.160727, 10.670255],
-      [-74.115376, 10.741969],
-      [-74.097185, 10.749405],
-      [-74.105498, 10.79611],
-      [-74.152807, 10.881348],
-      [-74.115545, 10.877816],
-      [-74.114027, 10.89037],
-      [-74.073386, 10.898181],
-      [-74.066131, 10.910105],
-      [-74.038325, 10.898604],
-      [-74.029666, 10.921425]
-    ]) {
-      points2.add(LatLng(i[1], i[0]));
-      // print("${i[0]},${i[1]}");
-    }
-    // print(points2);
+    MainState _state = context.read<MainState>();
+    MapController mapController = MapController();
+    context.read<MainState>().setControlador(mapController);
+    LatLng markerPositionA = _state.getState(ConstState.markerA);
+    LatLng markerPositionB = _state.getState(ConstState.markerB);
+    LatLng actualCenter = _state.getState(ConstState.centerMap);
+    Future.delayed(const Duration(seconds: 1), () {
+      mapController.move(actualCenter, 15);
+    });
 
-    // for (var i in lista) {
-    //   print("${i[0]},${i[1]}");
+    // List<LatLng> points2 = [];
+
+    // for (var i in [
+    //   [-73.995237, 9.99123],
+    //   [-73.998537, 9.977711],
+    //   [-73.954449, 9.970013],
+    //   [-73.936738, 9.945233],
+    //   [-73.973011, 9.926226],
+    //   [-73.886375, 9.973155],
+    //   [-73.979497, 10.207564],
+    //   [-74.162788, 10.483546],
+    //   [-74.169924, 10.590446],
+    //   [-74.160727, 10.670255],
+    //   [-74.115376, 10.741969],
+    //   [-74.097185, 10.749405],
+    //   [-74.105498, 10.79611],
+    //   [-74.152807, 10.881348],
+    //   [-74.115545, 10.877816],
+    //   [-74.114027, 10.89037],
+    //   [-74.073386, 10.898181],
+    //   [-74.066131, 10.910105],
+    //   [-74.038325, 10.898604],
+    //   [-74.029666, 10.921425]
+    // ]) {
+    //   points2.add(LatLng(i[1], i[0]));
+    //   // print("${i[0]},${i[1]}");
     // }
-    var points = [
-      LatLng(9.99123, -73.995237),
-      LatLng(9.977711, -73.998537),
-      LatLng(9.970013, -73.954449),
-      LatLng(9.945233, -73.936738),
-      LatLng(9.926226, -73.973011),
-      LatLng(9.973155, -73.886375),
-      LatLng(10.207564, -73.979497),
-      LatLng(10.483546, -74.162788),
-      LatLng(10.590446, -74.169924),
-      LatLng(10.670255, -74.160727),
-      LatLng(10.741969, -74.115376),
-      LatLng(10.749405, -74.097185),
-      LatLng(10.79611, -74.105498),
-      LatLng(10.881348, -74.152807),
-      LatLng(10.877816, -74.115545),
-      LatLng(10.89037, -74.114027),
-      LatLng(10.898181, -74.073386),
-      LatLng(10.910105, -74.066131),
-      LatLng(10.898604, -74.038325),
-      LatLng(10.921425, -74.029666)
-    ];
+    // // print(points2);
 
-    var pointsGradient = [
-      LatLng(10.741969, -74.115376),
-      LatLng(10.749405, -74.097185),
-      LatLng(10.79611, -74.105498),
-      LatLng(10.881348, -74.152807),
-      LatLng(10.877816, -74.115545),
-      LatLng(10.89037, -74.114027),
-      LatLng(10.898181, -74.073386),
-      LatLng(10.910105, -74.066131),
-      LatLng(10.898604, -74.038325),
-      LatLng(10.921425, -74.029666)
-    ];
+    // // for (var i in lista) {
+    // //   print("${i[0]},${i[1]}");
+    // // }
+    // var points = [
+    //   LatLng(9.99123, -73.995237),
+    //   LatLng(9.977711, -73.998537),
+    //   LatLng(9.970013, -73.954449),
+    //   LatLng(9.945233, -73.936738),
+    //   LatLng(9.926226, -73.973011),
+    //   LatLng(9.973155, -73.886375),
+    //   LatLng(10.207564, -73.979497),
+    //   LatLng(10.483546, -74.162788),
+    //   LatLng(10.590446, -74.169924),
+    //   LatLng(10.670255, -74.160727),
+    //   LatLng(10.741969, -74.115376),
+    //   LatLng(10.749405, -74.097185),
+    //   LatLng(10.79611, -74.105498),
+    //   LatLng(10.881348, -74.152807),
+    //   LatLng(10.877816, -74.115545),
+    //   LatLng(10.89037, -74.114027),
+    //   LatLng(10.898181, -74.073386),
+    //   LatLng(10.910105, -74.066131),
+    //   LatLng(10.898604, -74.038325),
+    //   LatLng(10.921425, -74.029666)
+    // ];
+
+    // var pointsGradient = [
+    //   LatLng(10.741969, -74.115376),
+    //   LatLng(10.749405, -74.097185),
+    //   LatLng(10.79611, -74.105498),
+    //   LatLng(10.881348, -74.152807),
+    //   LatLng(10.877816, -74.115545),
+    //   LatLng(10.89037, -74.114027),
+    //   LatLng(10.898181, -74.073386),
+    //   LatLng(10.910105, -74.066131),
+    //   LatLng(10.898604, -74.038325),
+    //   LatLng(10.921425, -74.029666)
+    // ];
+    // Logger().i("pintando dentro");
 
     return Stack(
       children: [
@@ -169,9 +178,7 @@ class MapaOpenSourse extends StatelessWidget {
             options: MapOptions(
                 minZoom: 5,
                 maxZoom: 18,
-                center: context
-                    .watch<MainState>()
-                    .getState(ConstState.centerMap), // InicialValue Medellin
+                center: actualCenter, // InicialValue Medellin
                 zoom: 15.0,
                 rotation: 1),
             layers: [
@@ -182,37 +189,34 @@ class MapaOpenSourse extends StatelessWidget {
                   'id': stylemap,
                   "tilt": "60",
                 },
-                attributionBuilder: (_) {
-                  return Text(copyright,
-                      style: const TextStyle(color: Color(0x27000000)));
-                },
               ),
-              PolylineLayerOptions(
-                polylines: [
-                  Polyline(
-                      points: points, strokeWidth: 4.0, color: Colors.purple),
-                ],
-              ),
-              PolylineLayerOptions(
-                polylines: [
-                  Polyline(
-                    points: pointsGradient,
-                    strokeWidth: 4.0,
-                    gradientColors: [
-                      const Color(0xffE40203),
-                      const Color(0xffFEED00),
-                      const Color(0xff007E2D),
-                    ],
-                  ),
-                ],
-              ),
+
+              ///Linias en el mapa
+              // PolylineLayerOptions(
+              //   polylines: [
+              //     Polyline(
+              //         points: points, strokeWidth: 4.0, color: Colors.purple),
+              //   ],
+              // ),
+              // PolylineLayerOptions(
+              //   polylines: [
+              //     Polyline(
+              //       points: pointsGradient,
+              //       strokeWidth: 4.0,
+              //       gradientColors: [
+              //         const Color(0xffE40203),
+              //         const Color(0xffFEED00),
+              //         const Color(0xff007E2D),
+              //       ],
+              //     ),
+              //   ],
+              // ),
               MarkerLayerOptions(
                 markers: [
                   Marker(
                     width: 56.0,
                     height: 107.0,
-                    point:
-                        context.read<MainState>().getState(ConstState.markerA),
+                    point: markerPositionA,
                     builder: (ctx) => Column(
                       children: [
                         Container(
@@ -247,38 +251,39 @@ class MapaOpenSourse extends StatelessWidget {
                   Marker(
                     width: 56.0,
                     height: 107.0,
-                    point:
-                        context.read<MainState>().getState(ConstState.markerB),
-                    builder: (ctx) => Column(
-                      children: [
-                        Container(
-                          alignment: Alignment.center,
-                          height: 40,
-                          width: 40,
-                          decoration: const BoxDecoration(
-                            color: Color(0xFFED6C1D),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8.0),
+                    point: markerPositionB,
+                    builder: (ctx) {
+                      return Column(
+                        children: [
+                          Container(
+                            alignment: Alignment.center,
+                            height: 40,
+                            width: 40,
+                            decoration: const BoxDecoration(
+                              color: Color(0xFFED6C1D),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(8.0),
+                              ),
+                            ),
+                            child: const Text("B",
+                                style: TextStyle(
+                                    fontSize: 30, color: Color(0xFFFFFFFF))),
+                          ),
+                          const SizedBox(height: 6),
+                          Container(
+                            height: 10,
+                            width: 10,
+                            decoration: const BoxDecoration(
+                              color: Color(0xFFED6C1D),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(50.0),
+                              ),
                             ),
                           ),
-                          child: const Text("B",
-                              style: TextStyle(
-                                  fontSize: 30, color: Color(0xFFFFFFFF))),
-                        ),
-                        const SizedBox(height: 6),
-                        Container(
-                          height: 10,
-                          width: 10,
-                          decoration: const BoxDecoration(
-                            color: Color(0xFFED6C1D),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(50.0),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 51),
-                      ],
-                    ),
+                          const SizedBox(height: 51),
+                        ],
+                      );
+                    },
                   ),
                 ],
               ),

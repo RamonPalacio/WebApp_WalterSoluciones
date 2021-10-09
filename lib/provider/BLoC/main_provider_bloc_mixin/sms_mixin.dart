@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:walte_soluciones/constant/pages_show_state.dart';
 import 'package:walte_soluciones/provider/BLoC/main_provider_bloc.dart';
-
-// ignore: implementation_imports
-import 'package:provider/src/provider.dart';
 import 'package:walte_soluciones/provider/state/main_state.dart';
 
 abstract class SmsBloc {

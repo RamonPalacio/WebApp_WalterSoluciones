@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:walte_soluciones/constant/pages_show_state.dart';
 import 'package:walte_soluciones/constant/const_state.dart';
+export 'package:provider/src/provider.dart';
 import 'package:latlong2/latlong.dart';
 export 'package:latlong2/latlong.dart';
 
 class MainState extends ChangeNotifier {
+  MapController _mapControler = MapController();
   final Map<dynamic, dynamic> _inputTextState = {
     //Buscadores de Direcciones
     ConstState.dirListPredictionA: [],
@@ -24,9 +26,10 @@ class MainState extends ChangeNotifier {
     PagesShowState.isloadinglogin: false,
     PagesShowState.idayvueltamenu: false,
 
-    ConstState.btnidayvuelta: false,
     ConstState.isLoading: false,
+    ConstState.isLoadingReg: false,
     ConstState.autoidFirebase: "",
+    ConstState.btnidayvuelta: false,
     ConstState.btnciudad: "Medellín",
     ConstState.btntamano: "Pequeños",
 
@@ -40,26 +43,26 @@ class MainState extends ChangeNotifier {
     showState = false,
   }) {
     // ignore: avoid_print
-    print("MainState>removeState:" + iD);
+    // print("MainState>removeState:" + iD);
     _inputTextState.remove(iD);
     if (showState = true) notifyListeners();
   }
 
   getState(iD) {
     // ignore: avoid_print
-    print("MainState>getState" + iD);
+    // print("MainState>getState" + iD);
     return _inputTextState["$iD"] ?? "";
   }
 
-  setState({
+  void setState({
     required String id,
     required texto,
     bool updateGeneralState = false,
   }) {
     // ignore: avoid_print
-    print(
-      "MainState>setState=> id:${id.toString()} texto: ${texto.toString()}",
-    );
+    // print(
+    //   "MainState>setState=> id:${id.toString()} texto: ${texto.toString()}",
+    // );
 
     if (texto != null) {
       _inputTextState[id] = texto;
@@ -67,18 +70,20 @@ class MainState extends ChangeNotifier {
     if (updateGeneralState) notifyListeners();
   }
 
-  final MapController _mapControler = MapController();
-
-  @override
-  void dispose() {
-    // _mapControler.dispose(); // No posee dispose
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   // _mapControler.dispose(); // No posee dispose
+  //   super.dispose();
+  // }
 
   getControlador(nameControler) {
     switch (nameControler) {
       case ConstState.mapController:
         return _mapControler;
     }
+  }
+
+  setControlador(MapController controller) {
+    _mapControler = controller;
   }
 }

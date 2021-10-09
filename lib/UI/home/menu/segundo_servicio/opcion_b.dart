@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/src/provider.dart';
 import 'package:walte_soluciones/constant/const_state.dart';
 import 'package:walte_soluciones/constant/txt_state_name.dart';
 import 'package:walte_soluciones/custom/molecules/textbox_subtitle.dart';

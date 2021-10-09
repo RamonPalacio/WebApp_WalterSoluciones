@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
 import 'package:walte_soluciones/data/database/user_mixin.dart';
@@ -14,8 +13,6 @@ class EndPointApi with GetCoordenadas, GetEtiquetas, Users, SendSMS {
 
   Future<List> getUbicacion(String address) async {
     Coordenadas response = await getCoordenadas(address);
-    // ignore: avoid_print
-    print(response.status); // OK
     double? lat, lng;
     String? direccion;
     List<dynamic> direcciones = [];
@@ -33,7 +30,7 @@ class EndPointApi with GetCoordenadas, GetEtiquetas, Users, SendSMS {
       lng ??= e.geometry.location.lng;
     }
     // Logger().w(ubicaciones.dirprincipal.direccion);
-    Logger().w('$direccion $lat,$lng');
+    // Logger().w('$direccion $lat,$lng');
     return direcciones;
   }
 
@@ -48,10 +45,9 @@ class EndPointApi with GetCoordenadas, GetEtiquetas, Users, SendSMS {
         "idUser": value.id,
         "id": value.id,
       });
-      debugPrint("User Added:${value.id}");
       isCreate = true;
     }).catchError((error) {
-      debugPrint("Failed to add user: $error");
+      Logger().e("Failed to add user: $error");
     });
     if (isCreate) {
       return {"statusCode": 200};

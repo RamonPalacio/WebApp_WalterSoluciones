@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:provider/src/provider.dart';
 import 'package:walte_soluciones/constant/const_state.dart';
 import 'package:walte_soluciones/constant/txt_state_name.dart';
 import 'package:walte_soluciones/custom/molecules/textbox_subtitle.dart';
-import 'package:walte_soluciones/data/database/endpoint_api.dart';
+import 'package:walte_soluciones/provider/BLoC/main_provider_bloc.dart';
 import 'package:walte_soluciones/provider/state/main_state.dart';
 import 'package:walte_soluciones/provider/state/txt_controllers_state.dart';
 
@@ -16,6 +15,16 @@ class OptionA extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController controllerDirATextBoxSubtitle = context
+        .read<TxtControllersState>()
+        .getControladorTxt(TxtStateName.txtDirprincipal);
+    Future<void> Function(
+      BuildContext context,
+      String texto,
+      String dirListPrediction,
+      String ciudad,
+    ) onChangedDirTextBoxSubtitle = context.read<MainBLoC>().updateDirSugestion;
+
     return Row(
       children: [
         Container(
@@ -37,26 +46,17 @@ class OptionA extends StatelessWidget {
             child: InkWell(
               onTap: () {},
               child: TextBoxSubtitle(
-                controller: context
-                    .read<TxtControllersState>()
-                    .getControladorTxt(TxtStateName.txtDirprincipal),
+                maxlength: 100,
+                controller: controllerDirATextBoxSubtitle,
                 onChanged: (String texto) async {
-                  String ciudad =
-                      context.read<MainState>().getState(ConstState.btnciudad);
-                  context.read<MainState>().setState(
-                        id: ConstState.dirListPredictionA,
-                        texto:
-                            await EndPointApi().getUbicacion("$texto, $ciudad"),
-                        updateGeneralState: true,
-                      );
+                  onChangedDirTextBoxSubtitle(context, texto,
+                      ConstState.dirListPredictionA, ConstState.btnciudad);
                 },
                 formateado: [
                   FilteringTextInputFormatter.allow(
                     RegExp('[a-z A-Z,-_0-9]'),
                   ),
                 ],
-                textFieldAltura: 30,
-                enable: true,
                 iconPre: Padding(
                   padding: const EdgeInsets.only(left: 0, right: 6),
                   child: SvgPicture.asset(
@@ -65,8 +65,6 @@ class OptionA extends StatelessWidget {
                     height: 16,
                     fit: BoxFit.fitHeight,
                   ),
-
-                  // Img(color: 0xFF353B4D, size: 1),
                 ),
                 textoBase: "Ingresar dirección o sitio",
                 iconPos: Padding(
@@ -77,8 +75,6 @@ class OptionA extends StatelessWidget {
                     height: 16,
                     fit: BoxFit.fitHeight,
                   ),
-
-                  //  ImgCheck(color: 0xFF353B4D, size: 1),
                 ),
               ),
             ),

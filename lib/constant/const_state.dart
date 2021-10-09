@@ -9,6 +9,7 @@ class ConstState {
   static const String btnidayvuelta = 'btnidayvuelta_menu';
 
   static const String isLoading = 'is_loading_btncontinuar_signin';
+  static const String isLoadingReg = 'is_loading_btnregistro_registro';
 
   static const String userAutoId = 'id_login';
   static const String userName = 'name_login';

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:walte_soluciones/constant/const_state.dart';
 import 'package:walte_soluciones/constant/txt_state_name.dart';
 import 'package:walte_soluciones/custom/molecules/botomgradiane.dart';
 
@@ -18,6 +20,43 @@ class RegisterPersonas extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MainBLoC mB = context.read<MainBLoC>();
+    MainState mS = context.read<MainState>();
+
+    Function clickSomosEmpresas = mB.showPopUpRegEmpresa;
+
+    Function clickCancelar = mB.resetPop;
+
+    void Function(BuildContext context, [bool personas]) clickRegistroPersonas =
+        mB.addUsuario;
+
+    String textoNamesTextBoxSubtitle =
+        mS.getState(TxtStateName.nombresReg) ?? "";
+    Function onChangedNombresTextBoxSubtitle = mS.setState;
+
+    String textoApellidoTextBoxSubtitle =
+        mS.getState(TxtStateName.apellidoReg) ?? "";
+
+    void Function({
+      required String id,
+      required dynamic texto,
+      bool updateGeneralState,
+    }) onChangedApellidosTextBoxSubtitle = mS.setState;
+
+    String textoEmailTextBoxSubtitle = mS.getState(TxtStateName.emailReg) ?? "";
+    void Function({
+      required String id,
+      required dynamic texto,
+      bool updateGeneralState,
+    }) onChangedEmailTextBoxSubtitle = mS.setState;
+
+    String textoPhoneTextBoxSubtitle = mS.getState(TxtStateName.phoneReg) ?? "";
+    void Function({
+      required String id,
+      required dynamic texto,
+      bool updateGeneralState,
+    }) onChangedPhoneTextBoxSubtitle = mS.setState;
+
     return Container(
       height: 560,
       width: 850,
@@ -92,7 +131,7 @@ class RegisterPersonas extends StatelessWidget {
                         padingLeft: 10,
                         padingRight: 30,
                         onPressed: () {
-                          context.read<MainBLoC>().clickSomosEmpresas(context);
+                          clickSomosEmpresas(context);
                         },
                         height: 37,
                         width: 192,
@@ -129,11 +168,8 @@ class RegisterPersonas extends StatelessWidget {
                       child: Column(
                         children: [
                           TextBoxSubtitle(
-                            containerHeight: 40,
-                            texto: context
-                                    .read<MainState>()
-                                    .getState(TxtStateName.nombresReg) ??
-                                "",
+                            containerHeight: 35,
+                            texto: textoNamesTextBoxSubtitle,
                             textoBase: "Nombres",
                             containerWidth: 400,
                             maxlength: 50,
@@ -153,7 +189,7 @@ class RegisterPersonas extends StatelessWidget {
                               fit: BoxFit.fitHeight,
                             ),
                             onChanged: (text) {
-                              context.read<MainState>().setState(
+                              onChangedNombresTextBoxSubtitle(
                                   id: TxtStateName.nombresReg, texto: text);
                             },
                           ),
@@ -161,10 +197,7 @@ class RegisterPersonas extends StatelessWidget {
                           //
                           TextBoxSubtitle(
                             containerHeight: 40,
-                            texto: context
-                                    .read<MainState>()
-                                    .getState(TxtStateName.apellidoReg) ??
-                                "",
+                            texto: textoApellidoTextBoxSubtitle,
                             textoBase: "Apellidos",
                             containerWidth: 400,
                             maxlength: 50,
@@ -184,7 +217,7 @@ class RegisterPersonas extends StatelessWidget {
                               fit: BoxFit.fitHeight,
                             ),
                             onChanged: (text) {
-                              context.read<MainState>().setState(
+                              onChangedApellidosTextBoxSubtitle(
                                   id: TxtStateName.apellidoReg, texto: text);
                             },
                           ),
@@ -192,10 +225,7 @@ class RegisterPersonas extends StatelessWidget {
                           //
                           TextBoxSubtitle(
                             containerHeight: 40,
-                            texto: context
-                                    .read<MainState>()
-                                    .getState(TxtStateName.emailReg) ??
-                                "",
+                            texto: textoEmailTextBoxSubtitle,
                             textoBase: "Correo Electrónico",
                             containerWidth: 400,
                             maxlength: 50,
@@ -210,17 +240,14 @@ class RegisterPersonas extends StatelessWidget {
                               fit: BoxFit.scaleDown,
                             ),
                             onChanged: (text) {
-                              context.read<MainState>().setState(
+                              onChangedEmailTextBoxSubtitle(
                                   id: TxtStateName.emailReg, texto: text);
                             },
                           ),
                           const SizedBox(height: 16),
                           TextBoxSubtitle(
                             containerHeight: 40,
-                            texto: context
-                                    .read<MainState>()
-                                    .getState(TxtStateName.phoneReg) ??
-                                "",
+                            texto: textoPhoneTextBoxSubtitle,
                             textoBase: "Celular",
                             containerWidth: 400,
                             maxlength: 10,
@@ -240,7 +267,7 @@ class RegisterPersonas extends StatelessWidget {
                               fit: BoxFit.fitHeight,
                             ),
                             onChanged: (text) {
-                              context.read<MainState>().setState(
+                              onChangedPhoneTextBoxSubtitle(
                                   id: TxtStateName.phoneReg, texto: text);
                             },
                           ),
@@ -254,7 +281,7 @@ class RegisterPersonas extends StatelessWidget {
                                 // padingLeft: 0,
                                 // padingRight: 0,
                                 onPressed: () {
-                                  context.read<MainBLoC>().resetPop(context);
+                                  clickCancelar(context);
                                 },
                                 height: 35,
                                 width: 180,
@@ -265,19 +292,30 @@ class RegisterPersonas extends StatelessWidget {
                                 borderColor: 0xFFF3F3F5,
                               ),
                               const Spacer(),
-                              BotonGradiane(
-                                fontsize: 5,
-                                text: "Registrarme",
-                                onPressed: () {
-                                  context
-                                      .read<MainBLoC>()
-                                      .clickRegistroPersonas(context);
+                              Consumer<MainState>(
+                                builder: (context, mS, child) {
+                                  return !mS.getState(ConstState.isLoadingReg)
+                                      ? BotonGradiane(
+                                          fontsize: 5,
+                                          text: "Registrarme",
+                                          onPressed: () {
+                                            clickRegistroPersonas(context);
+                                          },
+                                          height: 35,
+                                          width: 180,
+                                          colorUp: 0xFF002EA8,
+                                          colorDown: 0xFF002EA8,
+                                          border: 10,
+                                        )
+                                      : Container(
+                                          alignment: Alignment.center,
+                                          height: 35,
+                                          width: 180,
+                                          child: const SizedBox(
+                                              width: 35,
+                                              child:
+                                                  CircularProgressIndicator()));
                                 },
-                                height: 35,
-                                width: 180,
-                                colorUp: 0xFF002EA8,
-                                colorDown: 0xFF002EA8,
-                                border: 10,
                               ),
                             ],
                           )
