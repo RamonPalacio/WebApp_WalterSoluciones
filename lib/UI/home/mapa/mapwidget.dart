@@ -1,6 +1,10 @@
+import 'dart:html';
+
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:walte_soluciones/provider/context/constant/const_state.dart';
 import 'package:walte_soluciones/provider/context/main_state.dart';
@@ -290,69 +294,6 @@ class MapaOpenSourse extends StatelessWidget {
             ],
           ),
         ),
-        // FutureBuilder<String>(
-        //   future: getLocation(), // a previously-obtained Future<String> or null
-        //   builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-        //     List<Widget> children;
-        //     if (snapshot.hasData) {
-        //       children = <Widget>[
-        //         const Icon(
-        //           Icons.check_circle_outline,
-        //           color: Colors.green,
-        //           size: 60,
-        //         ),
-        //         Padding(
-        //           padding: const EdgeInsets.only(top: 16),
-        //           child: Text('Result: ${snapshot.data}'),
-        //         )
-        //       ];
-        //     } else if (snapshot.hasError) {
-        //       children = <Widget>[
-        //         const Icon(
-        //           Icons.error_outline,
-        //           color: Colors.red,
-        //           size: 60,
-        //         ),
-        //         Padding(
-        //           padding: const EdgeInsets.only(top: 16),
-        //           child: Text('Error: ${snapshot.error}'),
-        //         )
-        //       ];
-        //     } else {
-        //       children = const <Widget>[
-        //         SizedBox(
-        //           child: CircularProgressIndicator(),
-        //           width: 60,
-        //           height: 60,
-        //         ),
-        //         Padding(
-        //           padding: EdgeInsets.only(top: 16),
-        //           child: Text('Awaiting result...'),
-        //         )
-        //       ];
-        //     }
-        //     return Center(
-        //       child: Column(
-        //         mainAxisAlignment: MainAxisAlignment.center,
-        //         crossAxisAlignment: CrossAxisAlignment.center,
-        //         children: children,
-        //       ),
-        //     );
-        //   },
-        // ),
-        //TODO_ mascara de distancia
-        // ClipOval(
-        //   child: Container(
-        //     height: 500,
-        //     width: 500,
-        //     color: const Color(0xFFFFFFFF),
-        //     child: SvgPicture.asset(
-        //       "assets/icons/check.svg",
-        //       fit: BoxFit.fitHeight,
-        //       color: const Color(0xFF002EA8),
-        //     ),
-        //   ),
-        // ),
         blur
             ? SizedBox(
                 height: height,
@@ -360,6 +301,92 @@ class MapaOpenSourse extends StatelessWidget {
               ).frosted(
                 blur: 2, frostColor: const Color(0xFFFFFFFF), frostOpacity: 0)
             : const SizedBox(),
+        Positioned(
+          left: 25,
+          bottom: 25,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+              color: Colors.white,
+              height: 117,
+              width: 480,
+              child: Row(
+                children: [
+                  Row(
+                    children: [
+                      SvgPicture.asset(
+                        "assets/icons/servicemoney.svg",
+                        height: 64,
+                        fit: BoxFit.fitHeight,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Distancia',
+                            textAlign: TextAlign.left,
+                            style: GoogleFonts.manrope(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              color: const Color(0xFD002EA8),
+                            ),
+                          ),
+                          Text(
+                            '2 Km',
+                            textAlign: TextAlign.left,
+                            style: GoogleFonts.manrope(
+                              fontSize: 25,
+                              fontWeight: FontWeight.w700,
+                              color: const Color(0xFD002EA8),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                  const Spacer(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SvgPicture.asset(
+                        "assets/icons/servicecar.svg",
+                        height: 64,
+                        fit: BoxFit.fitHeight,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Valor a Pagar',
+                            textAlign: TextAlign.left,
+                            style: GoogleFonts.manrope(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              color: const Color(0xFD002EA8),
+                            ),
+                          ),
+                          Text(
+                            '\$ 7.200',
+                            textAlign: TextAlign.left,
+                            style: GoogleFonts.manrope(
+                              fontSize: 25,
+                              fontWeight: FontWeight.w700,
+                              color: const Color(0xFD002EA8),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
+        )
       ],
     );
   }
