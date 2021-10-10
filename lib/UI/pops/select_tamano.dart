@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
 import 'package:walte_soluciones/core/widgets/atomos/botomgradiane.dart';
-import 'package:walte_soluciones/UI/home/menu/inicio_servicio/box_initial_location.dart';
+import 'package:walte_soluciones/provider/context/constant/const_styles.dart';
 import 'package:walte_soluciones/provider/logic/main_bloc.dart';
 
 class SelectTamano extends StatelessWidget {
@@ -14,12 +14,11 @@ class SelectTamano extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: Container(
-        height: 400,
-        width: 650,
-        // color: const Color(0xFD000000),
+        height: 350,
+        width: 450,
         decoration: boxDecoration,
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(32),
+          padding: const EdgeInsets.all(0),
           child: Column(
             children: [
               Text(
@@ -41,161 +40,81 @@ class SelectTamano extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              BotonGradiane(
-                // text: "Ciudad de Mexico",
-                // colortext: const Color(0xFD353B4D),
-                padingLeft: 20,
-                padingRight: 20,
-                onPressed: () {
-                  context
-                      .read<MainBLoC>()
-                      .clickTamano(context, tamano: "Pequeno");
-                },
-                height: 56,
-                width: 400,
-                colorUp: 0xFDEEEEEE,
-                colorDown: 0xFDEEEEEE,
-                iconPre: Image.asset(
-                  "assets/icons/icon_email.png",
-                  fit: BoxFit.fill,
-                  height: 15,
-                  width: 15,
-                ),
-                iconPos: Container(
-                  width: 20,
-                  height: 20,
-                  decoration: const BoxDecoration(
-                    color: Color(0xFDDADADA),
-                    shape: BoxShape.circle,
-                  ),
-                ),
-                border: 10,
-                child: Row(
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          "Pequeño / Sobre",
-                          style:
-                              TextStyle(fontSize: 20, color: Color(0xFD353B4D)),
-                        ),
-                        Text(
-                          "Cabe en un morral / mochila",
-                          style:
-                              TextStyle(fontSize: 15, color: Color(0xFD353B4D)),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+              const CardTamano(
+                selector: "Pequeño",
+                texto: "Pequeño / Sobre",
+                subTexto: "Cabe en un morral / mochila",
               ),
               const SizedBox(height: 20),
-              BotonGradiane(
-                // text: "Ciudad de Mexico",
-                // colortext: const Color(0xFD353B4D),
-                padingLeft: 20,
-                padingRight: 20,
-                onPressed: () {
-                  context
-                      .read<MainBLoC>()
-                      .clickTamano(context, tamano: "Mediano");
-                },
-                height: 56,
-                width: 400,
-                colorUp: 0xFDEEEEEE,
-                colorDown: 0xFDEEEEEE,
-                iconPre: Image.asset(
-                  "assets/icons/icon_email.png",
-                  fit: BoxFit.fill,
-                  height: 15,
-                  width: 15,
-                ),
-                iconPos: Container(
-                  width: 20,
-                  height: 20,
-                  decoration: const BoxDecoration(
-                    color: Color(0xFDDADADA),
-                    shape: BoxShape.circle,
-                  ),
-                ),
-                border: 10,
-                child: Row(
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          "Mediano / Grande",
-                          style:
-                              TextStyle(fontSize: 20, color: Color(0xFD353B4D)),
-                        ),
-                        Text(
-                          "Cabe en maleta de mensajería",
-                          style:
-                              TextStyle(fontSize: 15, color: Color(0xFD353B4D)),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+              const CardTamano(
+                selector: "Mediano",
+                texto: "Mediano / Grande",
+                subTexto: "Cabe en maleta de mensajería",
               ),
               const SizedBox(height: 20),
-              BotonGradiane(
-                // text: "Ciudad de Mexico",
-                // colortext: const Color(0xFD353B4D),
-                padingLeft: 20,
-                padingRight: 20,
-                onPressed: () {
-                  context
-                      .read<MainBLoC>()
-                      .clickTamano(context, tamano: "Extra Grande");
-                },
-                height: 56,
-                width: 400,
-                colorUp: 0xFDEEEEEE,
-                colorDown: 0xFDEEEEEE,
-                iconPre: Image.asset(
-                  "assets/icons/icon_email.png",
-                  fit: BoxFit.fill,
-                  height: 15,
-                  width: 15,
-                ),
-                iconPos: Container(
-                  width: 20,
-                  height: 20,
-                  decoration: const BoxDecoration(
-                    color: Color(0xFDDADADA),
-                    shape: BoxShape.circle,
-                  ),
-                ),
-                border: 10,
-                child: Row(
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          "Jumbo / Extra Grande",
-                          style:
-                              TextStyle(fontSize: 20, color: Color(0xFD353B4D)),
-                        ),
-                        Text(
-                          "Cabe en moto con parrilla o carro",
-                          style:
-                              TextStyle(fontSize: 15, color: Color(0xFD353B4D)),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+              const CardTamano(
+                selector: "Extra Grande",
+                texto: "Jumbo / Extra Grande",
+                subTexto: "Cabe en moto con parrilla o carro",
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class CardTamano extends StatelessWidget {
+  const CardTamano({
+    Key? key,
+    required this.selector,
+    required this.texto,
+    required this.subTexto,
+  }) : super(key: key);
+  final String selector;
+  final String texto;
+  final String subTexto;
+
+  @override
+  Widget build(BuildContext context) {
+    void Function(BuildContext context, {required String tamano})
+        onClickTamano = context.read<MainBLoC>().cambiarTamano;
+
+    return BotonGradiane(
+      padingLeft: 20,
+      padingRight: 20,
+      onPressed: () {
+        onClickTamano(context, tamano: selector);
+      },
+      height: 56,
+      width: 400,
+      colorUp: 0xFDEEEEEE,
+      colorDown: 0xFDEEEEEE,
+      iconPre: Image.asset(
+        "assets/icons/icon_email.png",
+        fit: BoxFit.scaleDown,
+        height: 20,
+        width: 20,
+      ),
+      border: 10,
+      child: Row(
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                texto,
+                style: const TextStyle(fontSize: 20, color: Color(0xFD353B4D)),
+              ),
+              Text(
+                subTexto,
+                style: const TextStyle(fontSize: 15, color: Color(0xFD353B4D)),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

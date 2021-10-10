@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
 import 'package:walte_soluciones/core/widgets/atomos/botomgradiane.dart';
-import 'package:walte_soluciones/UI/home/menu/inicio_servicio/box_initial_location.dart';
+import 'package:walte_soluciones/provider/context/constant/const_styles.dart';
 import 'package:walte_soluciones/provider/logic/main_bloc.dart';
 
 class PopAsegurar extends StatelessWidget {
@@ -52,7 +52,7 @@ class PopAsegurar extends StatelessWidget {
                 onPressed: () {
                   context
                       .read<MainBLoC>()
-                      .clickTamano(context, tamano: "Pequeno");
+                      .cambiarTamano(context, tamano: "Pequeno");
                 },
                 height: 56,
                 width: 400,
@@ -103,7 +103,7 @@ class PopAsegurar extends StatelessWidget {
                 onPressed: () {
                   context
                       .read<MainBLoC>()
-                      .clickTamano(context, tamano: "Mediano");
+                      .cambiarTamano(context, tamano: "Mediano");
                 },
                 height: 56,
                 width: 400,
@@ -154,7 +154,7 @@ class PopAsegurar extends StatelessWidget {
                 onPressed: () {
                   context
                       .read<MainBLoC>()
-                      .clickTamano(context, tamano: "Extra Grande");
+                      .cambiarTamano(context, tamano: "Extra Grande");
                 },
                 height: 56,
                 width: 400,

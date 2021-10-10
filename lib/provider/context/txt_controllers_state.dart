@@ -4,6 +4,7 @@ import 'package:walte_soluciones/provider/context/constant/const_txt_state_name.
 class TxtControllersState extends ChangeNotifier {
   final TextEditingController _txtDirprincipal = TextEditingController();
   final TextEditingController _txtDirSecundario = TextEditingController();
+  final TextEditingController _txtTamano = TextEditingController();
 
   TextEditingController getControladorTxt(nameControler) {
     switch (nameControler) {
@@ -11,6 +12,8 @@ class TxtControllersState extends ChangeNotifier {
         return _txtDirprincipal;
       case TxtStateName.txtDirsecundario:
         return _txtDirSecundario;
+      case TxtStateName.txtTamano:
+        return _txtTamano;
       default:
         return TextEditingController();
     }

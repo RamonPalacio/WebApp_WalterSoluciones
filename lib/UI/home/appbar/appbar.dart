@@ -14,6 +14,21 @@ class AppBarHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MainBLoC mB = context.read<MainBLoC>();
+    MainState mS = context.read<MainState>();
+
+    void Function(BuildContext context, [bool show]) onClickIniciarSeccion =
+        mB.showSingin;
+
+    void Function(BuildContext context, {String city}) onClickCity =
+        mB.clickCity;
+
+    void Function(BuildContext context) onClickLogout = mB.clickLogOut;
+
+    String textoBtnCity = mS.getState(ConstState.textoBtnciudad);
+
+    String textoUserNameText = mS.getState(ConstState.userName);
+
     return SizedBox(
       height: 70,
       width: double.infinity,
@@ -37,15 +52,13 @@ class AppBarHome extends StatelessWidget {
                     width: 250,
                     child: Consumer<MainState>(builder: (c, modelState, _) {
                       return BotonGradiane(
-                        text: context
-                            .read<MainState>()
-                            .getState(ConstState.btnciudad),
+                        text: textoBtnCity,
                         fontsize: 12,
                         border: 15,
                         padingLeft: 0,
                         padingRight: 0,
                         onPressed: () {
-                          c.read<MainBLoC>().clickCity(context, city: "");
+                          onClickCity(context, city: "");
                         },
                         height: 46,
                         width: 200,
@@ -56,7 +69,6 @@ class AppBarHome extends StatelessWidget {
                         iconPos: SvgPicture.asset(
                             "assets/icons/icon_incity_next.svg",
                             color: const Color(0xFF002EA8)),
-                        enable: true,
                         colortext: const Color(0xFF002EA8),
                         alingText: Alignment.centerLeft,
                         borderColor: 0xFFF3F3F5,
@@ -68,17 +80,17 @@ class AppBarHome extends StatelessWidget {
                     selector: (c, find) {
                       return find.getState(ConstState.userAutoId);
                     },
-                    builder: (BuildContext c, String getTextoValue, _) {
-                      if (getTextoValue == "") {
+                    builder: (BuildContext c, String textoAutoId, _) {
+                      if (textoAutoId.isEmpty) {
                         return BotonGradiane(
                           text: "Inicia Sesión",
+                          onPressed: () async {
+                            onClickIniciarSeccion(c);
+                          },
                           fontsize: 9,
                           border: 15,
                           padingLeft: 0,
                           padingRight: 0,
-                          onPressed: () async {
-                            context.read<MainBLoC>().clickbtnSignIn(c);
-                          },
                           height: 46,
                           width: 250,
                           colorUp: 0xFF002EA8,
@@ -88,15 +100,15 @@ class AppBarHome extends StatelessWidget {
                           alingText: Alignment.center,
                         );
                       } else {
-                        // return Text(getTextoValue);
                         return BotonGradiane(
+                          // text: "LogOut",
+                          onPressed: () {
+                            onClickLogout(context);
+                          },
                           fontsize: 0,
                           border: 15,
                           padingLeft: 0,
                           padingRight: 0,
-                          onPressed: () {
-                            c.read<MainBLoC>().clickLogOut(context);
-                          },
                           height: 46,
                           width: 300,
                           colorUp: 0xFFFF6C37,
@@ -109,15 +121,13 @@ class AppBarHome extends StatelessWidget {
                           iconPos: SvgPicture.asset(
                               "assets/icons/icon_incity_next.svg",
                               color: const Color(0xFFFFFFFF)),
-                          enable: true,
+
                           colortext: const Color(0xFFFFFFFF),
                           alingText: Alignment.centerLeft,
                           child: Row(
                             children: [
                               Text(
-                                c
-                                    .read<MainState>()
-                                    .getState(ConstState.userName),
+                                textoUserNameText,
                                 style:
                                     const TextStyle(color: Color(0xFFFFFFFF)),
                               ),
@@ -129,29 +139,6 @@ class AppBarHome extends StatelessWidget {
                             ],
                           ),
                         );
-
-                        // BotonGradiane(
-                        //     text: "Cerrar Sesión\n$getTextoValue",
-                        //     fontsize: 9,
-                        //     border: 15,
-                        //     padingLeft: 0,
-                        //     padingRight: 0,
-                        //     onPressed: () {
-                        //       context.read<MainBLoC>().clicksingIn(context);
-                        //     },
-                        //     height: 46,
-                        //     width: 250,
-                        //     colorUp: 0xFFFFFFFF,
-                        //     colorDown: 0xFFFFFFFF,
-                        //     enable: true,
-                        //     colortext: const Color(0xFF002EA8),
-                        //     alingText: Alignment.center,
-                        //     borderColor: 0xFFEEEEEE,
-                        //     iconPre: SvgPicture.asset(
-                        //         "assets/icons/icon_user.svg",
-                        //         color: const Color(0xFD353B4D)))
-
-                        // ;
                       }
                     },
                   ),

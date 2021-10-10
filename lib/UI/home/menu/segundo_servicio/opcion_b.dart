@@ -38,7 +38,7 @@ class OptionB extends StatelessWidget {
                 .getControladorTxt(TxtStateName.txtDirsecundario),
             onChanged: (String texto) async {
               String ciudad =
-                  context.read<MainState>().getState(ConstState.btnciudad);
+                  context.read<MainState>().getState(ConstState.textoBtnciudad);
               context.read<MainState>().setState(
                     id: ConstState.dirListPredictionB,
                     texto: await EndPointApi().getUbicacion("$texto, $ciudad"),

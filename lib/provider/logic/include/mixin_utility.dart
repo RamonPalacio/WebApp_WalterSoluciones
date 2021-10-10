@@ -5,8 +5,10 @@ import 'package:walte_soluciones/core/constant/const_maps.dart';
 import 'package:walte_soluciones/provider/context/constant/const_pages_show_state.dart';
 
 import 'package:walte_soluciones/provider/context/constant/const_state.dart';
+import 'package:walte_soluciones/provider/context/constant/const_txt_state_name.dart';
 import 'package:walte_soluciones/provider/context/main_state.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:walte_soluciones/provider/context/txt_controllers_state.dart';
 
 abstract class Utility {
   void resetPop(BuildContext context) {
@@ -30,7 +32,7 @@ abstract class Utility {
 
   void clickgetDir(BuildContext ctx, {String city = ""}) {
     ctx.read<MainState>().setState(
-          id: ConstState.btnciudad,
+          id: ConstState.textoBtnciudad,
           texto: city,
           updateGeneralState: true,
         );
@@ -65,7 +67,7 @@ abstract class Utility {
 
     ///Almacena Nombre de Ciudad
     mainstate
-      ..setState(id: ConstState.btnciudad, texto: city)
+      ..setState(id: ConstState.textoBtnciudad, texto: city)
 
       ///Guarda en el centerMap_State la ultima ubicacion.
       ..setState(id: ConstState.centerMap, texto: ciudadActual)
@@ -78,25 +80,31 @@ abstract class Utility {
       );
   }
 
-  void clickTamano(BuildContext context, {String tamano = ""}) {
-    if (tamano != "") {
-      context.read<MainState>()
-        ..setState(
-          id: ConstState.btntamano,
-          texto: tamano,
-        )
-        ..setState(
+  void showTamano(BuildContext context, [bool show = true]) {
+    context.read<MainState>().setState(
           id: PagesShowState.tamanoshow,
-          texto: false,
-          updateGeneralState: false,
+          texto: show,
+          updateGeneralState: true,
         );
-    } else {
-      context.read<MainState>().setState(
-            id: PagesShowState.tamanoshow,
-            texto: true,
-            updateGeneralState: false,
-          );
-    }
+  }
+
+  void showSingin(BuildContext context, [bool show = true]) {
+    context.read<MainState>().setState(
+          id: PagesShowState.singinshow,
+          texto: show,
+          updateGeneralState: true,
+        );
+  }
+
+  void cambiarTamano(BuildContext context, {required String tamano}) {
+    MainState mS = context.read<MainState>();
+    context
+        .read<TxtControllersState>()
+        .getControladorTxt(TxtStateName.txtTamano)
+        .text = tamano;
+    mS.setState(
+        id: ConstState.textoBtnTamano, texto: tamano, updateGeneralState: true);
+    showTamano(context, false);
   }
 
   void clickbtnSignIn(BuildContext context, {String tamano = ""}) {

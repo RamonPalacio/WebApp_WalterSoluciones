@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
-import 'package:walte_soluciones/UI/home/menu/inicio_servicio/box_initial_location.dart';
 import 'package:walte_soluciones/provider/context/constant/const_pages_show_state.dart';
+import 'package:walte_soluciones/provider/context/constant/const_styles.dart';
 import 'package:walte_soluciones/provider/logic/main_bloc.dart';
 import 'package:walte_soluciones/provider/context/main_state.dart';
 

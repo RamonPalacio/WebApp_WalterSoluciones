@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:walte_soluciones/UI/home/menu/inicio_servicio/box_initial_location.dart';
-import 'package:walte_soluciones/UI/home/menu/segundo_servicio/_2_ubica_second.dart';
-import 'package:walte_soluciones/UI/home/menu/_3_add_destiny.dart';
-import 'package:walte_soluciones/UI/home/menu/_4.0_SelectService.dart';
-import 'package:walte_soluciones/UI/home/menu/_5_shipping_properties.dart';
-import 'package:walte_soluciones/UI/home/menu/_6_resume.dart';
+import 'package:walte_soluciones/UI/home/menu/segundo_servicio/box_second_location.dart';
+import 'package:walte_soluciones/UI/home/menu/extra/add_address_menu.dart';
+import 'package:walte_soluciones/UI/home/menu/extra/service_select_type.dart';
+import 'package:walte_soluciones/UI/home/menu/extra/tamano_paquete.dart';
+import 'package:walte_soluciones/UI/home/menu/extra/service_resumen.dart';
 import 'package:walte_soluciones/provider/context/constant/const_state.dart';
 import 'package:walte_soluciones/provider/context/main_state.dart';
 
@@ -45,7 +45,9 @@ class Menu extends StatelessWidget {
           SelectTipoServicio(sc: ScrollController()),
           const SizedBox(height: 16),
           ShippingProperties(
-              texto: context.watch<MainState>().getState(ConstState.btntamano)),
+              texto: context
+                  .watch<MainState>()
+                  .getState(ConstState.textoBtnTamano)),
           const SizedBox(height: 16),
           const ResumenPedido(),
         ],

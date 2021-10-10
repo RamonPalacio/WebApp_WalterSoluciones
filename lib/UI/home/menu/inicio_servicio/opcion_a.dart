@@ -50,7 +50,7 @@ class OptionA extends StatelessWidget {
                 controller: controllerDirATextBoxSubtitle,
                 onChanged: (String texto) async {
                   onChangedDirTextBoxSubtitle(context, texto,
-                      ConstState.dirListPredictionA, ConstState.btnciudad);
+                      ConstState.dirListPredictionA, ConstState.textoBtnciudad);
                 },
                 formateado: [
                   FilteringTextInputFormatter.allow(

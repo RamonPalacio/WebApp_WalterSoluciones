@@ -30,8 +30,8 @@ class MainState extends ChangeNotifier {
     ConstState.isLoadingReg: false,
     ConstState.autoidFirebase: "",
     ConstState.btnidayvuelta: false,
-    ConstState.btnciudad: "Medellín",
-    ConstState.btntamano: "Pequeños",
+    ConstState.textoBtnciudad: "Medellín",
+    ConstState.textoBtnTamano: "Pequeños",
 
     ConstState.centerMap: LatLng(6.246727, -75.566189), //Medellin
     ConstState.markerA: LatLng(0, 0),

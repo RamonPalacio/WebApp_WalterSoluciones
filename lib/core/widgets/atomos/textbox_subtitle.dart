@@ -124,6 +124,10 @@ class TextBoxSubtitle extends StatelessWidget {
                     child: Transform.translate(
                       offset: const Offset(0, 7),
                       child: TextFormField(
+                        enabled: enable,
+                        enableSuggestions: false,
+                        // enableInteractiveSelection: enable,
+                        // readOnly: !enable,
                         scrollPadding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                         maxLines: 1,
                         autofocus: autofocus,
@@ -148,18 +152,8 @@ class TextBoxSubtitle extends StatelessWidget {
                         decoration: InputDecoration(
                           contentPadding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                           errorStyle: const TextStyle(fontSize: 9, height: 0.3),
-                          // contentPadding:
-                          //     const EdgeInsets.symmetric(vertical: 8.0),
-                          // hintText: "cuando no hay nada",
-                          // labelText: textoBase,
                           label: Text(textoBase),
                           counter: const SizedBox(),
-
-                          // alignLabelWithHint: true,
-
-                          // focusColor: const Color(0xFF002EA8),
-                          // hoverColor: const Color(0xFF002EA8),
-                          // fillColor: const Color(0xFF002EA8),
                           alignLabelWithHint: true,
                           floatingLabelStyle: const TextStyle(
                             //! Subtitle posclick
@@ -171,17 +165,12 @@ class TextBoxSubtitle extends StatelessWidget {
                           ),
                           labelStyle: const TextStyle(
                             //! Subtitle preclick
-                            // color: Color(0xFF353B4D),
-                            // leadingDistribution: TextLeadingDistribution.proportional,
                             overflow: TextOverflow.ellipsis,
-
                             fontStyle: FontStyle.normal,
                             fontWeight: FontWeight.normal,
                             letterSpacing: 0,
-                            // fontSize: 13,
                             color: Color(0xFD353B4D),
                           ),
-
                           focusedBorder: const OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(0.0)),

@@ -6,10 +6,10 @@ import 'package:provider/provider.dart';
 import 'package:provider/src/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:walte_soluciones/provider/context/constant/const_state.dart';
+import 'package:walte_soluciones/provider/context/constant/const_styles.dart';
 import 'package:walte_soluciones/provider/context/constant/const_txt_state_name.dart';
 import 'package:walte_soluciones/core/widgets/atomos/botomgradiane.dart';
 
-import 'package:walte_soluciones/UI/home/menu/inicio_servicio/box_initial_location.dart';
 import 'package:walte_soluciones/core/widgets/atomos/text_by_height.dart';
 import 'package:walte_soluciones/core/widgets/atomos/textbox_subtitle.dart';
 import 'package:walte_soluciones/provider/logic/main_bloc.dart';

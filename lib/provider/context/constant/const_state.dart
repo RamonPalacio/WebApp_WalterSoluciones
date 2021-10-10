@@ -2,9 +2,8 @@ class ConstState {
   static const String dirListPredictionA = "lista_direccionesA";
   static const String dirListPredictionB = "lista_direccionesB";
 
-  static const String btnciudad = 'btnciudad_home';
-  static const String btnSignIn = 'btnsingin_home';
-  static const String btntamano = 'btntamano_menu';
+  static const String textoBtnciudad = 'btnciudad_home';
+  static const String textoBtnTamano = 'btntamano_menu';
   static const String autoidFirebase = 'autoidFirebase';
   static const String btnidayvuelta = 'btnidayvuelta_menu';
 

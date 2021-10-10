@@ -18,7 +18,7 @@ class AccionesMensajero extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        sc.position.jumpTo(500);
+        //TODO_ Implementar comportamiento a los Botones Select Tipo de Paquete.
       },
       child: Stack(
         alignment: Alignment.center,

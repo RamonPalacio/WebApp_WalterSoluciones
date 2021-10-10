@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
-
-import 'package:walte_soluciones/UI/home/menu/inicio_servicio/box_initial_location.dart';
 import 'package:walte_soluciones/core/widgets/atomos/textbox_subtitle.dart';
+import 'package:walte_soluciones/provider/context/constant/const_styles.dart';
+import 'package:walte_soluciones/provider/context/constant/const_txt_state_name.dart';
+import 'package:walte_soluciones/provider/context/txt_controllers_state.dart';
 import 'package:walte_soluciones/provider/logic/main_bloc.dart';
 
 class ShippingProperties extends StatelessWidget {
@@ -13,22 +14,25 @@ class ShippingProperties extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void Function(BuildContext context) onClickTamanoTextBoxSubtitle =
+        context.read<MainBLoC>().showTamano;
+    TextEditingController txtTamanoController = context
+        .read<TxtControllersState>()
+        .getControladorTxt(TxtStateName.txtTamano);
     return Container(
       padding: const EdgeInsets.all(12),
-      // height: 168,
       width: double.infinity,
-      // color: const Color(0xFFFFFFFF),
       decoration: boxDecoration,
       child: Column(
         children: [
           const SizedBox(height: 10),
           InkWell(
             onTap: () {
-              context.read<MainBLoC>().clickTamano(context, tamano: "");
+              onClickTamanoTextBoxSubtitle(context);
             },
             child: TextBoxSubtitle(
+              enable: false,
               containerWidth: double.infinity,
-              textFieldAltura: 30,
               iconPre: Padding(
                 padding: const EdgeInsets.only(left: 0, right: 6),
                 child: SvgPicture.asset("assets/icons/box.svg",
@@ -37,7 +41,7 @@ class ShippingProperties extends StatelessWidget {
                     fit: BoxFit.fitHeight),
               ),
               textoBase: "Tamaño del envio",
-              texto: texto,
+              controller: txtTamanoController,
               iconPos: Padding(
                 padding: const EdgeInsets.only(left: 6, right: 0),
                 child: Padding(

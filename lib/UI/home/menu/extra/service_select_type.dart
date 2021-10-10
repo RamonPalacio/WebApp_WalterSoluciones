@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:walte_soluciones/UI/home/menu/_4.1_cardService.dart';
+import 'package:walte_soluciones/UI/home/menu/extra/list_services.dart';
 
 class SelectTipoServicio extends StatelessWidget {
   const SelectTipoServicio({

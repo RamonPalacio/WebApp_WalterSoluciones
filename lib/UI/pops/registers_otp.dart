@@ -4,11 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pin_code_text_field/pin_code_text_field.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
+import 'package:walte_soluciones/provider/context/constant/const_styles.dart';
 import 'package:walte_soluciones/provider/context/constant/const_txt_state_name.dart';
 
 import 'package:walte_soluciones/core/widgets/atomos/botomgradiane.dart';
 
-import 'package:walte_soluciones/UI/home/menu/inicio_servicio/box_initial_location.dart';
 import 'package:walte_soluciones/provider/logic/main_bloc.dart';
 import 'package:walte_soluciones/provider/context/main_state.dart';
 
