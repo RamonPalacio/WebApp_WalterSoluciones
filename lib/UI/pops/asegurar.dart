@@ -3,9 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
-import 'package:walte_soluciones/custom/molecules/botomgradiane.dart';
+import 'package:walte_soluciones/core/widgets/atomos/botomgradiane.dart';
 import 'package:walte_soluciones/UI/home/menu/inicio_servicio/box_initial_location.dart';
-import 'package:walte_soluciones/provider/BLoC/main_provider_bloc.dart';
+import 'package:walte_soluciones/provider/logic/main_bloc.dart';
 
 class PopAsegurar extends StatelessWidget {
   const PopAsegurar({Key? key}) : super(key: key);

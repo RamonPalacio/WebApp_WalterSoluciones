@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:walte_soluciones/UI/home/menu/inicio_servicio/opcion_a.dart';
 import 'package:walte_soluciones/UI/home/menu/resultados_direcciones/resultado_consulta_a_y_b.dart';
-import 'package:walte_soluciones/constant/const_state.dart';
-import 'package:walte_soluciones/constant/txt_state_name.dart';
-import 'package:walte_soluciones/custom/molecules/textbox_subtitle.dart';
+import 'package:walte_soluciones/provider/context/constant/const_state.dart';
+import 'package:walte_soluciones/provider/context/constant/const_txt_state_name.dart';
+import 'package:walte_soluciones/core/widgets/atomos/textbox_subtitle.dart';
 
 var boxDecoration = BoxDecoration(
   color: const Color(0xFDFFFFFF),

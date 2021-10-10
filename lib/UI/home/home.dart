@@ -10,8 +10,8 @@ import 'package:walte_soluciones/UI/pops/registro_exitoso.dart';
 import 'package:walte_soluciones/UI/pops/select_city.dart';
 import 'package:walte_soluciones/UI/pops/select_tamano.dart';
 import 'package:walte_soluciones/UI/pops/singin.dart';
-import 'package:walte_soluciones/constant/pages_show_state.dart';
-import 'package:walte_soluciones/provider/state/main_state.dart';
+import 'package:walte_soluciones/provider/context/constant/const_pages_show_state.dart';
+import 'package:walte_soluciones/provider/context/main_state.dart';
 
 import 'appbar/appbar.dart';
 import 'mapa/mapbox.dart';

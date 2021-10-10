@@ -4,8 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/src/provider.dart';
 
 import 'package:walte_soluciones/UI/home/menu/inicio_servicio/box_initial_location.dart';
-import 'package:walte_soluciones/custom/molecules/textbox_subtitle.dart';
-import 'package:walte_soluciones/provider/BLoC/main_provider_bloc.dart';
+import 'package:walte_soluciones/core/widgets/atomos/textbox_subtitle.dart';
+import 'package:walte_soluciones/provider/logic/main_bloc.dart';
 
 class ShippingProperties extends StatelessWidget {
   const ShippingProperties({Key? key, this.texto = ""}) : super(key: key);

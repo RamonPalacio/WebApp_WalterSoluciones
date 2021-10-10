@@ -2,12 +2,12 @@ import 'dart:ui';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:walte_soluciones/provider/state/txt_controllers_state.dart';
+import 'package:walte_soluciones/provider/context/txt_controllers_state.dart';
 
 import 'router/routers.dart';
-import 'constant/app_settings.dart';
-import 'provider/state/main_state.dart';
-import 'provider/BLoC/main_provider_bloc.dart';
+import 'core/constant/app_settings.dart';
+import 'provider/context/main_state.dart';
+import 'provider/logic/main_bloc.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

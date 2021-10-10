@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:walte_soluciones/constant/const_maps.dart';
+import 'package:walte_soluciones/core/constant/const_maps.dart';
 import 'package:walte_soluciones/UI/home/mapa/mapwidget.dart';
-import 'package:walte_soluciones/provider/state/main_state.dart';
+import 'package:walte_soluciones/provider/context/main_state.dart';
 
 class MapBox extends StatelessWidget {
   const MapBox({

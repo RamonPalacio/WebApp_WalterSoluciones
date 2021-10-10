@@ -6,8 +6,8 @@ import 'package:walte_soluciones/UI/home/menu/_3_add_destiny.dart';
 import 'package:walte_soluciones/UI/home/menu/_4.0_SelectService.dart';
 import 'package:walte_soluciones/UI/home/menu/_5_shipping_properties.dart';
 import 'package:walte_soluciones/UI/home/menu/_6_resume.dart';
-import 'package:walte_soluciones/constant/const_state.dart';
-import 'package:walte_soluciones/provider/state/main_state.dart';
+import 'package:walte_soluciones/provider/context/constant/const_state.dart';
+import 'package:walte_soluciones/provider/context/main_state.dart';
 
 class Menu extends StatelessWidget {
   const Menu({
@@ -22,18 +22,19 @@ class Menu extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           ElevatedButton(
-              onPressed: () async {
-                // context
-                //     .read<TxtControllersState>()
-                //     .getControladorTxt(TxtStateName.txtDirprincipal)
-                //     .text = "hola";
+            child: const Text("hola"),
+            onPressed: () async {
+              // context
+              //     .read<TxtControllersState>()
+              //     .getControladorTxt(TxtStateName.txtDirprincipal)
+              //     .text = "hola";
 
-                // var result = await EndPointApi().getpoints(
-                //     "-74.79317", "10.94668", "-74.80148", "10.94366");
+              // var result = await EndPointApi().getpoints(
+              //     "-74.79317", "10.94668", "-74.80148", "10.94366");
 
-                // ignore: avoid_print
-              },
-              child: const Text("hola")),
+              // ignore: avoid_print
+            },
+          ),
           const SizedBox(height: 20),
           const InitialLocation(),
           const SizedBox(height: 10),

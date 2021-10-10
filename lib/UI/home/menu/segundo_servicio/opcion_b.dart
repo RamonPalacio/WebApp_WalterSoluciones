@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:walte_soluciones/constant/const_state.dart';
-import 'package:walte_soluciones/constant/txt_state_name.dart';
-import 'package:walte_soluciones/custom/molecules/textbox_subtitle.dart';
-import 'package:walte_soluciones/data/database/endpoint_api.dart';
-import 'package:walte_soluciones/provider/state/main_state.dart';
-import 'package:walte_soluciones/provider/state/txt_controllers_state.dart';
+import 'package:walte_soluciones/provider/context/constant/const_state.dart';
+import 'package:walte_soluciones/provider/context/constant/const_txt_state_name.dart';
+import 'package:walte_soluciones/core/widgets/atomos/textbox_subtitle.dart';
+import 'package:walte_soluciones/database/endpoint_api.dart';
+import 'package:walte_soluciones/provider/context/main_state.dart';
+import 'package:walte_soluciones/provider/context/txt_controllers_state.dart';
 
 class OptionB extends StatelessWidget {
   const OptionB({

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:blur/blur.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
-import 'package:walte_soluciones/provider/BLoC/main_provider_bloc.dart';
+import 'package:walte_soluciones/provider/logic/main_bloc.dart';
 
 class BlurBackground extends StatelessWidget {
   const BlurBackground({

@@ -2,8 +2,8 @@ import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:walte_soluciones/constant/const_state.dart';
-import 'package:walte_soluciones/provider/state/main_state.dart';
+import 'package:walte_soluciones/provider/context/constant/const_state.dart';
+import 'package:walte_soluciones/provider/context/main_state.dart';
 
 /*
 

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:walte_soluciones/custom/molecules/botomgradiane.dart';
+import 'package:walte_soluciones/core/widgets/atomos/botomgradiane.dart';
 
 import 'package:walte_soluciones/UI/home/menu/inicio_servicio/box_initial_location.dart';
 
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
-import 'package:walte_soluciones/provider/BLoC/main_provider_bloc.dart';
+import 'package:walte_soluciones/provider/logic/main_bloc.dart';
 
 class SelectCity extends StatelessWidget {
   const SelectCity({Key? key}) : super(key: key);

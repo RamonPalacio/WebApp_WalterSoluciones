@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
 
-import 'package:walte_soluciones/constant/const_state.dart';
-import 'package:walte_soluciones/provider/state/main_state.dart';
+import 'package:walte_soluciones/provider/context/constant/const_state.dart';
+import 'package:walte_soluciones/provider/context/main_state.dart';
 
 class AddDirection extends StatelessWidget {
   const AddDirection({

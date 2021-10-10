@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
-import 'package:walte_soluciones/custom/molecules/botomgradiane.dart';
-import 'package:walte_soluciones/custom/atoms/img_market.dart';
-
-import 'package:walte_soluciones/constant/const_state.dart';
-import 'package:walte_soluciones/provider/BLoC/main_provider_bloc.dart';
-import 'package:walte_soluciones/provider/state/main_state.dart';
+import 'package:walte_soluciones/core/widgets/atomos/botomgradiane.dart';
+import 'package:walte_soluciones/provider/context/constant/const_state.dart';
+import 'package:walte_soluciones/provider/logic/main_bloc.dart';
+import 'package:walte_soluciones/provider/context/main_state.dart';
 
 class AppBarHome extends StatelessWidget {
   const AppBarHome({
@@ -53,7 +51,8 @@ class AppBarHome extends StatelessWidget {
                         width: 200,
                         colorUp: 0xFFFFFFFF,
                         colorDown: 0xFFFFFFFF,
-                        iconPre: const ImgMarker(color: 0xFF002EA8),
+                        iconPre: SvgPicture.asset("assets/icons/location.svg",
+                            color: const Color(0xFF002EA8)),
                         iconPos: SvgPicture.asset(
                             "assets/icons/icon_incity_next.svg",
                             color: const Color(0xFF002EA8)),
