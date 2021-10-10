@@ -20,4 +20,7 @@ class ConstState {
   static const String mapController = 'controller_map';
   static const String markerA = 'markers_laglng_map';
   static const String markerB = 'markerB_laglng_map';
+
+  static const String valueDeclarate =
+      'valueDeclarate_menu_selectvaluedeclarate';
 }

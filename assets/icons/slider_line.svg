@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="250.5" height="2" viewBox="0 0 250.5 2">
+  <defs>
+    <linearGradient id="bc9cb2fc-1215-4cad-9b70-c99bca323f8c" data-name="Degradado sin nombre" y1="3" x2="255" y2="3" gradientTransform="matrix(1, 0, 0, -1, 0, 4)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#002ea8" stop-opacity="0"/>
+      <stop offset="0.26" stop-color="#002ea8"/>
+      <stop offset="0.85" stop-color="#002ea8" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="aed83331-3a92-432f-9e0a-a3205cd6504b" data-name="Capa 2">
+    <g id="a71963ec-fd29-4b6f-b7fd-aa2848d352c9" data-name="slider">
+      <path d="M0,1H250.5" fill="none" stroke-width="2" stroke="url(#bc9cb2fc-1215-4cad-9b70-c99bca323f8c)"/>
+    </g>
+  </g>
+</svg>

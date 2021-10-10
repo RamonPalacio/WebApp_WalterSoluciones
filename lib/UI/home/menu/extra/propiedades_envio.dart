@@ -14,11 +14,22 @@ class ShippingProperties extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void Function(BuildContext context) onClickTamanoTextBoxSubtitle =
-        context.read<MainBLoC>().showTamano;
+    void Function(BuildContext context, [bool show])
+        onClickTamanoTextBoxSubtitle =
+        context.read<MainBLoC>().showSelectTamano;
+
+    void Function(BuildContext context, [bool show])
+        onClickValorDeclaradoTextBoxSubtitle =
+        context.read<MainBLoC>().showSelectValorDeclarado;
+
     TextEditingController txtTamanoController = context
         .read<TxtControllersState>()
         .getControladorTxt(TxtStateName.txtTamano);
+
+    TextEditingController txtDeclaradoController = context
+        .read<TxtControllersState>()
+        .getControladorTxt(TxtStateName.txtDeclarado);
+
     return Container(
       padding: const EdgeInsets.all(12),
       width: double.infinity,
@@ -28,7 +39,7 @@ class ShippingProperties extends StatelessWidget {
           const SizedBox(height: 10),
           InkWell(
             onTap: () {
-              onClickTamanoTextBoxSubtitle(context);
+              onClickTamanoTextBoxSubtitle(context, true);
             },
             child: TextBoxSubtitle(
               enable: false,
@@ -57,27 +68,32 @@ class ShippingProperties extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          TextBoxSubtitle(
-            containerWidth: double.infinity,
-            textFieldAltura: 30,
-            iconPre: Padding(
-              padding: const EdgeInsets.only(left: 0, right: 6),
-              child: SvgPicture.asset("assets/icons/money.svg",
-                  height: 16,
-                  color: const Color(0xFF353B4D),
-                  fit: BoxFit.fitHeight),
-            ),
-            textoBase: "Asegura tu servicio",
-            texto: "Asegurado por \$ 50.000",
-            iconPos: Padding(
-              padding: const EdgeInsets.only(left: 6, right: 0),
-              child: Padding(
-                padding: const EdgeInsets.only(right: 12.0),
-                child: SvgPicture.asset(
-                  "assets/icons/icon_incity_next.svg",
-                  height: 16,
-                  color: const Color(0xFF353B4D),
-                  fit: BoxFit.fitHeight,
+          InkWell(
+            onTap: () {
+              onClickValorDeclaradoTextBoxSubtitle(context, true);
+            },
+            child: TextBoxSubtitle(
+              enable: false,
+              containerWidth: double.infinity,
+              iconPre: Padding(
+                padding: const EdgeInsets.only(left: 0, right: 6),
+                child: SvgPicture.asset("assets/icons/money.svg",
+                    height: 25,
+                    color: const Color(0xFF353B4D),
+                    fit: BoxFit.fitHeight),
+              ),
+              textoBase: "Asegura tu servicio",
+              controller: txtDeclaradoController,
+              iconPos: Padding(
+                padding: const EdgeInsets.only(left: 6, right: 0),
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 12.0),
+                  child: SvgPicture.asset(
+                    "assets/icons/icon_incity_next.svg",
+                    height: 16,
+                    color: const Color(0xFF353B4D),
+                    fit: BoxFit.fitHeight,
+                  ),
                 ),
               ),
             ),

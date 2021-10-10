@@ -8,7 +8,7 @@ class PagesShowState {
   static const String legal1show = 'legal1show';
   static const String legal2show = 'legal2show';
   static const String exitososhow = 'exitososhow';
-  static const String asegurashow = 'asegurashow';
+  static const String declaredhow = 'declaredhow';
   static const String tamanoshow = 'tamanoshow';
 
   static const String isloadinglogin = 'isloadinglogin';

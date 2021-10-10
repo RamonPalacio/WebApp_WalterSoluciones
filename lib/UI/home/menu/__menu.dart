@@ -4,8 +4,9 @@ import 'package:walte_soluciones/UI/home/menu/inicio_servicio/box_initial_locati
 import 'package:walte_soluciones/UI/home/menu/segundo_servicio/box_second_location.dart';
 import 'package:walte_soluciones/UI/home/menu/extra/add_address_menu.dart';
 import 'package:walte_soluciones/UI/home/menu/extra/service_select_type.dart';
-import 'package:walte_soluciones/UI/home/menu/extra/tamano_paquete.dart';
+import 'package:walte_soluciones/UI/home/menu/extra/propiedades_envio.dart';
 import 'package:walte_soluciones/UI/home/menu/extra/service_resumen.dart';
+import 'package:walte_soluciones/provider/context/constant/const_pages_show_state.dart';
 import 'package:walte_soluciones/provider/context/constant/const_state.dart';
 import 'package:walte_soluciones/provider/context/main_state.dart';
 
@@ -24,6 +25,11 @@ class Menu extends StatelessWidget {
           ElevatedButton(
             child: const Text("hola"),
             onPressed: () async {
+              context.read<MainState>().setState(
+                    id: PagesShowState.declaredhow,
+                    texto: true,
+                    updateGeneralState: true,
+                  );
               // context
               //     .read<TxtControllersState>()
               //     .getControladorTxt(TxtStateName.txtDirprincipal)

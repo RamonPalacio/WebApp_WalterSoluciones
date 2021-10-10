@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:intl/intl.dart';
 import 'package:walte_soluciones/core/constant/const_maps.dart';
 import 'package:walte_soluciones/provider/context/constant/const_pages_show_state.dart';
 
@@ -17,7 +18,7 @@ abstract class Utility {
       ..setState(id: PagesShowState.singinshow, texto: false)
       ..setState(id: PagesShowState.cityshow, texto: false)
       ..setState(id: PagesShowState.tamanoshow, texto: false)
-      ..setState(id: PagesShowState.asegurashow, texto: false)
+      ..setState(id: PagesShowState.declaredhow, texto: false)
       ..setState(id: PagesShowState.naturalshow, texto: false)
       ..setState(id: PagesShowState.legal1show, texto: false)
       ..setState(id: PagesShowState.legal2show, texto: false)
@@ -80,9 +81,17 @@ abstract class Utility {
       );
   }
 
-  void showTamano(BuildContext context, [bool show = true]) {
+  void showSelectTamano(BuildContext context, [bool show = true]) {
     context.read<MainState>().setState(
           id: PagesShowState.tamanoshow,
+          texto: show,
+          updateGeneralState: true,
+        );
+  }
+
+  void showSelectValorDeclarado(BuildContext context, [bool show = true]) {
+    context.read<MainState>().setState(
+          id: PagesShowState.declaredhow,
           texto: show,
           updateGeneralState: true,
         );
@@ -104,7 +113,26 @@ abstract class Utility {
         .text = tamano;
     mS.setState(
         id: ConstState.textoBtnTamano, texto: tamano, updateGeneralState: true);
-    showTamano(context, false);
+    showSelectTamano(context, false);
+  }
+
+  void cambiarValorDeclarado(BuildContext context,
+      {required double valorDeclarado}) {
+    MainState mS = context.read<MainState>();
+
+    var percent =
+        NumberFormat.currency(locale: 'en_US', decimalDigits: 0, symbol: "\$");
+    context
+            .read<TxtControllersState>()
+            .getControladorTxt(TxtStateName.txtDeclarado)
+            .text =
+        "Asegurado por " + percent.format(valorDeclarado * 1000).toString();
+    mS.setState(
+        id: ConstState.valueDeclarate,
+        texto: valorDeclarado.round(),
+        updateGeneralState: true);
+
+    // showSelectValorDeclarado(context, false);
   }
 
   void clickbtnSignIn(BuildContext context, {String tamano = ""}) {

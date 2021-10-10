@@ -18,7 +18,7 @@ class ResumenPedido extends StatelessWidget {
       child: Column(
         children: [
           const Text(
-            "Valor a Pagar: \$ 7.200",
+            "Valor a Pagar: \$ ---.---",
             style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -29,6 +29,7 @@ class ResumenPedido extends StatelessWidget {
             height: 50,
             width: 250,
             child: BotonGradiane(
+              fontsize: 10,
               text: "Ir a Pagar",
               onPressed: () {
                 context.read<MainBLoC>().resetPop(context);

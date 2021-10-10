@@ -16,7 +16,7 @@ class MainState extends ChangeNotifier {
     PagesShowState.cityshow: true,
     PagesShowState.tamanoshow: false,
     PagesShowState.singinshow: false,
-    PagesShowState.asegurashow: false,
+    PagesShowState.declaredhow: false,
     PagesShowState.naturalshow: false,
     PagesShowState.legal1show: false,
     PagesShowState.legal2show: false,
@@ -32,6 +32,8 @@ class MainState extends ChangeNotifier {
     ConstState.btnidayvuelta: false,
     ConstState.textoBtnciudad: "Medellín",
     ConstState.textoBtnTamano: "Pequeños",
+
+    ConstState.valueDeclarate: 250,
 
     ConstState.centerMap: LatLng(6.246727, -75.566189), //Medellin
     ConstState.markerA: LatLng(0, 0),

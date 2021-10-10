@@ -9,6 +9,7 @@ import 'package:walte_soluciones/UI/pops/registers_otp.dart';
 import 'package:walte_soluciones/UI/pops/registro_exitoso.dart';
 import 'package:walte_soluciones/UI/pops/select_city.dart';
 import 'package:walte_soluciones/UI/pops/select_tamano.dart';
+import 'package:walte_soluciones/UI/pops/select_valor_declarado.dart';
 import 'package:walte_soluciones/UI/pops/singin.dart';
 import 'package:walte_soluciones/provider/context/constant/const_pages_show_state.dart';
 import 'package:walte_soluciones/provider/context/main_state.dart';
@@ -81,6 +82,10 @@ class Home extends StatelessWidget {
 
               if (modelState.getState(PagesShowState.tamanoshow)) {
                 return const BlurBackground(child: SelectTamano());
+              }
+
+              if (modelState.getState(PagesShowState.declaredhow)) {
+                return const BlurBackground(child: SelectDeclaredValue());
               }
 
               if (modelState.getState(PagesShowState.reotpshow)) {
