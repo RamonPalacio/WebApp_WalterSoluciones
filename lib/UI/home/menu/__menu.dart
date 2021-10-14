@@ -6,9 +6,9 @@ import 'package:walte_soluciones/UI/home/menu/extra/add_address_menu.dart';
 import 'package:walte_soluciones/UI/home/menu/extra/service_select_type.dart';
 import 'package:walte_soluciones/UI/home/menu/extra/propiedades_envio.dart';
 import 'package:walte_soluciones/UI/home/menu/extra/service_resumen.dart';
-import 'package:walte_soluciones/provider/context/constant/const_pages_show_state.dart';
-import 'package:walte_soluciones/provider/context/constant/const_state.dart';
-import 'package:walte_soluciones/provider/context/main_state.dart';
+
+import 'package:walte_soluciones/provider/state/const_state.dart';
+import 'package:walte_soluciones/provider/state/main_state.dart';
 
 class Menu extends StatelessWidget {
   const Menu({
@@ -26,10 +26,15 @@ class Menu extends StatelessWidget {
             child: const Text("hola"),
             onPressed: () async {
               context.read<MainState>().setState(
-                    id: PagesShowState.declaredhow,
-                    texto: true,
-                    updateGeneralState: true,
-                  );
+                  id: ConstState.markerA,
+                  texto: LatLng(6.246727, -75.566189),
+                  updateGeneralState: true);
+              context
+                  .read<MainState>()
+                  .setState(id: ConstState.updateFlutterMap, texto: false);
+
+              // context.read<MainBLoC>().updateMap(context);
+
               // context
               //     .read<TxtControllersState>()
               //     .getControladorTxt(TxtStateName.txtDirprincipal)

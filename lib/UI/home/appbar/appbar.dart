@@ -3,9 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import 'package:walte_soluciones/core/widgets/atomos/botomgradiane.dart';
-import 'package:walte_soluciones/provider/context/constant/const_state.dart';
+import 'package:walte_soluciones/provider/state/const_state.dart';
 import 'package:walte_soluciones/provider/logic/main_bloc.dart';
-import 'package:walte_soluciones/provider/context/main_state.dart';
+import 'package:walte_soluciones/provider/state/main_state.dart';
 
 class AppBarHome extends StatelessWidget {
   const AppBarHome({

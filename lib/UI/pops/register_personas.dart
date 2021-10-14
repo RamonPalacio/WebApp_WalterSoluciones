@@ -5,15 +5,15 @@ import 'package:provider/provider.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:walte_soluciones/provider/context/constant/const_state.dart';
-import 'package:walte_soluciones/provider/context/constant/const_styles.dart';
-import 'package:walte_soluciones/provider/context/constant/const_txt_state_name.dart';
+import 'package:walte_soluciones/provider/state/const_state.dart';
+import 'package:walte_soluciones/database/constant/const_styles.dart';
+import 'package:walte_soluciones/provider/state/const_txt_state_name.dart';
 import 'package:walte_soluciones/core/widgets/atomos/botomgradiane.dart';
 
 import 'package:walte_soluciones/core/widgets/atomos/text_by_height.dart';
 import 'package:walte_soluciones/core/widgets/atomos/textbox_subtitle.dart';
 import 'package:walte_soluciones/provider/logic/main_bloc.dart';
-import 'package:walte_soluciones/provider/context/main_state.dart';
+import 'package:walte_soluciones/provider/state/main_state.dart';
 
 class RegisterPersonas extends StatelessWidget {
   const RegisterPersonas({Key? key}) : super(key: key);

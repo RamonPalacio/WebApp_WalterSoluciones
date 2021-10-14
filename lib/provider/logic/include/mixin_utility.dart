@@ -3,13 +3,13 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:walte_soluciones/core/constant/const_maps.dart';
-import 'package:walte_soluciones/provider/context/constant/const_pages_show_state.dart';
+import 'package:walte_soluciones/provider/state/const_pages_show_state.dart';
 
-import 'package:walte_soluciones/provider/context/constant/const_state.dart';
-import 'package:walte_soluciones/provider/context/constant/const_txt_state_name.dart';
-import 'package:walte_soluciones/provider/context/main_state.dart';
+import 'package:walte_soluciones/provider/state/const_state.dart';
+import 'package:walte_soluciones/provider/state/const_txt_state_name.dart';
+import 'package:walte_soluciones/provider/state/main_state.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:walte_soluciones/provider/context/txt_controllers_state.dart';
+import 'package:walte_soluciones/provider/state/txt_controllers_state.dart';
 
 abstract class Utility {
   void resetPop(BuildContext context) {
@@ -141,6 +141,21 @@ abstract class Utility {
           texto: true,
           updateGeneralState: true,
         );
+  }
+
+  void updateMap(BuildContext context) async {
+    MainState mS = context.read<MainState>();
+    mS.setState(
+      id: ConstState.updateFlutterMap,
+      texto: false,
+      updateGeneralState: true,
+    );
+    await Future.delayed(const Duration(milliseconds: 100));
+    mS.setState(
+      id: ConstState.updateFlutterMap,
+      texto: true,
+      updateGeneralState: true,
+    );
   }
 
   void showMensaje(String mensaje, [bool error = true]) {

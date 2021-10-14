@@ -7,16 +7,13 @@ class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case homeRoute:
-        return MaterialPageRoute(
-          builder: (_) => const Home(),
-        );
+        return MaterialPageRoute(builder: (_) => const Home());
 
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
-                  body: Center(
-                      child: Text('No route defined for ${settings.name}')),
-                ));
+                body: Center(
+                    child: Text('No route defined for ${settings.name}'))));
     }
   }
 }

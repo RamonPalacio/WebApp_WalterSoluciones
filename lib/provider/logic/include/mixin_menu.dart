@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:walte_soluciones/provider/context/constant/const_state.dart';
+import 'package:walte_soluciones/provider/state/const_state.dart';
 import 'package:walte_soluciones/database/endpoint_api.dart';
-import 'package:walte_soluciones/provider/context/main_state.dart';
-import 'package:walte_soluciones/provider/context/txt_controllers_state.dart';
+import 'package:walte_soluciones/provider/state/main_state.dart';
+import 'package:walte_soluciones/provider/state/txt_controllers_state.dart';
 
 abstract class MenuBloc {
   ///Acutaliza TextBoxA y TextBoxB de Busquedas por direccion en el Menu.

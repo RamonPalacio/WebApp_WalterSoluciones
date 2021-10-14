@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:walte_soluciones/provider/context/constant/const_pages_show_state.dart';
-import 'package:walte_soluciones/provider/context/constant/const_state.dart';
-import 'package:walte_soluciones/provider/context/constant/const_txt_state_name.dart';
+import 'package:walte_soluciones/provider/state/const_pages_show_state.dart';
+import 'package:walte_soluciones/provider/state/const_state.dart';
+import 'package:walte_soluciones/provider/state/const_txt_state_name.dart';
 import 'package:walte_soluciones/provider/logic/extra/verifications.dart';
-import 'package:walte_soluciones/provider/context/main_state.dart';
+import 'package:walte_soluciones/provider/state/main_state.dart';
 import 'package:walte_soluciones/models/model_user.dart';
 
 // ignore: implementation_imports

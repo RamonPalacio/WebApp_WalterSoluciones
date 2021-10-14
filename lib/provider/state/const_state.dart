@@ -1,4 +1,6 @@
 class ConstState {
+  static const String updateFlutterMap = 'update_FlutterMap';
+
   static const String dirListPredictionA = "lista_direccionesA";
   static const String dirListPredictionB = "lista_direccionesB";
 

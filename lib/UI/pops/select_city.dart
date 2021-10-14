@@ -5,7 +5,7 @@ import 'package:walte_soluciones/core/widgets/atomos/botomgradiane.dart';
 
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
-import 'package:walte_soluciones/provider/context/constant/const_styles.dart';
+import 'package:walte_soluciones/database/constant/const_styles.dart';
 import 'package:walte_soluciones/provider/logic/main_bloc.dart';
 
 class SelectCity extends StatelessWidget {

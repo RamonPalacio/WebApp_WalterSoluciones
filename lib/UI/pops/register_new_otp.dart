@@ -3,12 +3,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
-import 'package:walte_soluciones/provider/context/constant/const_styles.dart';
-import 'package:walte_soluciones/provider/context/constant/const_txt_state_name.dart';
+import 'package:walte_soluciones/database/constant/const_styles.dart';
+import 'package:walte_soluciones/provider/state/const_txt_state_name.dart';
 
 import 'package:walte_soluciones/core/widgets/atomos/botomgradiane.dart';
 import 'package:walte_soluciones/provider/logic/main_bloc.dart';
-import 'package:walte_soluciones/provider/context/main_state.dart';
+import 'package:walte_soluciones/provider/state/main_state.dart';
 
 class RegisterNewOtp extends StatelessWidget {
   const RegisterNewOtp({Key? key}) : super(key: key);

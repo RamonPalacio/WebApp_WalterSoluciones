@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:walte_soluciones/provider/context/constant/const_pages_show_state.dart';
-import 'package:walte_soluciones/provider/context/constant/const_state.dart';
-import 'package:walte_soluciones/provider/context/constant/const_txt_state_name.dart';
+import 'package:walte_soluciones/provider/state/const_pages_show_state.dart';
+import 'package:walte_soluciones/provider/state/const_state.dart';
+import 'package:walte_soluciones/provider/state/const_txt_state_name.dart';
 
 import 'package:walte_soluciones/database/endpoint_api.dart';
 import 'package:walte_soluciones/models/model_sms_check.dart';
@@ -10,7 +10,7 @@ import 'package:walte_soluciones/models/model_user.dart';
 import 'package:walte_soluciones/provider/logic/main_bloc.dart';
 
 import 'package:walte_soluciones/provider/logic/extra/verifications.dart';
-import 'package:walte_soluciones/provider/context/main_state.dart';
+import 'package:walte_soluciones/provider/state/main_state.dart';
 
 abstract class SignInBloc {
   void clickLogIn(BuildContext c) async {

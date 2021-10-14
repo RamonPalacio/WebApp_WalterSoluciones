@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:walte_soluciones/provider/context/constant/const_pages_show_state.dart';
-import 'package:walte_soluciones/provider/context/constant/const_state.dart';
+import 'package:walte_soluciones/provider/state/const_pages_show_state.dart';
+import 'package:walte_soluciones/provider/state/const_state.dart';
 export 'package:provider/src/provider.dart';
 import 'package:latlong2/latlong.dart';
 export 'package:latlong2/latlong.dart';
@@ -13,6 +13,7 @@ class MainState extends ChangeNotifier {
     ConstState.dirListPredictionA: [],
     ConstState.dirListPredictionB: [],
     // "DateBoxfinzi_RegistroPage": "2021-08-01"
+
     PagesShowState.cityshow: true,
     PagesShowState.tamanoshow: false,
     PagesShowState.singinshow: false,
@@ -26,6 +27,7 @@ class MainState extends ChangeNotifier {
     PagesShowState.isloadinglogin: false,
     PagesShowState.idayvueltamenu: false,
 
+    ConstState.updateFlutterMap: true,
     ConstState.isLoading: false,
     ConstState.isLoadingReg: false,
     ConstState.autoidFirebase: "",
@@ -44,39 +46,20 @@ class MainState extends ChangeNotifier {
     iD, {
     showState = false,
   }) {
-    // ignore: avoid_print
-    // print("MainState>removeState:" + iD);
     _inputTextState.remove(iD);
     if (showState = true) notifyListeners();
   }
 
-  getState(iD) {
-    // ignore: avoid_print
-    // print("MainState>getState" + iD);
-    return _inputTextState["$iD"] ?? "";
-  }
+  getState(iD) => _inputTextState["$iD"] ?? "";
 
   void setState({
     required String id,
-    required texto,
+    required dynamic texto,
     bool updateGeneralState = false,
   }) {
-    // ignore: avoid_print
-    // print(
-    //   "MainState>setState=> id:${id.toString()} texto: ${texto.toString()}",
-    // );
-
-    if (texto != null) {
-      _inputTextState[id] = texto;
-    }
+    if (texto != null) _inputTextState[id] = texto;
     if (updateGeneralState) notifyListeners();
   }
-
-  // @override
-  // void dispose() {
-  //   // _mapControler.dispose(); // No posee dispose
-  //   super.dispose();
-  // }
 
   getControlador(nameControler) {
     switch (nameControler) {

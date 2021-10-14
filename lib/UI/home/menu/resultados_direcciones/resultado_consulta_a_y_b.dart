@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animator/flutter_animator.dart';
 import 'package:provider/provider.dart';
 import 'package:walte_soluciones/provider/logic/main_bloc.dart';
-import 'package:walte_soluciones/provider/context/main_state.dart';
+import 'package:walte_soluciones/provider/state/main_state.dart';
 
 class ResultadoDirecciones extends StatelessWidget {
   const ResultadoDirecciones({

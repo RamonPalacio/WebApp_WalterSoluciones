@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:walte_soluciones/provider/context/constant/const_state.dart';
-import 'package:walte_soluciones/provider/context/constant/const_txt_state_name.dart';
+import 'package:walte_soluciones/provider/state/const_state.dart';
+import 'package:walte_soluciones/provider/state/const_txt_state_name.dart';
 import 'package:walte_soluciones/core/widgets/atomos/textbox_subtitle.dart';
 import 'package:walte_soluciones/provider/logic/main_bloc.dart';
-import 'package:walte_soluciones/provider/context/main_state.dart';
-import 'package:walte_soluciones/provider/context/txt_controllers_state.dart';
+import 'package:walte_soluciones/provider/state/main_state.dart';
+import 'package:walte_soluciones/provider/state/txt_controllers_state.dart';
 
 class OptionA extends StatelessWidget {
   const OptionA({

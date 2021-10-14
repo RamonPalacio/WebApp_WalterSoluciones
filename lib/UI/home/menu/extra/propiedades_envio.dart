@@ -3,9 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
 import 'package:walte_soluciones/core/widgets/atomos/textbox_subtitle.dart';
-import 'package:walte_soluciones/provider/context/constant/const_styles.dart';
-import 'package:walte_soluciones/provider/context/constant/const_txt_state_name.dart';
-import 'package:walte_soluciones/provider/context/txt_controllers_state.dart';
+import 'package:walte_soluciones/database/constant/const_styles.dart';
+import 'package:walte_soluciones/provider/state/const_txt_state_name.dart';
+import 'package:walte_soluciones/provider/state/txt_controllers_state.dart';
 import 'package:walte_soluciones/provider/logic/main_bloc.dart';
 
 class ShippingProperties extends StatelessWidget {
